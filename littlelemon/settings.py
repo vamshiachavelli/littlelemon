@@ -73,13 +73,20 @@ WSGI_APPLICATION = "littlelemon.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'LittleLemon',  # Name of your database
+        'USER': 'root',         # MySQL user
+        'PASSWORD': 'Ruby!@#1',         # Your password here (if any)
+        'HOST': 'localhost',    # Host, usually 'localhost'
+        'PORT': '3306',         # Default MySQL port
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
 }
+
 
 
 # Password validation
