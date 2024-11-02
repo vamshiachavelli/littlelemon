@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}Little Lemon{% endblock %}</title>
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{% static 'img/favicon.ico' %}"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <header>
+      <img src="{% static 'img/logo.png' %}" alt="Little Lemon Logo" />
+      <nav>
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'menu' %}">Menu</a></li>
+          <li><a href="{% url 'book_table' %}">Book</a></li>
+          <li><a href="{% url 'add_menu_item' %}">New Dish</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      {% block content %}
+      <!-- Default content goes here -->
+      {% endblock %}
+    </main>
+
+    <footer>
+      <p>Copyright {{ current_year }} Little Lemon</p>
+    </footer>
+  </body>
+</html>

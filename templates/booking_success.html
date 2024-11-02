@@ -1,0 +1,9 @@
+{% extends 'base.html' %} {% block title %}Reservation Successful{% endblock %}
+{% block content %}
+<h1>Reservation Successful!</h1>
+<p>
+  Thank you, {{ reservation.name }}. Your table has been reserved for
+  {{reservation.guests }} guests on {{ reservation.date }} at
+  {{reservation.time}}.
+</p>
+{% endblock %}

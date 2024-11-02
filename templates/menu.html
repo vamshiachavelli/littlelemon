@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Menu - Little
+Lemon{% endblock %} {% block content %}
+<section>
+  <h1 class="menu-heading">Our Menu</h1>
+  <p class="menu-under">
+    Explore our delicious offerings inspired by Italian, Greek, and Turkish
+    cuisines.
+  </p>
+</section>
+
+<section class="menu-section">
+  {% for category in categories %}
+  <div class="menu-category">
+    <h2>{{ category.category }}</h2>
+    <!-- Replace with actual field name for category -->
+    <div class="menu-items">
+      {% for item in menu_items %} {% if item.category == category.category %}
+      <!-- Replace with actual field name for category -->
+      <article class="menu-item">
+        <a href="{% url 'menu_item_detail' item.id %}">
+          <div class="menu-content">
+            <img
+              src="{{ item.image.url }}"
+              alt="{{ item.title }}"
+              class="menu-image"
+            />
+            <div class="menu-description">
+              <strong>{{ item.title }}</strong> - {{ item.price }} USD<br />
+              <span>Available: {{ item.inventory }}</span>
+            </div>
+          </div>
+        </a>
+      </article>
+      {% endif %} {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</section>
+{% endblock %}

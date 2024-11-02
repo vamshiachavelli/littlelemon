@@ -18,7 +18,8 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from restaurant.views import BookingViewSet  # Import your BookingViewSet
-
+from django.conf import settings
+from django.conf.urls.static import static
 # Create a router instance
 router = DefaultRouter()
 # Register the BookingViewSet with the router
@@ -30,4 +31,4 @@ urlpatterns = [
     path("restaurant/booking/", include(router.urls)),  # Include router URLs for the booking API
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.authtoken')),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

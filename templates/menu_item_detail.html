@@ -1,0 +1,14 @@
+<!-- menu_item_detail.html -->
+{% extends 'base.html' %} {% load static %} {% block title %} Menu Item
+{%endblock %} {% block content %}
+<section class="menu-item-detail">
+  <h1>{{ menu_item.title }}</h1>
+  <img
+    src="{{ menu_item.image.url }}"
+    alt="{{ menu_item.title }}"
+    class="menu-image"
+  />
+  <p><strong>Price:</strong> ${{ menu_item.price }}</p>
+  <p><strong>Available Quantity:</strong> {{ menu_item.inventory }}</p>
+</section>
+{% endblock %}

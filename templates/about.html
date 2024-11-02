@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% load static %} {% block title %}About - Little
+Lemon{% endblock %} {% block content %}
+<section class="about-section">
+  <div class="about-content">
+    <h1 class="about-heading">Little Lemon</h1>
+    <h2 class="about-tagline">Savor the Taste of Tradition</h2>
+    <p>
+      Little Lemon is a family-owned restaurant that brings together the best of
+      Italian, Greek, and Turkish cuisines. Our mission is to create memorable
+      dining experiences by using fresh ingredients and authentic recipes.
+    </p>
+    <div class="about-team">
+      <h3>Meet Our Team</h3>
+      <p>
+        Our chefs are passionate about bringing you authentic flavors and
+        unforgettable dining experiences.
+      </p>
+    </div>
+    <div class="about-testimonials">
+      <h3>What Our Customers Say</h3>
+      <blockquote>
+        "The best dining experience! The flavors are unforgettable." - Happy
+        Customer
+      </blockquote>
+    </div>
+    <a href="{% url 'book_table' %}" class="cta-button">Make a Reservation</a>
+  </div>
+  <div class="about-image">
+    <img
+      src="{% static 'img/restaurant food.jpg' %}"
+      alt="Little Lemon Restaurant"
+      class="about-img"
+    />
+  </div>
+</section>
+{% endblock %}

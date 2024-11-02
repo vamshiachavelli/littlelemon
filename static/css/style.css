@@ -1,0 +1,612 @@
+body {
+    font-family: 'Karla', sans-serif;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Markazi Text', serif;
+    letter-spacing: 2px;;
+}
+
+h1 {
+    font-size: 4rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: #333333;
+    margin:1rem 0;
+}
+
+p, ul{
+    font-size: 1.25rem;;
+}
+
+a {
+    color: #EE9972;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+header img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    height: auto;
+}
+
+
+nav {
+    background-color: #495E57;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-bottom: 0px;
+}
+
+nav ul {
+    list-style: none;
+    font-size: 1.5rem;
+    text-align: center;
+    padding-inline-start: 0rem;
+    margin-bottom: 0px;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0.5rem;
+}
+
+nav ul a {
+    color: #EDEFEE;
+    text-decoration: none;
+}
+
+nav ul a:active {
+    text-decoration: underline;
+}
+
+nav ul a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 0.1rem;
+}
+
+section {
+    display: flex;
+    gap: 2rem 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    flex-direction: row;
+}
+
+article {
+    flex:1;
+}
+
+article img {
+    max-width: 100%;
+}
+
+article ul {
+    list-style: none;
+}
+
+main article {
+    border: 1px solid #EDEFEE;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+figure {
+    margin: 0;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+  }
+
+input{
+    width: 80%;
+    display: block;
+    padding: .5rem 1rem;
+    line-height: 1.5rem;
+    box-sizing: border-box;
+}
+
+#button {
+    padding: .5rem 1rem;
+    border: 1px solid #495E57;
+    background-color:#495E57;;
+    border-radius: 5px;
+    width: 80%;
+    font-size: 1.25rem;
+    display: block;
+    color: #fff;
+    line-height: 25px;
+  }
+
+#hero {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url('../img/restaurant_inside.jpg');
+    background-size: cover;
+    background-position: 75%;
+    color: white;
+    min-height: 200px;
+    text-align: center;;
+}
+
+#hero p {
+    font-size: 2rem;
+    margin:0;
+    text-shadow: 2px 2px 4px #333333;
+}
+
+.cta { 
+    display: inline-block; 
+    color: rgba(255, 255, 255, 0.9);
+    width: 200px; 
+    font-weight: bold; 
+    font-size: 1.5rem;
+    padding: 8px; 
+    border: 3px solid #fff; 
+    text-align: center; 
+    outline: none; 
+    text-decoration: none; 
+    margin: 1rem;
+} 
+
+.cta:hover {
+    color:#fff;
+    background:#495E57;
+    border: 3px solid #495E57; 
+  }
+
+  .heading-shadow {
+    text-shadow: 1px 1px 4px #333333;
+  }
+
+footer {
+    background-color: #EDEFEE;
+    padding: 1rem;
+    display: flex;
+    gap: 2rem 1rem;
+}
+
+footer img {
+    max-width: 50%;
+}
+
+footer p {
+    border-top: #333333;
+    border-style: solid;
+    border-width: 0.1rem;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    text-align: right;
+    padding-top: 1rem;;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding-bottom: 1rem;
+  }
+
+  .column {
+    flex-basis: 50%;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .column figure {
+    padding: 0px 12px;
+
+  }
+
+
+  .videowrap {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 1rem;
+	height: 0;
+}
+.videowrap iframe {
+	position: absolute;
+    margin-top: 2rem;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+
+.menu-section {
+    min-width: 300px; /* Set a minimum width for responsive design */
+    margin: 1rem 0; /* Spacing between sections */
+    padding: 1rem; /* Add padding around the section */
+    border: 1px solid #EDEFEE; /* Border around the section */
+    border-radius: 10px; /* Rounded corners for section */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Optional shadow for effect */
+    background-color: #FFFFFF; /* Optional: background color for sections */
+}
+
+.menu-heading {
+    font-size: 4.5rem; /* Font size for the heading */
+    color: #495E57; /* Heading color */
+    margin: 2rem 0; /* Space above and below the heading */
+    text-align: center; /* Center the heading */
+}
+
+.menu-item {
+    margin-bottom: 2rem; /* Space between different categories */
+}
+
+.menu-content {
+    display: flex; /* Set display to flex */
+    flex-direction: column; /* Arrange items in a column */
+    align-items: center; /* Center align the items */
+    border-radius: 10px; /* Rounded corners */
+    padding: 1rem; /* Padding around each menu content block */
+    justify-content: space-between; /* Space items evenly within the container */
+    margin-bottom: 1.5rem; /* Add gap between each dish */
+    height: 250px;
+    transition: transform 0.3s, background-color 0.3s; /* Optional: smooth scale on hover */
+}
+
+.menu-content:hover {
+    transform: scale(1.02); /* Slightly scale up on hover */
+    border-color: #a8dadc; /* Change border color on hover (optional) */
+}
+
+.menu-image {
+    max-width: 100%; /* Ensure responsive images */
+    max-height: 250px; /* Increase max height for images */
+    object-fit: cover;
+    border-radius: 10px; /* Rounded corners */
+}
+
+.menu-title {
+    margin-top: 1rem; /* Space above the dish title */
+    font-size: 1.75rem; /* Size for dish name */
+    text-align: center;
+}
+.menu-title-price {
+    display: flex; /* Flexbox to align title and price */
+    justify-content: space-between; /* Space between title and price */
+    width: 100%; /* Full width for alignment */
+}
+
+.menu-under {
+    color: #495E57; /* Set text color */
+    margin-left: 2rem;
+    margin-top: 6.5rem;
+}
+
+.menu-description {
+    font-size: 1.2rem; /* Font size for the paragraph */
+    color: #495E57; /* Text color */
+    margin: 1rem 0; /* Vertical margin for space above and below */
+    padding: 0 2rem; /* Horizontal padding for breathing room */
+    text-align: center; /* Center the paragraph */
+    line-height: 1.5; /* Increase line height for readability */
+    flex-grow: 1; /* Allow description to take up available space */
+}
+
+.menu-price {
+    display: block;
+    font-size: 1rem;
+}
+
+/* Additional spacing to ensure consistent gaps */
+.menu-content img {
+    margin-bottom: 0.5rem; /* Small gap between image and title */
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Assuming this is in your styles.css or relevant CSS file */
+.menu-item a {
+    text-decoration: none;  /* Removes the underline */
+    color: inherit;        /* Keeps the text color the same as surrounding text */
+}
+
+.menu-item a:hover {
+    text-decoration: none;  /* Optional: Add underline on hover for better user experience */
+}
+
+/* about */
+.about-section {
+    display: flex; /* Flexbox for layout */
+    justify-content: space-between; /* Space between content and image */
+    padding: 2rem; /* Padding around the section */
+    border: 2px solid #EDEFEE; /* Border around the entire section */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #ffffff; /* Background color */
+}
+
+.about-content {
+    flex: 0 0 35%; /* Fixed width for content */
+    margin-right: 2rem; /* Space between content and image */
+}
+
+.about-heading {
+    font-size: 3rem; /* Large heading size */
+    margin-bottom: 0rem; /* Space below heading */
+    margin-top: 0rem;
+}
+
+.about-tagline {
+    font-size: 1.5rem; /* Tagline size */
+    margin: 0; /* Space above and below the tagline */
+    padding-left: 5rem; /* Space from the border */
+    font-style: italic; /* Italicize the tagline */
+    display: inline-block; /* Make it inline to attach to heading */
+
+}
+
+
+.about-team,
+.about-testimonials {
+    margin-top: .5rem; /* Space above team and testimonials */
+}
+
+.about-team h3,
+.about-testimonials h3 {
+    font-size: 1.5rem; /* Size for section headings */
+    margin-bottom: 0rem; /* Space below section heading */
+}
+
+.about-testimonials blockquote {
+    font-style: italic; /* Italicize the testimonial */
+    margin: 1rem 0; /* Space around the testimonial */
+    border-left: 3px solid #EE9972; /* Stylish left border */
+    padding-left: 1rem; /* Space from the border */
+}
+
+.about-image {
+    flex: 1; /* Take the remaining space for image */
+}
+
+.about-img {
+    max-width: 100%; /* Responsive image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Rounded corners */
+}
+
+.cta-button {
+    display: inline-block; /* Make button a block */
+    margin-top: 1.5rem; /* Space above button */
+    padding: 0.5rem 1rem; /* Padding inside button */
+    background-color: #EE9972; /* Button color */
+    color: #fff; /* Text color */
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px; /* Rounded corners for button */
+    font-size: 1.25rem; /* Button text size */
+}
+
+.cta-button:hover {
+    background-color: #495E57; /* Darken button on hover */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .about-section {
+        flex-direction: column; /* Stack content vertically on small screens */
+    }
+    
+    .about-content {
+        margin-right: 0; /* Remove right margin */
+        margin-bottom: 2rem; /* Space below content */
+    }
+}
+
+/* booking */
+
+/* booking-wrapper */
+.booking-wrapper {
+    display: flex; /* Use flexbox for layout */
+    height: 100vh; /* Full viewport height */
+}
+
+/* Attract Section */
+.attract {
+    flex: 0 0 35%; /* Fixed height of 35% */
+    padding: 2rem; /* Padding for breathing room */
+    background-color: #f9f9f9; /* Light background for contrast */
+    text-align: center; /* Center text */
+    border-right: 1px solid #EDEFEE; /* Border for separation */
+}
+
+.attract h2 {
+    font-size: 2rem; /* Heading size for attract section */
+    margin-bottom: 1rem; /* Space below heading */
+    color: #495E57; /* Main color for heading */
+}
+
+.attract p {
+    font-size: 1.2rem; /* Font size for attract section */
+    color: #495E57; /* Consistent text color */
+}
+
+/* Booking Section */
+.booking-section {
+    flex: 1; /* Remaining height */
+    max-width: 800px; /* Limit max width for better readability */
+    margin: 0; /* No margin */
+    padding: 2rem; /* Padding for breathing room */
+    border: 1px solid #EDEFEE; /* Light border for separation */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #fdfdfd; /* Light background for contrast */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack children vertically */
+}
+
+/* Booking Section Headings and Form Styles */
+.booking-section h1 {
+    font-size: 2.5rem; /* Larger heading size */
+    margin-bottom: 1rem; /* Space below the heading */
+    text-align: center; /* Centered heading */
+    color: #495E57; /* Main color for heading */
+}
+
+.booking-section .booking-intro,
+.booking-section .booking-reason {
+    font-size: 1.2rem; /* Readable text size */
+    text-align: center; /* Centered paragraph */
+    margin-bottom: 1rem; /* Space below paragraphs */
+}
+
+.booking-form {
+    display: flex; /* Flexbox for alignment */
+    flex-direction: column; /* Vertical layout */
+    gap: 1rem; /* Space between inputs */
+}
+
+/* Input Styles */
+.booking-form label {
+    font-weight: bold; /* Bold labels for emphasis */
+    color: #495E57; /* Consistent color */
+}
+
+.booking-form input {
+    padding: 0.75rem; /* Padding for inputs */
+    border: 1px solid #EDEFEE; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1rem; /* Font size for inputs */
+    transition: border-color 0.3s; /* Transition for focus effect */
+}
+
+.booking-form input:focus {
+    border-color: #EE9972; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Button Styles */
+.booking-form button {
+    padding: 0.75rem; /* Button padding */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #EE9972; /* Button color */
+    color: #fff; /* Button text color */
+    font-size: 1.2rem; /* Button text size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Transition for hover effect */
+}
+
+.booking-form button:hover {
+    background-color: #495E57; /* Darker shade on hover */
+}
+
+/* Testimonials, Special Offers, and Footer Styles */
+.testimonials, .special-offers, .footer-info {
+    margin-top: 2rem; /* Space above sections */
+    text-align: center; /* Center text */
+}
+
+.testimonials blockquote {
+    font-style: italic; /* Italics for emphasis */
+    margin: 1rem 0; /* Margin for space */
+    padding: 1rem; /* Padding for blockquote */
+    border-left: 4px solid #EE9972; /* Left border for style */
+    background-color: #f9f9f9; /* Light background */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.special-offers, .footer-info {
+    font-size: 1rem; /* Font size */
+    color: #495E57; /* Consistent text color */
+}
+
+.footer-info a {
+    color: #EE9972; /* Link color */
+    text-decoration: none; /* No underline */
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-heading {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.menu-form label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.menu-form input[type="text"],
+.menu-form input[type="number"],
+.menu-form input[type="file"],
+.menu-form input[type="decimal"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+@media (max-width: 800px) {
+    section {
+        flex-direction: column;   
+    }
+
+    .row {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    #button {
+        width: 100%;
+    }
+
+    .menu-content {
+        flex-direction: column; /* Stack image and description vertically on small screens */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    .menu-image {
+        margin-bottom: 1rem; /* Add spacing below the image */
+    }
+
+}

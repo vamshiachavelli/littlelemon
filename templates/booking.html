@@ -1,0 +1,71 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Book a Table -
+Little Lemon{% endblock %} {% block content %}
+<section class="booking-wrapper">
+  <div class="attract">
+    <h2>Attract Customers</h2>
+    <p>
+      Delightful dishes await you at Little Lemon, where flavors blend from
+      Italy, Greece, and Turkey.
+    </p>
+    <h2>Meet Our Team</h2>
+    <p>
+      Our chefs are passionate about bringing you authentic flavors and
+      unforgettable dining experiences.
+    </p>
+    <div class="testimonials">
+      <h2>What Our Guests Say</h2>
+      <blockquote>
+        "A fantastic dining experience! The ambiance and food were top-notch!" -
+        Sarah
+      </blockquote>
+      <blockquote>
+        "Absolutely loved the Greek salad. Can't wait to come back!" - Mark
+      </blockquote>
+    </div>
+
+    <div class="special-offers">
+      <h2>Special Offers</h2>
+      <p>Join us on weekends for a 20% discount on family-style meals!</p>
+    </div>
+
+    <p>123 Delicious St, Food Town, FL</p>
+    <p>Call us: (123) 456-7890</p>
+    <p>
+      <a href="https://maps.google.com" target="_blank">Get Directions</a>
+    </p>
+  </div>
+
+  <div class="booking-section">
+    <div class="intro-container">
+      <h1>Book a Table</h1>
+      <p class="booking-intro">
+        Reserve your table for an Italian, Greek, and Turkish dining experience.
+      </p>
+      <p class="booking-reason">
+        Fill out the form below to secure your reservation and enjoy a
+        delightful meal.
+      </p>
+
+      <form method="POST" class="booking-form">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required />
+
+        <label for="time">Time:</label>
+        <input type="time" id="time" name="time" required />
+
+        <label for="guests">Number of Guests:</label>
+        <input type="number" id="guests" name="guests" required />
+
+        <button type="submit">Reserve Now</button>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}
