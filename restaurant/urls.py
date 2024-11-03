@@ -23,5 +23,6 @@ urlpatterns = [
     path('api/menu/', views.MenuItemsView.as_view(), name='menu-items'),  # Example for API endpoint
     path('api/SingleMenuItemView/', views.SingleMenuItemView.as_view(), name='SingleMenuItemView'),
     path('api/BookingViewSet/', views.BookingViewSet.as_view(), name='BookingViewSets'),
+    path('api-token-auth/', obtain_auth_token),
     # Add more patterns as needed
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
