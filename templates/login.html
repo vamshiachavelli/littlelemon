@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Login - Little
+Lemon{% endblock %} {% block content %}
+<section class="auth-section">
+  <div class="auth-content">
+    <h1 class="auth-heading">Welcome Back to Little Lemon</h1>
+    <h2 class="auth-tagline">
+      Log in to make a reservation or view your bookings
+    </h2>
+    <form method="post" action="{% url 'login' %}" class="auth-form">
+      {% csrf_token %}
+      <label for="username">Username:</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        required
+        class="auth-input"
+      />
+
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required
+        class="auth-input"
+      />
+
+      <button type="submit" class="cta-button">Login</button>
+    </form>
+    <p>
+      Don't have an account? <a href="{% url 'register' %}">Sign up here</a>
+    </p>
+  </div>
+  <div class="auth-image">
+    <img
+      src="{% static 'img/login.jpg' %}"
+      alt="Login to Little Lemon"
+      class="auth-img"
+    />
+  </div>
+</section>
+{% endblock %}

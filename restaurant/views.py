@@ -6,6 +6,11 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import MenuForm,BookingForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+from .serializers import UserSerializer
+from django.contrib.auth.forms import UserCreationForm
 
 class MenuItemsView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
@@ -21,24 +26,6 @@ class BookingViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     queryset = Booking.objects.all()  # Fetch all booking objects
     serializer_class = BookingSerializer
-
-@api_view()
-@permission_classes([IsAuthenticated])
-# @authentication_classes([TokenAuthentication])
-def msg(request):
-    return Response({"message":"This view is protected"})
-
-def index(request):
-    return render(request,"index.html")
-
-def home(request):
-    return render(request, 'index.html')
-
-def about(request):
-    return render(request, 'about.html')
-
-def booking(request):
-    return render(request, 'booking.html')
 
 def menu(request):
     menu_items = Menu.objects.all()  # Get all menu items
@@ -57,6 +44,7 @@ def add_menu_item(request):
     
     return render(request, 'add_menu_item.html', {'form': form})
 
+@login_required
 def book_table(request):
     if request.method == 'POST':
         form = BookingForm(request.POST)
@@ -72,3 +60,49 @@ def menu_item_detail(request, pk):
     # Retrieve the specific menu item by its primary key (pk)
     menu_item = get_object_or_404(Menu, pk=pk)
     return render(request, 'menu_item_detail.html', {'menu_item': menu_item})
+
+def home(request):
+    return render(request, 'home.html')
+
+def about(request):
+    return render(request, 'about.html')
+
+def login_view(request):
+    """Handle user login."""
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home')  # Change to your desired redirect page
+        else:
+            return render(request, 'login.html', {'error': 'Invalid credentials'})
+    return render(request, 'login.html')
+
+def logout_view(request):
+    """Handle user logout."""
+    logout(request)
+    return redirect('home')
+
+def register(request):
+    """Handle user registration."""
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()  # Save the new user
+            login(request, user)  # Log the user in immediately after registration
+            # Redirect to the success page with user's information
+            return render(request, 'registration_success.html', {
+                'username': user.username,
+                'user_id': user.id
+            })
+    else:
+        form = UserCreationForm()
+    
+    return render(request, 'register.html', {'form': form})
+
+class UserListView(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated]

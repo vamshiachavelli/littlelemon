@@ -16,19 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from restaurant.views import BookingViewSet  # Import your BookingViewSet
 from django.conf import settings
-from django.conf.urls.static import static
-# Create a router instance
-router = DefaultRouter()
-# Register the BookingViewSet with the router
-router.register(r'tables', BookingViewSet)
+from rest_framework.authtoken.views import obtain_auth_token
+
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/", include("restaurant.urls")),  # Include your app URLs
-    path("restaurant/booking/", include(router.urls)),  # Include router URLs for the booking API
+    path("", include("restaurant.urls")),  # Include your app URLs
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.authtoken')),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    #path('api-token-auth/', obtain_auth_token),
+    #path('api/', include(router.urls)),  # Include router URLs
+    #path('api/menu/', views.MenuItemsView.as_view(), name='menu_items'),  # API for menu items
+    #path('api/menu/<int:pk>/', views.SingleMenuItemView.as_view(), name='single_menu_item'),
+]
