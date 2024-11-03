@@ -76,6 +76,18 @@ WSGI_APPLICATION = "littlelemon.wsgi.application"
 
 
 # Database
+# mysql daatabase connect
+'''DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'your_database_name',       # Replace with your database name
+        'USER': 'your_username',            # Replace with your MySQL username
+        'PASSWORD': 'your_password',        # Replace with your MySQL password
+        'HOST': 'localhost',                 # Set to 'localhost' or your database server's IP
+        'PORT': '3306',                      # Default MySQL port
+    }
+}
+'''
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 DATABASES = {
     'default': {
