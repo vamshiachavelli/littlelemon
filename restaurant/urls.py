@@ -21,5 +21,7 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('users/', views.UserListView.as_view(), name='user-list'),  # Ensure this matches
     path('api/menu/', views.MenuItemsView.as_view(), name='menu-items'),  # Example for API endpoint
+    path('api/SingleMenuItemView/', views.SingleMenuItemView.as_view(), name='SingleMenuItemView'),
+    path('api/BookingViewSet/', views.BookingViewSet.as_view(), name='BookingViewSets'),
     # Add more patterns as needed
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
