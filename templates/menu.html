@@ -6,17 +6,22 @@ Lemon{% endblock %} {% block content %}
     Explore our delicious offerings inspired by Italian, Greek, and Turkish
     cuisines.
   </p>
+
+  <!-- Display the message if it exists -->
+  {% if message %}
+  <div class="alert alert-info">{{ message }}</div>
+  {% endif %}
 </section>
 
 <section class="menu-section">
   {% for category in categories %}
   <div class="menu-category">
     <h2>{{ category.category }}</h2>
-    <!-- Replace with actual field name for category -->
     <div class="menu-items">
       {% for item in menu_items %} {% if item.category == category.category %}
-      <!-- Replace with actual field name for category -->
-      <article class="menu-item">
+      <article
+        class="menu-item {% if item.dish_of_the_day %}dish-of-the-day{% endif %}"
+      >
         <a href="{% url 'menu_item_detail' item.id %}">
           <div class="menu-content">
             <img
@@ -30,6 +35,18 @@ Lemon{% endblock %} {% block content %}
             </div>
           </div>
         </a>
+        {% if request.user.is_superuser %}
+        <form method="POST" action="{% url 'toggle_dish_of_the_day' item.id %}">
+          {% csrf_token %}
+          <button
+            type="submit"
+            class="remove-button {% if item.dish_of_the_day %} remove {% else %} set {% endif %}"
+          >
+            {% if item.dish_of_the_day %} Remove Dish of the Day {% else %} Set
+            as Dish of the Day {% endif %}
+          </button>
+        </form>
+        {% endif %}
       </article>
       {% endif %} {% endfor %}
     </div>

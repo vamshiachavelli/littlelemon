@@ -1,7 +1,6 @@
 from rest_framework import generics, viewsets
-from .models import Menu, Booking
+from .models import Menu, Booking, DishOfTheDay
 from .serializers import MenuItemSerializer, BookingSerializer
-from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from django.shortcuts import render, redirect, get_object_or_404
@@ -11,6 +10,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .serializers import UserSerializer
 from django.contrib.auth.forms import UserCreationForm
+from django.conf import settings
+
 
 class MenuItemsView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
@@ -30,7 +31,8 @@ class BookingViewSet(viewsets.ModelViewSet):
 def menu(request):
     menu_items = Menu.objects.all()  # Get all menu items
     categories = menu_items.values('category').distinct()  # Get distinct categories
-    return render(request, 'menu.html', {'menu_items': menu_items, 'categories': categories})
+    dish_of_the_day = Menu.objects.filter(dish_of_the_day=True).first()
+    return render(request, 'menu.html', {'menu_items': menu_items, 'categories': categories, 'dish_of_the_day': dish_of_the_day})
 
 
 def add_menu_item(request):
@@ -44,7 +46,7 @@ def add_menu_item(request):
     
     return render(request, 'add_menu_item.html', {'form': form})
 
-@login_required
+@login_required(login_url='/login/')
 def book_table(request):
     if request.method == 'POST':
         form = BookingForm(request.POST)
@@ -75,7 +77,9 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('home')  # Change to your desired redirect page
+            next_url = request.POST.get('next') or 'home'  # Fallback URL
+            return redirect(next_url)
+            #return redirect('home')  # Change to your desired redirect page
         else:
             return render(request, 'login.html', {'error': 'Invalid credentials'})
     return render(request, 'login.html')
@@ -119,3 +123,53 @@ def user_list_view(request):
     else:
         return render(request, 'login.html', {'error': 'You must be logged in to view this page.'})
     
+
+def set_dish_of_the_day(request):
+    if request.method == "POST":
+        dish_id = request.POST.get('dish_id')
+        if dish_id:
+            # Add dish to DishOfTheDay
+            menu_item = Menu.objects.get(id=dish_id)
+            DishOfTheDay.objects.get_or_create(menu_item=menu_item)
+
+    # Remove dish if requested
+    remove_id = request.POST.get('remove_id')
+    if remove_id:
+        DishOfTheDay.objects.filter(menu_item_id=remove_id).delete()
+
+    menu_items = Menu.objects.all()
+    dishes_of_the_day = DishOfTheDay.objects.all()
+    
+    return render(request, 'set_dish_of_the_day.html', {
+        'menu_items': menu_items,
+        'dishes_of_the_day': dishes_of_the_day
+    })
+
+def dish_of_the_day(request):
+    # Retrieve all menu items marked as "dish of the day"
+    dishes_of_the_day = Menu.objects.filter(dish_of_the_day=True)
+
+    if request.method == 'POST':
+        # Handle removal of the dish from the dish of the day
+        remove_id = request.POST.get('remove_id')
+        if remove_id:
+            try:
+                # Find the menu item and set dish_of_the_day to False
+                menu_item = Menu.objects.get(id=remove_id)
+                menu_item.dish_of_the_day = False
+                menu_item.save()
+            except Menu.DoesNotExist:
+                pass  # Handle the case where the item does not exist
+
+        # Redirect to the same view to refresh the list
+        return redirect('dish_of_the_day')  # Use the name of the URL pattern for the view
+
+    return render(request, 'dish_of_the_day.html', {'dishes_of_the_day': dishes_of_the_day})
+
+
+def toggle_dish_of_the_day(request, item_id):
+    if request.user.is_superuser:
+        menu_item = Menu.objects.get(id=item_id)
+        menu_item.dish_of_the_day = not menu_item.dish_of_the_day  # Toggle the status
+        menu_item.save()
+    return redirect('menu')  # Redirect to your menu page

@@ -17,23 +17,34 @@
     <header>
       <img src="{% static 'img/logo.png' %}" alt="Little Lemon Logo" />
       <nav>
-        <ul>
-          <li><a href="{% url 'home' %}">Home</a></li>
-          <li><a href="{% url 'about' %}">About</a></li>
-          <li><a href="{% url 'menu' %}">Menu</a></li>
-          <li><a href="{% url 'book_table' %}">Book</a></li>
-          <li><a href="{% url 'add_menu_item' %}">New Dish</a></li>
-          {% if user.is_authenticated %}
-          <li>Welcome, {{ user.username }}!</li>
-          <li><a href="{% url 'Logout' %}">Logout</a></li>
-          {% else %}
-          <li><a href="{% url 'Login' %}">Login</a></li>
-          <li><a href="{% url 'register' %}">Register</a></li>
-          {% endif %}
-        </ul>
+        <div class="nav-container">
+          <ul class="nav-left">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'menu' %}">Menu</a></li>
+            <li><a href="{% url 'book_table' %}">Booking</a></li>
+          </ul>
+
+          <ul class="nav-center">
+            {% if user.is_superuser %}
+            <li><a href="{% url 'add_menu_item' %}">New Dish</a></li>
+            <li><a href="{% url 'dish_of_the_day' %}">Dish of Day</a></li>
+            <!-- Add more admin links as needed -->
+            {% endif %}
+          </ul>
+
+          <ul class="nav-right">
+            {% if user.is_authenticated %}
+            <li>Welcome, {{ user.username }}!</li>
+            <li><a href="{% url 'Logout' %}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'Login' %}">Login</a></li>
+            <li><a href="{% url 'register' %}">Register</a></li>
+            {% endif %}
+          </ul>
+        </div>
       </nav>
     </header>
-
     <main>
       {% block content %}
       <!-- Default content goes here -->

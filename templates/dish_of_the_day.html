@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<section class="dish_of_day">
+  <h2>Dish of the Day</h2>
+  <hr class="heading-line" />
+  <h3>Current Dishes of the Day</h3>
+  <ul class="list-dish">
+    {% for dish in dishes_of_the_day %}
+    <li class="item-dish">
+      <div class="dish-info">
+        <img
+          src="{{ dish.image.url }}"
+          alt="{{ dish.name }}"
+          class="dish-image"
+        />
+        <div class="details-dish">
+          <strong class="dish-name">{{ dish.title }}</strong><br />
+          <span class="dish-id">ID: {{ dish.id }}</span><br />
+          <span class="dish-category">Category: {{ dish.category }}</span><br />
+          <form method="POST" class="remove-form">
+            {% csrf_token %}
+            <input type="hidden" name="remove_id" value="{{ dish.id }}" />
+            <button type="submit" class="remove-button">
+              Remove from Dish of the Day
+            </button>
+          </form>
+        </div>
+      </div>
+    </li>
+    {% empty %}
+    <li>No dishes of the day set.</li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}

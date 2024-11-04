@@ -47,38 +47,41 @@ header img {
 
 
 nav {
-    background-color: #495E57;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #495E57; /* Change to your preferred color */
+    padding: 10px 20px;
     margin-top: 1rem;
-    margin-bottom: 1rem;
-    margin-bottom: 0px;
 }
 
-nav ul {
+.nav-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-left, .nav-center, .nav-right {
     list-style: none;
-    font-size: 1.5rem;
-    text-align: center;
-    padding-inline-start: 0rem;
-    margin-bottom: 0px;
+    display: flex;
+    margin: 0;
+    padding: 0;
 }
 
-nav ul li {
-    display: inline-block;
-    margin: 0.5rem;
+.nav-left li, .nav-center li, .nav-right li {
+    margin: 0 15px; /* Adjust spacing as needed */
 }
 
-nav ul a {
-    color: #EDEFEE;
+.nav-left a, .nav-center a, .nav-right a {
+    color: white; /* Change to your preferred text color */
     text-decoration: none;
 }
 
-nav ul a:active {
-    text-decoration: underline;
+.nav-left a:hover, .nav-center a:hover, .nav-right a:hover {
+    text-decoration: underline; /* Add hover effect */
 }
 
-nav ul a:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 0.1rem;
-}
 
 section {
     display: flex;
@@ -325,6 +328,117 @@ footer p {
     text-decoration: none;  /* Optional: Add underline on hover for better user experience */
 }
 
+.dish-of-the-day {
+    background-color: #ffeb3b; /* Bright yellow background for visibility */
+    border: 2px solid #fbc02d; /* A slightly darker border */
+    position: relative; /* Position relative for the label */
+    padding: 1rem; /* Padding for inner spacing */
+    margin: 1rem 0; /* Vertical spacing around the dish */
+    transition: transform 0.3s; /* Smooth scale effect on hover */
+}
+
+.dish-of-the-day:hover {
+    transform: scale(1.02); /* Slightly enlarge on hover */
+}
+
+.dish-of-the-day::before {
+    content: "Dish of the Day"; /* Label for the dish of the day */
+    position: absolute; /* Position absolutely */
+    top: -10px; /* Adjust position above the dish */
+    left: 10px; /* Align to the left */
+    background-color: #f44336; /* Red background for the label */
+    color: white; /* White text color */
+    padding: 5px; /* Padding around the label */
+    font-weight: bold; /* Bold label text */
+    border-radius: 5px; /* Rounded corners for the label */
+    font-size: 1.2rem; /* Increase font size for visibility */
+}
+
+.dish_of_day {
+
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.heading-line {
+  border: none;
+  border-top: 2px solid #e74c3c; /* Change color to fit your theme */
+  margin: 10px 0; /* Adjust spacing as needed */
+}
+
+.list-dish {
+  list-style-type: none;
+  padding: 0;
+}
+
+.item-dish {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.dish-info {
+  display: flex;
+  align-items: center;
+}
+
+.dish-image {
+  width: 100px;
+  height: auto;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+
+.details-dish {
+  flex-grow: 1;
+}
+
+.dish-name {
+  font-size: 1.2em;
+  color: #333;
+}
+
+.dish-id, .dish-category {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.remove-form {
+  display: inline;
+}
+
+.remove-button {
+  padding: 5px 10px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.remove-button:hover {
+  background-color: #c0392b;
+}
+
+.remove {
+    background-color: #e74c3c; /* Red for Remove */
+}
+  
+.set {
+    background-color: #27ae60; /* Green for Set */
+}
+.remove:hover {
+    background-color: #c0392b; /* Darker red */
+}
+  
+.set:hover {
+    background-color: #219653; /* Darker green */
+}
 /* about */
 .about-section {
     display: flex; /* Flexbox for layout */
