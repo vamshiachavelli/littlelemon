@@ -28,6 +28,8 @@ urlpatterns = [
     path('api-token-auth/', obtain_auth_token),
     path('use/', views.user_list_view, name='user_list'),  # Add this line
     path('registration_success/<int:user_id>/', views.registration_success, name='registration_success'),  # Updated URL
+    path('dish-of-the-day/', views.dish_of_the_day, name='dish_of_the_day'),
+    path('toggle-dish-of-the-day/<int:item_id>/', views.toggle_dish_of_the_day, name='toggle_dish_of_the_day'),
     path('', include(router.urls)),
 
     # Add more patterns as needed
