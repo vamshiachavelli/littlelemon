@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Registration
+Success - Little Lemon{% endblock %} {% block content %}
+<section class="success-section">
+  <div class="success-content">
+    <h1 class="success-heading">Registration Successful!</h1>
+    <h2 class="success-message">Welcome, {{ username }}!</h2>
+    <p>Your user ID is: {{ user_id }}</p>
+    <p>
+      Thank you for joining Little Lemon. You can now make reservations and view
+      your bookings.
+    </p>
+    <a href="{% url 'login' %}" class="cta-button">Log in</a>
+  </div>
+</section>
+{% endblock %}

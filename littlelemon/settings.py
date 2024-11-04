@@ -159,5 +159,5 @@ DJOSER = {
     "USER_ID_FIELD": "username"
 }
 
-LOGIN_REDIRECT_URL = '/home'  # Redirect to home after login
-LOGOUT_REDIRECT_URL = '/login'  # Redirect to login page after logout
+LOGIN_REDIRECT_URL = 'home'  # Redirect to home after login
+LOGOUT_REDIRECT_URL = "login" # Redirect to login page after logout

@@ -93,16 +93,29 @@ def register(request):
             user = form.save()  # Save the new user
             login(request, user)  # Log the user in immediately after registration
             # Redirect to the success page with user's information
-            return render(request, 'registration_success.html', {
-                'username': user.username,
-                'user_id': user.id
-            })
+            return redirect('registration_success', user_id=user.id)  # Redirect to the success page
     else:
         form = UserCreationForm()
     
     return render(request, 'register.html', {'form': form})
 
+def registration_success(request, user_id):
+    """Display the registration success page with user details."""
+    user = get_object_or_404(User, id=user_id)  # Retrieve the user by ID
+    return render(request, 'registration_success.html', {
+        'username': user.username,  # Get the username from the user object
+        'user_id': user.id  # Get the user ID
+    })
 class UserListView(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated]
+
+def user_list_view(request):
+    """Retrieve all users and render to an HTML template."""
+    if request.user.is_authenticated:  # Ensure the user is logged in
+        users = User.objects.all()  # Retrieve all users
+        return render(request, 'user_list.html', {'users': users})
+    else:
+        return render(request, 'login.html', {'error': 'You must be logged in to view this page.'})
+    

@@ -16,12 +16,14 @@ urlpatterns = [
     path('menu/add/', views.add_menu_item, name='add_menu_item'),
     path('menu/<int:pk>/', views.menu_item_detail, name='menu_item_detail'),
     path('booking/', views.book_table, name='book_table'),
-    path('login/', views.login_view, name='login'),
-    path('logout/', views.logout_view, name='logout'),
+    path('login/', views.login_view, name='Login'),
+    path('logout/', views.logout_view, name='Logout'),
     path('register/', views.register, name='register'),
     path('users/', views.UserListView.as_view(), name='user-list'),  # Ensure this matches
     path('api/menu/', views.MenuItemsView.as_view(), name='menu-items'),  # Example for API endpoint
-    path('api/SingleMenuItemView/', views.SingleMenuItemView.as_view(), name='SingleMenuItemView'),
-    path('api/BookingViewSet/', views.BookingViewSet.as_view(), name='BookingViewSets'),
+    path('api/menu/<int:pk>/', views.SingleMenuItemView.as_view(), name='single-menu-item'),  # URL for single menu item
+    path('use/', views.user_list_view, name='user_list'),  # Add this line
+    path('registration_success/<int:user_id>/', views.registration_success, name='registration_success'),  # Updated URL
+    path('', include(router.urls)),
     # Add more patterns as needed
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
