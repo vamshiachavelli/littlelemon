@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% load static %} {% block title %}User List - Little
+Lemon{% endblock %} {% block content %}
+<section class="user-section">
+  <div class="user-content">
+    <h1 class="user-heading">Registered Users</h1>
+    <table class="user-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Username</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a href="{% url 'home' %}" class="cta-button">Back to Home</a>
+  </div>
+</section>
+{% endblock %}
