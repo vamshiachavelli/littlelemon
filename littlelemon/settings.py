@@ -160,4 +160,4 @@ DJOSER = {
 }
 
 LOGIN_REDIRECT_URL = 'home'  # Redirect to home after login
-LOGOUT_REDIRECT_URL = "login" # Redirect to login page after logout
+LOGOUT_REDIRECT_URL = "Login" # Redirect to login page after logout

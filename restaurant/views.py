@@ -1,5 +1,5 @@
 from rest_framework import generics, viewsets
-from .models import Menu, Booking, DishOfTheDay
+from .models import Menu, Booking, DishOfTheDay, Cart, CartItem
 from .serializers import MenuItemSerializer, BookingSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 from .serializers import UserSerializer
 from django.contrib.auth.forms import UserCreationForm
 from django.conf import settings
-
+from django.urls import reverse
 
 class MenuItemsView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
@@ -39,11 +39,14 @@ def add_menu_item(request):
     if request.method == 'POST':
         form = MenuForm(request.POST, request.FILES)  # Include FILES to handle image uploads
         if form.is_valid():
-            form.save()
-            return redirect('menu')  # Redirect to the menu page or wherever you want
+            menu_item = form.save()  # Save the menu item and capture the instance
+            return render(request, 'add_menu_item.html', {
+                'form': MenuForm(),  # Reset the form for a new entry
+                'menu_item': menu_item  # Pass the newly created item to the template
+            })
     else:
         form = MenuForm()
-    
+
     return render(request, 'add_menu_item.html', {'form': form})
 
 @login_required(login_url='/login/')
@@ -89,6 +92,9 @@ def logout_view(request):
     logout(request)
     return redirect('home')
 
+from django.contrib.auth import get_user_model
+from django.contrib import messages
+
 def register(request):
     """Handle user registration."""
     if request.method == 'POST':
@@ -96,12 +102,17 @@ def register(request):
         if form.is_valid():
             user = form.save()  # Save the new user
             login(request, user)  # Log the user in immediately after registration
-            # Redirect to the success page with user's information
-            return redirect('registration_success', user_id=user.id)  # Redirect to the success page
+            messages.success(request, f"User {user.username} registered successfully.")
+            return redirect(reverse('home'))  # Redirect to the home page
+        else:
+            # Log or display form errors for debugging
+            print("Form errors:", form.errors)
+            messages.error(request, "There was an error in your registration form.")
     else:
         form = UserCreationForm()
     
     return render(request, 'register.html', {'form': form})
+
 
 def registration_success(request, user_id):
     """Display the registration success page with user details."""
@@ -173,3 +184,72 @@ def toggle_dish_of_the_day(request, item_id):
         menu_item.dish_of_the_day = not menu_item.dish_of_the_day  # Toggle the status
         menu_item.save()
     return redirect('menu')  # Redirect to your menu page
+
+@login_required
+def add_to_cart(request, item_id):
+    """Add the specified item to the cart with the given quantity."""
+    cart = request.user.cart  # Assuming each user has a Cart model linked to them
+    item = get_object_or_404(Menu, id=item_id)
+
+    if request.method == "POST":
+        quantity = request.POST.get("quantity", 1)
+
+        # Ensure quantity is an integer and default to 1 if not
+        try:
+            quantity = int(quantity)
+            if quantity < 1:  # Ensure quantity is at least 1
+                quantity = 1
+        except ValueError:
+            quantity = 1
+
+        # Update or create the cart item
+        cart_item, created = CartItem.objects.get_or_create(cart=cart, menu_item=item)
+        
+        # Set the quantity directly instead of incrementing
+        cart_item.quantity = quantity  # This sets the quantity to the submitted value
+        cart_item.save()
+
+    return redirect('cart_detail')  # Redirect to the cart detail page or wherever needed
+
+
+
+@login_required
+def cart_detail(request):
+    cart, _ = Cart.objects.get_or_create(user=request.user)
+    return render(request, 'cart_detail.html', {'cart': cart})
+
+@login_required
+def remove_from_cart(request, item_id):
+    cart = get_object_or_404(Cart, user=request.user)
+    cart_item = get_object_or_404(CartItem, cart=cart, menu_item_id=item_id)
+    cart_item.delete()
+    return redirect('cart_detail')
+
+from django.http import HttpResponseBadRequest
+
+@login_required
+def update_cart_quantity(request, item_id):
+    """Handle incrementing or decrementing the cart quantity for a specific item."""
+    cart = request.user.cart  # Assuming each user has a Cart model linked to them
+    item = get_object_or_404(Menu, id=item_id)
+    cart_item, created = CartItem.objects.get_or_create(cart=cart, menu_item=item)
+
+    if request.method == "POST":
+        action = request.POST.get("action")
+        if action == "increment":
+            cart_item.quantity += 1  # Increment the quantity
+            cart_item.save()
+        elif action == "decrement":
+            if cart_item.quantity > 1:  # Prevent going to negative quantity
+                cart_item.quantity -= 1  # Decrement the quantity
+                cart_item.save()
+            else:
+                cart_item.delete()  # Remove the item from the cart if quantity is 0
+
+    return redirect('cart_detail')  # Redirect to the cart detail page
+
+def delete_menu_item(request, item_id):
+    if request.method == 'POST':
+        menu_item = get_object_or_404(Menu, id=item_id)
+        menu_item.delete()  # Delete the item from the database
+        return redirect('menu')  # Redirect to the menu page with a success message

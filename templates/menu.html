@@ -35,17 +35,53 @@ Lemon{% endblock %} {% block content %}
             </div>
           </div>
         </a>
-        {% if request.user.is_superuser %}
-        <form method="POST" action="{% url 'toggle_dish_of_the_day' item.id %}">
+        {% if user.is_authenticated %}
+        <!-- Add to Cart Form -->
+        <form
+          method="POST"
+          action="{% url 'add_to_cart' item.id %}"
+          class="cart-controls"
+        >
           {% csrf_token %}
-          <button
-            type="submit"
-            class="remove-button {% if item.dish_of_the_day %} remove {% else %} set {% endif %}"
-          >
-            {% if item.dish_of_the_day %} Remove Dish of the Day {% else %} Set
-            as Dish of the Day {% endif %}
-          </button>
+          <div class="quantity-controls">
+            <label for="quantity-{{ item.id }}">Quantity:</label>
+            <input
+              type="number"
+              name="quantity"
+              id="quantity-{{ item.id }}"
+              value="1"
+              min="1"
+              max="{{ item.inventory }}"
+              required
+            />
+          </div>
+          <button type="submit" class="add-to-cart-button">Add to Cart</button>
         </form>
+        {% endif %} {% if request.user.is_superuser %}
+        <div class="remove-delete">
+          <form
+            method="POST"
+            action="{% url 'toggle_dish_of_the_day' item.id %}"
+          >
+            {% csrf_token %}
+            <button
+              type="submit"
+              class="remove-button {% if item.dish_of_the_day %} remove {% else %} set {% endif %}"
+            >
+              {% if item.dish_of_the_day %} Remove Dish Day {% else %} Set Dish
+              Day {% endif %}
+            </button>
+          </form>
+
+          <form
+            method="POST"
+            action="{% url 'delete_menu_item' item.id %}"
+            class="delete-form"
+          >
+            {% csrf_token %}
+            <button type="submit" class="delete-button">Delete Item</button>
+          </form>
+        </div>
         {% endif %}
       </article>
       {% endif %} {% endfor %}
