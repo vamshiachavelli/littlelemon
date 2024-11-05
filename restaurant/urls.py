@@ -30,6 +30,11 @@ urlpatterns = [
     path('registration_success/<int:user_id>/', views.registration_success, name='registration_success'),  # Updated URL
     path('dish-of-the-day/', views.dish_of_the_day, name='dish_of_the_day'),
     path('toggle-dish-of-the-day/<int:item_id>/', views.toggle_dish_of_the_day, name='toggle_dish_of_the_day'),
+    path('cart/', views.cart_detail, name='cart_detail'),
+    path('cart/add/<int:item_id>/', views.add_to_cart, name='add_to_cart'),
+    path('cart/remove/<int:item_id>/', views.remove_from_cart, name='remove_from_cart'),
+    path('cart/update/<int:item_id>/', views.update_cart_quantity, name='update_cart_quantity'),
+    path('menu/delete/<int:item_id>/', views.delete_menu_item, name='delete_menu_item'),
     path('', include(router.urls)),
 
     # Add more patterns as needed

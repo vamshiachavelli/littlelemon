@@ -1,11 +1,35 @@
-{% extends 'base.html' %} {% load static %} {% block title %}Add Menu
-Item{%endblock %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% block title %}Add Menu Item
+{%endblock%} {% block content %}
 <div class="form-container">
   <h1 class="form-heading">Add a New Menu Item</h1>
 
-  <form method="POST" enctype="multipart/form-data" class="menu-form">
-    {% csrf_token %} {{ form.as_p }}
-    <button type="submit" class="submit-btn">Add Item</button>
-  </form>
+  <div class="form-and-confirmation">
+    <!-- Form Section -->
+    <div class="form-section">
+      <form method="POST" enctype="multipart/form-data" class="menu-form">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit" class="submit-btn">Add Item</button>
+      </form>
+    </div>
+
+    <!-- Confirmation Message Section -->
+    <div class="confirmation-section">
+      {% if menu_item %}
+      <h2>Item Added Successfully!</h2>
+      <p><strong>Title:</strong> {{ menu_item.title }}</p>
+      <p><strong>Category:</strong> {{ menu_item.category }}</p>
+      <p><strong>Description:</strong> {{ menu_item.description }}</p>
+      <p><strong>Price:</strong> {{ menu_item.price }} USD</p>
+      <p><strong>Available Inventory:</strong> {{ menu_item.inventory }}</p>
+      <img
+        src="{{ menu_item.image.url }}"
+        alt="{{ menu_item.title }}"
+        class="menu-image"
+      />
+      {% else %}
+      <p>No item added yet.</p>
+      {% endif %}
+    </div>
+  </div>
 </div>
 {% endblock %}

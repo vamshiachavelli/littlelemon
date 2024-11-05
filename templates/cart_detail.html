@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Your Cart - Little
+Lemon{% endblock %} {% block content %}
+<section class="cart-section">
+  <div class="cart-content">
+    <h1 class="cart-heading">Your Cart</h1>
+    <h2 class="cart-tagline">Review Your Selections</h2>
+
+    {% if cart.items.all %}
+    <ul class="cart-items-list">
+      {% for item in cart.items.all %}
+      <li class="cart-item">
+        <div class="cart-item-details">
+          <h3>{{ item.menu_item.title }}</h3>
+          <img
+            src="{{ item.menu_item.image.url }}"
+            alt="{{ item.menu_item.title }}"
+            class="menu-image"
+          />
+          <p>Quantity: {{ item.quantity }}</p>
+          <p>Price per item: ${{ item.menu_item.price }}</p>
+          <p>Total: ${{ item.total_price }}</p>
+        </div>
+        <a
+          href="{% url 'remove_from_cart' item.menu_item.id %}"
+          class="remove-button"
+          >Remove</a
+        >
+      </li>
+      {% endfor %}
+    </ul>
+    <div class="cart-total">
+      <p><strong>Total Cost:</strong> ${{ cart.total_cost }}</p>
+    </div>
+    {% else %}
+    <p class="empty-cart-message">Your cart is empty.</p>
+    <a href="{% url 'menu' %}" class="cta-button">Browse Menu</a>
+    {% endif %}
+  </div>
+  <div class="cart-image">
+    <img src="{% static 'img/cart_image.jpg' %}" />
+  </div>
+</section>
+{% endblock %}
