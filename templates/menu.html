@@ -6,8 +6,6 @@ Lemon{% endblock %} {% block content %}
     Explore our delicious offerings inspired by Italian, Greek, and Turkish
     cuisines.
   </p>
-
-  <!-- Display the message if it exists -->
   {% if message %}
   <div class="alert alert-info">{{ message }}</div>
   {% endif %}
@@ -20,7 +18,7 @@ Lemon{% endblock %} {% block content %}
     <div class="menu-items">
       {% for item in menu_items %} {% if item.category == category.category %}
       <article
-        class="menu-item {% if item.dish_of_the_day %}dish-of-the-day{% endif %}"
+        class="menu-item {% if item.dish_of_the_day and item in cart_items %} dish-and-cart {% elif item.dish_of_the_day %} dish-of-the-day {% elif item in cart_items %} cart-added {% endif %}"
       >
         <a href="{% url 'menu_item_detail' item.id %}">
           <div class="menu-content">
@@ -35,7 +33,7 @@ Lemon{% endblock %} {% block content %}
             </div>
           </div>
         </a>
-        {% if user.is_authenticated %}
+
         <!-- Add to Cart Form -->
         <form
           method="POST"
@@ -57,7 +55,8 @@ Lemon{% endblock %} {% block content %}
           </div>
           <button type="submit" class="add-to-cart-button">Add to Cart</button>
         </form>
-        {% endif %} {% if request.user.is_superuser %}
+
+        {% if request.user.is_superuser %}
         <div class="remove-delete">
           <form
             method="POST"

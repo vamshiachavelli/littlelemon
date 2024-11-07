@@ -12,6 +12,8 @@ from .serializers import UserSerializer
 from django.contrib.auth.forms import UserCreationForm
 from django.conf import settings
 from django.urls import reverse
+from django.http import HttpResponseBadRequest
+
 
 class MenuItemsView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
@@ -185,10 +187,21 @@ def toggle_dish_of_the_day(request, item_id):
         menu_item.save()
     return redirect('menu')  # Redirect to your menu page
 
-@login_required
+from django.shortcuts import get_object_or_404, redirect
+from .models import Menu, Cart, CartItem
+
 def add_to_cart(request, item_id):
     """Add the specified item to the cart with the given quantity."""
-    cart = request.user.cart  # Assuming each user has a Cart model linked to them
+    # Check if the session has a cart id
+    cart_id = request.session.get('cart_id', None)
+
+    # If the user does not have a cart in the session, create one
+    if not cart_id:
+        cart = Cart.objects.create()  # Create a new cart for the session
+        request.session['cart_id'] = cart.id  # Store the cart id in the session
+    else:
+        cart = Cart.objects.get(id=cart_id)
+
     item = get_object_or_404(Menu, id=item_id)
 
     if request.method == "POST":
@@ -211,27 +224,56 @@ def add_to_cart(request, item_id):
 
     return redirect('cart_detail')  # Redirect to the cart detail page or wherever needed
 
-
-
-@login_required
 def cart_detail(request):
-    cart, _ = Cart.objects.get_or_create(user=request.user)
+    # For authenticated users, associate cart with the user
+    if request.user.is_authenticated:
+        cart, _ = Cart.objects.get_or_create(user=request.user)
+    else:
+        # For anonymous users, use session-based cart
+        cart_id = request.session.get('cart_id', None)
+        
+        if not cart_id:
+            cart = Cart.objects.create()  # Create a new cart for anonymous user
+            request.session['cart_id'] = cart.id  # Store the cart id in the session
+        else:
+            cart = Cart.objects.get(id=cart_id)  # Retrieve existing cart for anonymous user
+
     return render(request, 'cart_detail.html', {'cart': cart})
 
-@login_required
 def remove_from_cart(request, item_id):
-    cart = get_object_or_404(Cart, user=request.user)
+    """Remove the specified item from the cart."""
+    # For authenticated users
+    if request.user.is_authenticated:
+        cart = get_object_or_404(Cart, user=request.user)
+    else:
+        # For anonymous users, use the session-based cart
+        cart_id = request.session.get('cart_id', None)
+        if not cart_id:
+            return redirect('cart_detail')  # If no cart exists for anonymous user, just redirect
+        cart = get_object_or_404(Cart, id=cart_id)
+
+    # Get the cart item and delete it
     cart_item = get_object_or_404(CartItem, cart=cart, menu_item_id=item_id)
     cart_item.delete()
-    return redirect('cart_detail')
 
-from django.http import HttpResponseBadRequest
+    return redirect('cart_detail')  # Redirect to the cart detail page
 
-@login_required
 def update_cart_quantity(request, item_id):
     """Handle incrementing or decrementing the cart quantity for a specific item."""
-    cart = request.user.cart  # Assuming each user has a Cart model linked to them
+    # Handle authenticated users
+    if request.user.is_authenticated:
+        cart = get_object_or_404(Cart, user=request.user)
+    else:
+        # Handle anonymous users using session-based cart
+        cart_id = request.session.get('cart_id', None)
+        if not cart_id:
+            return HttpResponseBadRequest("No cart found.")
+        cart = get_object_or_404(Cart, id=cart_id)
+
+    # Get the menu item
     item = get_object_or_404(Menu, id=item_id)
+
+    # Get or create the cart item
     cart_item, created = CartItem.objects.get_or_create(cart=cart, menu_item=item)
 
     if request.method == "POST":
