@@ -293,14 +293,12 @@ footer p {
 .menu-under {
     color: #495E57; /* Set text color */
     margin-left: 2rem;
-    margin-top: 6.5rem;
 }
 
 .menu-description {
     font-size: 1.2rem; /* Font size for the paragraph */
     color: #495E57; /* Text color */
     margin: 1rem 0; /* Vertical margin for space above and below */
-    padding: 0 2rem; /* Horizontal padding for breathing room */
     text-align: center; /* Center the paragraph */
     line-height: 1.5; /* Increase line height for readability */
     flex-grow: 1; /* Allow description to take up available space */
@@ -353,6 +351,7 @@ footer p {
     border-radius: 5px; /* Rounded corners for the label */
     font-size: 1.2rem; /* Increase font size for visibility */
 }
+
 
 .dish-controls {
     display: flex;
