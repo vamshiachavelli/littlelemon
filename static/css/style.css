@@ -204,21 +204,21 @@ footer p {
     flex-direction: row;
     width: 100%;
     padding-bottom: 1rem;
-  }
+}
 
-  .column {
+.column {
     flex-basis: 50%;
     margin-bottom: 1rem;
     padding-bottom: 1rem;
-  }
+}
 
-  .column figure {
+.column figure {
     padding: 0px 12px;
 
-  }
+}
 
 
-  .videowrap {
+.videowrap {
 	position: relative;
 	padding-bottom: 56.25%; /* 16:9 */
 	padding-top: 1rem;
@@ -253,6 +253,7 @@ footer p {
 
 .menu-item {
     margin-bottom: 2rem; /* Space between different categories */
+    position: relative;
 }
 
 .menu-content {
@@ -326,6 +327,22 @@ footer p {
     text-decoration: none;  /* Optional: Add underline on hover for better user experience */
 }
 
+.cart-quantity {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: green; /* Set background to green */
+    color: white; /* Set text color to white */
+    padding: 5px 10px; /* Adjust padding if necessary */
+    border-radius: 50%; /* Make it a circle */
+    font-weight: bold;
+    width: 15px; /* Fixed width */
+    height: 20px; /* Fixed height */
+    text-align: center; /* Center text horizontally */
+    line-height: 25px; /* Vertically center the text */
+}
+  
+
 .dish-of-the-day {
     background-color: #ffeb3b; /* Bright yellow background for visibility */
     border: 1px solid #fbc02d; /* A slightly darker border */
@@ -351,7 +368,6 @@ footer p {
     border-radius: 5px; /* Rounded corners for the label */
     font-size: 1.2rem; /* Increase font size for visibility */
 }
-
 
 .dish-controls {
     display: flex;
@@ -417,6 +433,8 @@ footer p {
     width: 100%; /* Responsive image */
     height: auto; /* Maintains aspect ratio */
 }
+
+
 .menu-item .delete-button .remove-button{
     display: flex;
 }
@@ -807,7 +825,7 @@ footer p {
     border: 1px solid #ccc; /* Light border */
     border-radius: 3px; /* Rounded corners */
 }
-
+  
 .add-to-cart-button {
     padding: 10px 15px; /* Padding for button */
     background-color: #28a745; /* Green background */

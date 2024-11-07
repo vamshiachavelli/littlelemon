@@ -34,6 +34,14 @@ Lemon{% endblock %} {% block content %}
           </div>
         </a>
 
+        <!-- Show the quantity of the item in the cart in the top-left corner -->
+        {% if item.id in cart_item_ids %}
+        <div class="cart-quantity">
+          {% for cart_item in cart_items %} {% if cart_item.menu_item == item %}
+          {{ cart_item.quantity }} {% endif %} {% endfor %}
+        </div>
+        {% endif %}
+
         <!-- Add to Cart Form -->
         <form
           method="POST"
@@ -88,4 +96,4 @@ Lemon{% endblock %} {% block content %}
   </div>
   {% endfor %}
 </section>
-{% endblock %}
+{% endblock %} {% load custom_filters %}
