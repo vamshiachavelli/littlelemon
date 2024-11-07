@@ -30,12 +30,32 @@ class BookingViewSet(viewsets.ModelViewSet):
     queryset = Booking.objects.all()  # Fetch all booking objects
     serializer_class = BookingSerializer
 
-def menu(request):
-    menu_items = Menu.objects.all()  # Get all menu items
-    categories = menu_items.values('category').distinct()  # Get distinct categories
-    dish_of_the_day = Menu.objects.filter(dish_of_the_day=True).first()
-    return render(request, 'menu.html', {'menu_items': menu_items, 'categories': categories, 'dish_of_the_day': dish_of_the_day})
 
+def menu(request):
+    """Display the menu page with cart quantities."""
+    # For authenticated users, retrieve the cart associated with the user
+    if request.user.is_authenticated:
+        cart = Cart.objects.filter(user=request.user).first()
+        cart_items = CartItem.objects.filter(cart=cart) if cart else []
+        cart_item_ids = set(cart_items.values_list('menu_item_id', flat=True))  # Get ids of items in the cart
+    else:
+        # For anonymous users, use the session-based cart
+        cart_id = request.session.get('cart_id', None)
+        cart_items = []
+        cart_item_ids = set()
+        if cart_id:
+            cart = Cart.objects.get(id=cart_id)
+            cart_items = CartItem.objects.filter(cart=cart)
+            cart_item_ids = set(cart_items.values_list('menu_item_id', flat=True))  # Get ids of items in the cart
+
+    categories = Menu.objects.values('category').distinct()  # Get distinct categories
+    menu_items = Menu.objects.all()  # Get all menu items
+    return render(request, 'menu.html', {
+        'menu_items': menu_items,
+        'categories': categories,
+        'cart_items': cart_items,  # Pass the cart items to the template
+        'cart_item_ids': cart_item_ids,  # Pass the set of item ids that are in the cart
+    })
 
 def add_menu_item(request):
     if request.method == 'POST':
@@ -51,7 +71,6 @@ def add_menu_item(request):
 
     return render(request, 'add_menu_item.html', {'form': form})
 
-@login_required(login_url='/login/')
 def book_table(request):
     if request.method == 'POST':
         form = BookingForm(request.POST)
@@ -187,60 +206,76 @@ def toggle_dish_of_the_day(request, item_id):
         menu_item.save()
     return redirect('menu')  # Redirect to your menu page
 
-from django.shortcuts import get_object_or_404, redirect
-from .models import Menu, Cart, CartItem
+from django.shortcuts import render
 
 def add_to_cart(request, item_id):
     """Add the specified item to the cart with the given quantity."""
-    # Check if the session has a cart id
-    cart_id = request.session.get('cart_id', None)
-
-    # If the user does not have a cart in the session, create one
-    if not cart_id:
-        cart = Cart.objects.create()  # Create a new cart for the session
-        request.session['cart_id'] = cart.id  # Store the cart id in the session
+    if request.user.is_authenticated:
+        cart, created = Cart.objects.get_or_create(user=request.user)
     else:
-        cart = Cart.objects.get(id=cart_id)
+        cart_id = request.session.get('cart_id', None)
+        if not cart_id:
+            cart = Cart.objects.create()
+            request.session['cart_id'] = cart.id
+        else:
+            cart = Cart.objects.get(id=cart_id)
 
     item = get_object_or_404(Menu, id=item_id)
 
     if request.method == "POST":
         quantity = request.POST.get("quantity", 1)
-
-        # Ensure quantity is an integer and default to 1 if not
         try:
             quantity = int(quantity)
-            if quantity < 1:  # Ensure quantity is at least 1
+            if quantity < 1:
                 quantity = 1
         except ValueError:
             quantity = 1
 
-        # Update or create the cart item
         cart_item, created = CartItem.objects.get_or_create(cart=cart, menu_item=item)
-        
-        # Set the quantity directly instead of incrementing
-        cart_item.quantity = quantity  # This sets the quantity to the submitted value
+
+        if not created:
+            cart_item.quantity += quantity
+        else:
+            cart_item.quantity = quantity
+
         cart_item.save()
 
-    return redirect('cart_detail')  # Redirect to the cart detail page or wherever needed
+    # After updating the cart, pass the cart context to the menu page
+    return redirect('menu')
+
+def remove_from_cart(request, item_id):
+    """Remove the specified item from the cart."""
+    if request.user.is_authenticated:
+        cart = get_object_or_404(Cart, user=request.user)
+    else:
+        cart_id = request.session.get('cart_id', None)
+        if not cart_id:
+            return redirect('cart_detail')  # If no cart exists for anonymous user, just redirect
+        cart = get_object_or_404(Cart, id=cart_id)
+
+    cart_item = get_object_or_404(CartItem, cart=cart, menu_item_id=item_id)
+    cart_item.delete()
+
+    # After removing the item, pass the updated cart context
+    return redirect('cart_detail')
+
 
 def cart_detail(request):
-    # For authenticated users, associate cart with the user
+    # For authenticated users, retrieve the cart associated with the user
     if request.user.is_authenticated:
-        cart, _ = Cart.objects.get_or_create(user=request.user)
+        cart = Cart.objects.filter(user=request.user).first()
     else:
-        # For anonymous users, use session-based cart
         cart_id = request.session.get('cart_id', None)
-        
         if not cart_id:
-            cart = Cart.objects.create()  # Create a new cart for anonymous user
-            request.session['cart_id'] = cart.id  # Store the cart id in the session
+            cart = Cart.objects.create()
+            request.session['cart_id'] = cart.id
         else:
-            cart = Cart.objects.get(id=cart_id)  # Retrieve existing cart for anonymous user
+            cart = Cart.objects.get(id=cart_id)
 
     return render(request, 'cart_detail.html', {'cart': cart})
 
-def remove_from_cart(request, item_id):
+
+'''def remove_from_cart(request, item_id):
     """Remove the specified item from the cart."""
     # For authenticated users
     if request.user.is_authenticated:
@@ -256,7 +291,7 @@ def remove_from_cart(request, item_id):
     cart_item = get_object_or_404(CartItem, cart=cart, menu_item_id=item_id)
     cart_item.delete()
 
-    return redirect('cart_detail')  # Redirect to the cart detail page
+    return redirect('cart_detail')  # Redirect to the cart detail page'''
 
 def update_cart_quantity(request, item_id):
     """Handle incrementing or decrementing the cart quantity for a specific item."""
