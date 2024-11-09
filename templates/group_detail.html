@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% block content %}
+<div class="page-title">
+  <h1>Manage Group: {{ group.name }}</h1>
+</div>
+
+<h2>Add User to Group</h2>
+<form method="post" class="form-container">
+  {% csrf_token %}
+  <label for="user_id">Select User:</label>
+  <select name="user_id">
+    {% for user in users %}
+    <option value="{{ user.id }}">{{ user.username }}</option>
+    {% endfor %}
+  </select>
+  <button name="add_user" type="submit">Add User</button>
+</form>
+
+<h2>Add Permissions to Group</h2>
+<form method="post" class="form-container">
+  {% csrf_token %}
+  <label for="perm_id">Select Permission:</label>
+  <select name="perm_id">
+    {% for perm in permissions %}
+    <option value="{{ perm.id }}">{{ perm.name }}</option>
+    {% endfor %}
+  </select>
+  <button name="add_permission" type="submit">Add Permission</button>
+</form>
+
+<h2>Current Group Members</h2>
+<div class="list-container">
+  <ul>
+    {% for member in group.user_set.all %}
+    <li>{{ member.username }}</li>
+    {% endfor %}
+  </ul>
+</div>
+
+<h2>Current Permissions</h2>
+<div class="list-container">
+  <ul>
+    {% for perm in group.permissions.all %}
+    <li>{{ perm.name }}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

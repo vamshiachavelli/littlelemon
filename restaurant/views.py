@@ -1,19 +1,21 @@
 from rest_framework import generics, viewsets
 from .models import Menu, Booking, DishOfTheDay, Cart, CartItem
-from .serializers import MenuItemSerializer, BookingSerializer
+from .serializers import MenuItemSerializer, BookingSerializer, UserSerializer
+from .forms import MenuForm,BookingForm, GroupCreationForm
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import MenuForm,BookingForm
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test, permission_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from .serializers import UserSerializer
 from django.contrib.auth.forms import UserCreationForm
 from django.conf import settings
 from django.urls import reverse
 from django.http import HttpResponseBadRequest
 
+# Function to check if the user is a manager
+def is_manager(user):
+    return user.groups.filter(name='manager').exists()
 
 class MenuItemsView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
@@ -57,6 +59,7 @@ def menu(request):
         'cart_item_ids': cart_item_ids,  # Pass the set of item ids that are in the cart
     })
 
+@user_passes_test(is_manager or user.is_superuser)
 def add_menu_item(request):
     if request.method == 'POST':
         form = MenuForm(request.POST, request.FILES)  # Include FILES to handle image uploads
@@ -155,7 +158,6 @@ def user_list_view(request):
     else:
         return render(request, 'login.html', {'error': 'You must be logged in to view this page.'})
     
-
 def set_dish_of_the_day(request):
     if request.method == "POST":
         dish_id = request.POST.get('dish_id')
@@ -177,6 +179,7 @@ def set_dish_of_the_day(request):
         'dishes_of_the_day': dishes_of_the_day
     })
 
+@user_passes_test(is_manager or user.is_superuser)
 def dish_of_the_day(request):
     # Retrieve all menu items marked as "dish of the day"
     dishes_of_the_day = Menu.objects.filter(dish_of_the_day=True)
@@ -275,24 +278,6 @@ def cart_detail(request):
     return render(request, 'cart_detail.html', {'cart': cart})
 
 
-'''def remove_from_cart(request, item_id):
-    """Remove the specified item from the cart."""
-    # For authenticated users
-    if request.user.is_authenticated:
-        cart = get_object_or_404(Cart, user=request.user)
-    else:
-        # For anonymous users, use the session-based cart
-        cart_id = request.session.get('cart_id', None)
-        if not cart_id:
-            return redirect('cart_detail')  # If no cart exists for anonymous user, just redirect
-        cart = get_object_or_404(Cart, id=cart_id)
-
-    # Get the cart item and delete it
-    cart_item = get_object_or_404(CartItem, cart=cart, menu_item_id=item_id)
-    cart_item.delete()
-
-    return redirect('cart_detail')  # Redirect to the cart detail page'''
-
 def update_cart_quantity(request, item_id):
     """Handle incrementing or decrementing the cart quantity for a specific item."""
     # Handle authenticated users
@@ -325,8 +310,113 @@ def update_cart_quantity(request, item_id):
 
     return redirect('cart_detail')  # Redirect to the cart detail page
 
+@user_passes_test(is_manager or user.is_superuser)
 def delete_menu_item(request, item_id):
     if request.method == 'POST':
         menu_item = get_object_or_404(Menu, id=item_id)
         menu_item.delete()  # Delete the item from the database
         return redirect('menu')  # Redirect to the menu page with a success message
+    
+#Group creation
+@login_required
+@user_passes_test(is_manager or user.is_superuser)
+def create_group(request):
+    if request.method == 'POST':
+        form = GroupCreationForm(request.POST)
+        if form.is_valid():
+            group = form.save(commit=False)
+            group.save()  # Save the group first
+            form.cleaned_data['permissions'].update(group.permissions.all())
+            return redirect('group_list')  # Redirect to a group list or dashboard
+    else:
+        form = GroupCreationForm()
+    return render(request, 'create_group.html', {'form': form})
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import Group, Permission, User
+from django.contrib.auth.decorators import user_passes_test
+from django.contrib.contenttypes.models import ContentType
+
+# Check if user is admin
+@user_passes_test(is_manager or user.is_superuser)
+def manage_groups(request):
+    groups = Group.objects.all()
+    return render(request, 'manage_groups.html', {'groups': groups})
+
+'''@user_passes_test(is_manager or user.is_superuser)
+def add_group(request):
+    if request.method == 'POST':
+        group_name = request.POST.get('name')
+        group, created = Group.objects.get_or_create(name=group_name)
+        if created:
+            permissions = request.POST.getlist('permissions')
+            group.permissions.set(Permission.objects.filter(id__in=permissions))
+        return redirect('manage_groups')
+    permissions = Permission.objects.all()
+    return render(request, 'add_group.html', {'permissions': permissions})'''
+
+@user_passes_test(is_manager or user.is_superuser)
+def group_detail(request, group_id):
+    group = Group.objects.get(id=group_id)
+    users = User.objects.exclude(groups=group)
+    permissions = Permission.objects.all()
+
+    if request.method == 'POST':
+        if 'add_user' in request.POST:
+            user_id = request.POST.get('user_id')
+            user = User.objects.get(id=user_id)
+            group.user_set.add(user)
+        elif 'add_permission' in request.POST:
+            perm_id = request.POST.get('perm_id')
+            permission = Permission.objects.get(id=perm_id)
+            group.permissions.add(permission)
+
+    return render(request, 'group_detail.html', {
+        'group': group,
+        'users': users,
+        'permissions': permissions
+    })
+
+
+
+@user_passes_test(is_manager or user.is_superuser)
+def add_group(request):
+    if request.method == "POST":
+        form = GroupCreationForm(request.POST)
+        if form.is_valid():
+            group_name = form.cleaned_data['group_name']
+            group = Group.objects.create(name=group_name)
+
+            # Assign permissions to the group
+            permissions = form.cleaned_data['permissions']
+            for perm_id in permissions:
+                permission = Permission.objects.get(id=perm_id)
+                group.permissions.add(permission)
+
+            return render(request, 'group_added.html', {'group': group})
+    else:
+        form = GroupCreationForm()
+    return render(request, 'add_group.html', {'form': form})
+
+@user_passes_test(is_manager or user.is_superuser)
+def remove_user_from_group(request, group_id, user_id):
+    group = Group.objects.get(id=group_id)
+    user = User.objects.get(id=user_id)
+    group.user_set.remove(user)
+    return redirect('group_detail', group_id=group.id)
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import Group, Permission
+from .models import User
+
+def remove_permission_from_group(request, group_id, perm_id):
+    group = Group.objects.get(id=group_id)
+    permission = Permission.objects.get(id=perm_id)
+    group.permissions.remove(permission)
+    return redirect('group_detail', group_id=group.id)
+
+def remove_user_from_group(request, group_id, user_id):
+    group = Group.objects.get(id=group_id)
+    user = User.objects.get(id=user_id)
+    group.user_set.remove(user)
+    return redirect('group_detail', group_id=group.id)

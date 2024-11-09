@@ -1,0 +1,75 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Add Group{%
+endblock %} {% block content %}
+<div class="group-management-container">
+  <!-- Left Side: Add Group Form -->
+  <div class="left-side">
+    <h1 class="form-heading">Add a New Group</h1>
+
+    <form method="POST" class="menu-form">
+      {% csrf_token %}
+      <label for="group_name">Group Name</label>
+      <input type="text" name="group_name" id="group_name" required />
+
+      <h2>Select Permissions</h2>
+      <div class="permissions-grid">
+        {% for permission in permissions %}
+        <div class="permission-item">
+          <input
+            type="checkbox"
+            name="permissions"
+            value="{{ permission.id }}"
+          />
+          <label>{{ permission.name }}</label>
+        </div>
+        {% endfor %}
+      </div>
+
+      <button type="submit" class="submit-btn">Add Group</button>
+    </form>
+  </div>
+
+  <!-- Right Side: Manage Existing Groups and Permissions -->
+  <div class="right-side">
+    <h1 class="form-heading">Manage Existing Groups</h1>
+
+    {% if groups %}
+    <div class="existing-groups">
+      {% for group in groups %}
+      <div class="group-card">
+        <h2>{{ group.name }}</h2>
+        <h3>Permissions:</h3>
+        <ul>
+          {% for perm in group.permissions.all %}
+          <li>
+            {{ perm.name }}
+            <a
+              href="{% url 'remove_permission_from_group' group.id perm.id %}"
+              class="remove-link"
+              >Remove</a
+            >
+          </li>
+          {% endfor %}
+        </ul>
+
+        <h3>Users in this Group:</h3>
+        <ul>
+          {% for user in group.user_set.all %}
+          <li>
+            {{ user.username }}
+            <a
+              href="{% url 'remove_user_from_group' group.id user.id %}"
+              class="remove-link"
+              >Remove</a
+            >
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p>No existing groups found.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
