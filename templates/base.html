@@ -26,11 +26,13 @@
             <li><a href="{% url 'cart_detail' %}">Cart</a></li>
           </ul>
 
+          {% load custom_filters %}
+
           <ul class="nav-center">
-            {% if user.is_superuser %}
+            {% if user.is_superuser or user|is_in_group:"manager" %}
             <li><a href="{% url 'add_menu_item' %}">New Dish</a></li>
             <li><a href="{% url 'dish_of_the_day' %}">Dish of Day</a></li>
-            <!-- Add more admin links as needed -->
+            <li><a href="{% url 'manage_groups' %}">Groups</a></li>
             {% endif %}
           </ul>
 

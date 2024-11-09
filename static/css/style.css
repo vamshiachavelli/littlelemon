@@ -82,7 +82,6 @@ nav {
     text-decoration: underline; /* Add hover effect */
 }
 
-
 section {
     display: flex;
     gap: 2rem 1rem;
@@ -231,6 +230,133 @@ footer p {
 	left: 0;
 	width: 100%;
 	height: 100%;
+}
+
+.group-management-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-top: 50px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.left-side,
+.right-side {
+    width: 48%; /* Split into two halves */
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.left-side {
+    border-right: 2px solid #ddd; /* Divider between left and right side */
+}
+
+.form-heading {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.menu-form label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+}
+
+.menu-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+
+/* Right Side Styling */
+.existing-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.group-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.group-card h2 {
+    font-size: 1.5em;
+    color: #333;
+}
+
+.group-card h3 {
+    font-size: 1.2em;
+    color: #444;
+    margin-top: 20px;
+}
+
+.group-card ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.group-card ul li {
+    font-size: 1em;
+    padding: 8px 0;
+}
+
+.remove-link {
+    color: red;
+    margin-left: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.remove-link:hover {
+    color: #e74c3c;
+}
+
+.permissions-grid {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.5rem;
+}
+
+.permissions-grid .permission-item {
+    background: #f7f7f7;
+    padding: 0.5rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.remove-link {
+    color: red;
+    margin-left: 10px;
+    text-decoration: none;
 }
 
 
@@ -881,6 +1007,7 @@ footer p {
 }
 
 
+
 @media (max-width: 800px) {
     section {
         flex-direction: column;   
@@ -909,3 +1036,4 @@ footer p {
     }
 
 }
+

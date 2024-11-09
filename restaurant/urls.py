@@ -35,6 +35,9 @@ urlpatterns = [
     path('cart/remove/<int:item_id>/', views.remove_from_cart, name='remove_from_cart'),
     path('cart/update/<int:item_id>/', views.update_cart_quantity, name='update_cart_quantity'),
     path('menu/delete/<int:item_id>/', views.delete_menu_item, name='delete_menu_item'),
+    path('groups/', views.manage_groups, name='manage_groups'),
+    path('groups/add/', views.add_group, name='add_group'),
+    path('groups/<int:group_id>/', views.group_detail, name='group_detail'),
     path('', include(router.urls)),
 
     # Add more patterns as needed

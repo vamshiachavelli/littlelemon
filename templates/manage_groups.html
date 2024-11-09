@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% block content %}
+<div class="page-title">
+  <h1>Manage Groups</h1>
+</div>
+<a href="{% url 'add_group' %}" class="link-button">Add New Group</a>
+<div class="list-container">
+  <ul>
+    {% for group in groups %}
+    <li><a href="{% url 'group_detail' group.id %}">{{ group.name }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

@@ -11,3 +11,7 @@ def get_item(cart_items, item):
         return cart_item
     except CartItem.DoesNotExist:
         return None
+
+@register.filter
+def is_in_group(user, group_name):
+    return user.groups.filter(name=group_name).exists()
