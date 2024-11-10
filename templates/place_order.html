@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Place Order{%
+endblock %} {% blockcontent%}
+<section class="place-order">
+  <h1>Place Your Order</h1>
+
+  {% if cart.items.exists %}
+  <div class="cart-items">
+    <ul>
+      {% for item in cart.items.all %}
+      <li class="cart-item">
+        <span class="item-name">{{ item.menu_item.name }}</span>
+        <span class="item-price">${{ item.total_price }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+    <div class="total-cost"><strong>Total Cost:</strong> ${{ total_cost }}</div>
+    <form method="POST" class="place-order-form">
+      {% csrf_token %}
+      <button type="submit" class="place-order-button">Place Order</button>
+    </form>
+  </div>
+  {% else %}
+  <p class="empty-cart-message">
+    Your cart is empty. Please add items to the cart first.
+  </p>
+  {% endif %}
+</section>
+{% endblock %}

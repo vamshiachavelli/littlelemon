@@ -38,6 +38,17 @@ urlpatterns = [
     path('groups/', views.manage_groups, name='manage_groups'),
     path('groups/add/', views.add_group, name='add_group'),
     path('groups/<int:group_id>/', views.group_detail, name='group_detail'),
+    path('remove_permission/<int:group_id>/<int:perm_id>/', views.remove_permission_from_group, name='remove_permission_from_group'),
+    path('remove_user/<int:group_id>/<int:user_id>/', views.remove_user_from_group, name='remove_user_from_group'),
+    path('delivery-dashboard/', views.delivery_crew_dashboard, name='delivery_crew_dashboard'),
+    path('update-order-status/<int:order_id>/', views.update_order_status, name='update_order_status'),
+    path('place-order/', views.place_order, name='place_order'),
+    path('order-confirmation/<int:order_id>/', views.order_confirmation, name='order_confirmation'),
+    path('order-history/', views.order_history, name='order_history'),
+    path('assign-delivery-crew/<int:order_id>/', views.assign_delivery_crew, name='assign_delivery_crew'),
+    path('order-detail/<int:order_id>/', views.order_detail, name='order_detail'),
+    path('orders/', views.orders_list, name='orders_list'),
+
     path('', include(router.urls)),
 
     # Add more patterns as needed

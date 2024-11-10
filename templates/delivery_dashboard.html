@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% block title %}Delivery Crew Dashboard{% endblock %}
+{% load static %} {% block content %}
+<div class="dashboard-container">
+  <h1 class="dashboard-title">Delivery Crew Dashboard</h1>
+
+  {% if orders %}
+  <div class="order-list">
+    {% for order in orders %}
+    <div class="order-card">
+      <h2 class="order-id">
+        Order #{{ order.id }} - Total: ${{ order.total }}
+      </h2>
+      <p><strong>Customer:</strong> {{ order.user.username }}</p>
+      <p><strong>Order Date:</strong> {{ order.date }}</p>
+      <p>
+        <strong>Status:</strong> {% if order.status %} Delivered {% else %}
+        Pending {% endif %}
+      </p>
+
+      {% if not order.status %}
+      <div class="order-actions">
+        <a
+          href="{% url 'update_order_status' order.id %}"
+          class="update-status-button"
+          >Update Order Status</a
+        >
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="no-orders">No orders assigned.</p>
+  {% endif %}
+</div>
+{% endblock %}

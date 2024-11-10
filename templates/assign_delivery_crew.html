@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Assign Delivery
+Crew{% endblock %} {% block content %}
+<div class="assign-crew-form">
+  <h1>Assign Delivery Crew for Order #{{ order.id }}</h1>
+
+  <form method="POST">
+    {% csrf_token %}
+
+    <label for="delivery_crew">Select Delivery Crew:</label>
+    <select name="delivery_crew" id="delivery_crew" required>
+      <option value="">Select a delivery crew member</option>
+      {% for crew in delivery_crew %}
+      <option value="{{ crew.id }}">{{ crew.username }}</option>
+      {% endfor %}
+    </select>
+
+    <button type="submit">Assign</button>
+  </form>
+</div>
+{% endblock %}

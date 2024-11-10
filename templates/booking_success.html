@@ -1,9 +1,23 @@
 {% extends 'base.html' %} {% block title %}Reservation Successful{% endblock %}
-{% block content %}
-<h1>Reservation Successful!</h1>
-<p>
-  Thank you, {{ reservation.name }}. Your table has been reserved for
-  {{reservation.guests }} guests on {{ reservation.date }} at
-  {{reservation.time}}.
-</p>
+{% load static %} {% block content %}
+<div class="reservation-success container">
+  <h1 class="reservation-title">Reservation Successful!</h1>
+
+  <div class="confirmation-card">
+    <p class="reservation-message">
+      Thank you, <strong>{{ reservation.name }}</strong>. Your table has been
+      reserved for <strong>{{ reservation.guests }}</strong> guests on
+      <strong>{{ reservation.date }}</strong> at
+      <strong>{{ reservation.time }}</strong>.
+    </p>
+    <div class="action-buttons">
+      <img
+        src="{% static 'images/success-icon.png' %}"
+        alt="Success"
+        class="success-image"
+      />
+      <a href="{% url 'home' %}" class="back-button">Back to Home</a>
+    </div>
+  </div>
+</div>
 {% endblock %}

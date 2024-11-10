@@ -31,6 +31,13 @@ Lemon{% endblock %} {% block content %}
     <div class="cart-total">
       <p><strong>Total Cost:</strong> ${{ cart.total_cost }}</p>
     </div>
+
+    <!-- Place Order Button -->
+    <form action="{% url 'place_order' %}" method="POST">
+      {% csrf_token %}
+      <button type="submit" class="cta-button">Place Order</button>
+    </form>
+
     {% else %}
     <p class="empty-cart-message">Your cart is empty.</p>
     <a href="{% url 'menu' %}" class="cta-button">Browse Menu</a>

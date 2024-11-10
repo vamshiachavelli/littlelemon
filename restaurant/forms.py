@@ -1,6 +1,6 @@
 from django import forms
 from .models import Menu, Booking
-from django.contrib.auth.models import Group, Permission
+from django.contrib.auth.models import Group, Permission, User
 
 class MenuForm(forms.ModelForm):
     class Meta:
@@ -22,3 +22,6 @@ class GroupCreationForm(forms.ModelForm):
     class Meta:
         model = Group
         fields = ['name', 'permissions']
+
+class DeliveryCrewAssignmentForm(forms.Form):
+    delivery_crew = forms.ModelChoiceField(queryset=User.objects.filter(groups__name='Delivery Crew'), label='Delivery Crew')

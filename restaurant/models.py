@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.conf import settings
 from django.contrib.auth.models import User
-
+from decimal import Decimal
 class Menu(models.Model):
     CATEGORY_CHOICES = [
         ('appetizer', 'Appetizer'),
@@ -61,23 +61,33 @@ class CartItem(models.Model):
     
     def __str__(self):
         return f"{self.quantity} of {self.menu_item.name}"
-    
 
-'''class Order(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="orders")
     delivery_crew = models.ForeignKey(
-        User, on_delete=models.SET_NULL, related_name="delivery_crew", null=True)
-    status = models.BooleanField(default=0, db_index=True)
-    total = models.DecimalField(max_digits=6, decimal_places=2, default=0)
-    date = models.DateField(db_index=True)
+        User, on_delete=models.SET_NULL, related_name="delivery_orders", null=True, blank=True
+    )
+    status = models.BooleanField(default=False, db_index=True)  # Consider using choices for more clarity
+    total = models.DecimalField(max_digits=6, decimal_places=2, default=Decimal('0.00'))
+    date = models.DateField(auto_now_add=True, db_index=True)  # Set date automatically on creation
 
+    def __str__(self):
+        return f"Order #{self.id} - User: {self.user.username} - Status: {'Delivered' if self.status else 'Pending'}"
+
+    def calculate_total(self):
+        """Calculate total based on related OrderItems."""
+        self.total = sum(item.quantity * item.price for item in self.order.all())
+        self.save()
 
 class OrderItem(models.Model):
-    order = models.ForeignKey(
-        Order, on_delete=models.CASCADE, related_name='order')
-    menuitem = models.ForeignKey(Menu, on_delete=models.CASCADE)
-    quantity = models.SmallIntegerField()
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='order_items')
+    menuitem = models.ForeignKey('Menu', on_delete=models.CASCADE)  # Menu should be defined elsewhere
+    quantity = models.PositiveSmallIntegerField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
 
     class Meta:
-        unique_together = ('order', 'menuitem')'''
+        unique_together = ('order', 'menuitem')
+
+    def __str__(self):
+        return f"{self.quantity} x {self.menuitem} @ {self.price} each"
+
