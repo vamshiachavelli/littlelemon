@@ -1,47 +1,72 @@
-{% extends 'base.html' %} {% block content %}
-<div class="page-title">
-  <h1>Manage Group: {{ group.name }}</h1>
-</div>
+{% extends 'base.html' %} {% load static %} {% block title %} Group Details
+{%endblock%} {% block content %}
+<div class="group-detail-container">
+  <h1 class="page-heading">{{ group.name }} - Details</h1>
 
-<h2>Add User to Group</h2>
-<form method="post" class="form-container">
-  {% csrf_token %}
-  <label for="user_id">Select User:</label>
-  <select name="user_id">
-    {% for user in users %}
-    <option value="{{ user.id }}">{{ user.username }}</option>
-    {% endfor %}
-  </select>
-  <button name="add_user" type="submit">Add User</button>
-</form>
+  <!-- Permissions Section -->
+  <div class="permissions-section">
+    <h2>Permissions</h2>
+    <ul class="permissions-list">
+      {% for permission in group.permissions.all %}
+      <li>
+        {{ permission.name }}
+        <a
+          href="{% url 'remove_permission_from_group' group.id permission.id %}"
+          class="remove-link"
+          >Remove</a
+        >
+      </li>
+      {% endfor %}
+    </ul>
 
-<h2>Add Permissions to Group</h2>
-<form method="post" class="form-container">
-  {% csrf_token %}
-  <label for="perm_id">Select Permission:</label>
-  <select name="perm_id">
-    {% for perm in permissions %}
-    <option value="{{ perm.id }}">{{ perm.name }}</option>
-    {% endfor %}
-  </select>
-  <button name="add_permission" type="submit">Add Permission</button>
-</form>
+    <form
+      method="POST"
+      action="{% url 'group_detail' group.id %}"
+      class="permissions-form"
+    >
+      {% csrf_token %}
+      <label for="perm_id">Add Permission:</label>
+      <select name="perm_id" class="input-field" required>
+        {% for permission in permissions %}
+        <option value="{{ permission.id }}">{{ permission.name }}</option>
+        {% endfor %}
+      </select>
+      <button type="submit" name="add_permission" class="submit-btn">
+        Add Permission
+      </button>
+    </form>
+  </div>
 
-<h2>Current Group Members</h2>
-<div class="list-container">
-  <ul>
-    {% for member in group.user_set.all %}
-    <li>{{ member.username }}</li>
-    {% endfor %}
-  </ul>
-</div>
+  <!-- Users Section -->
+  <div class="users-section">
+    <h2>Users</h2>
+    <ul class="users-list">
+      {% for user in group.user_set.all %}
+      <li>
+        {{ user.username }}
+        <a
+          href="{% url 'remove_user_from_group' group.id user.id %}"
+          class="remove-link"
+          >Remove</a
+        >
+      </li>
+      {% endfor %}
+    </ul>
 
-<h2>Current Permissions</h2>
-<div class="list-container">
-  <ul>
-    {% for perm in group.permissions.all %}
-    <li>{{ perm.name }}</li>
-    {% endfor %}
-  </ul>
+    <form
+      method="POST"
+      action="{% url 'group_detail' group.id %}"
+      class="users-form"
+    >
+      {% csrf_token %}
+      <label for="user_id">Add User:</label>
+      <select name="user_id" class="input-field" required>
+        {% for user in users %}
+        <option value="{{ user.id }}">{{ user.username }}</option>
+        {% endfor %}
+      </select>
+      <button type="submit" name="add_user" class="submit-btn">Add User</button>
+    </form>
+  </div>
 </div>
 {% endblock %}

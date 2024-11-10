@@ -1,75 +1,46 @@
-{% extends 'base.html' %} {% load static %} {% block title %}Add Group{%
-endblock %} {% block content %}
-<div class="group-management-container">
-  <!-- Left Side: Add Group Form -->
-  <div class="left-side">
-    <h1 class="form-heading">Add a New Group</h1>
+{% extends 'base.html' %} {% load static %} {% block title %} Create New Group
+{% endblock %} {% block content %}
+<div class="group-detail-container">
+  <h1 class="page-heading">Create New Group</h1>
 
-    <form method="POST" class="menu-form">
-      {% csrf_token %}
-      <label for="group_name">Group Name</label>
-      <input type="text" name="group_name" id="group_name" required />
-
-      <h2>Select Permissions</h2>
-      <div class="permissions-grid">
-        {% for permission in permissions %}
-        <div class="permission-item">
-          <input
-            type="checkbox"
-            name="permissions"
-            value="{{ permission.id }}"
-          />
-          <label>{{ permission.name }}</label>
-        </div>
-        {% endfor %}
-      </div>
-
-      <button type="submit" class="submit-btn">Add Group</button>
-    </form>
-  </div>
-
-  <!-- Right Side: Manage Existing Groups and Permissions -->
-  <div class="right-side">
-    <h1 class="form-heading">Manage Existing Groups</h1>
-
-    {% if groups %}
-    <div class="existing-groups">
-      {% for group in groups %}
-      <div class="group-card">
-        <h2>{{ group.name }}</h2>
-        <h3>Permissions:</h3>
-        <ul>
-          {% for perm in group.permissions.all %}
-          <li>
-            {{ perm.name }}
-            <a
-              href="{% url 'remove_permission_from_group' group.id perm.id %}"
-              class="remove-link"
-              >Remove</a
-            >
-          </li>
-          {% endfor %}
-        </ul>
-
-        <h3>Users in this Group:</h3>
-        <ul>
-          {% for user in group.user_set.all %}
-          <li>
-            {{ user.username }}
-            <a
-              href="{% url 'remove_user_from_group' group.id user.id %}"
-              class="remove-link"
-              >Remove</a
-            >
-          </li>
-          {% endfor %}
-        </ul>
+  <!-- Permissions Section -->
+  <div class="form-group">
+    <h2>Assign Permissions</h2>
+    <div class="permissions-checkboxes">
+      {% for permission in permissions %}
+      <div class="checkbox-container">
+        <input
+          type="checkbox"
+          name="permissions"
+          id="permission_{{ permission.id }}"
+          value="{{ permission.id }}"
+        />
+        <label for="permission_{{ permission.id }}">
+          {{ permission.name }}
+        </label>
       </div>
       {% endfor %}
     </div>
-    {% else %}
-    <p>No existing groups found.</p>
-    {% endif %}
   </div>
+
+  <form method="POST" action="{% url 'add_group' %}" class="group-form">
+    {% csrf_token %}
+
+    <!-- Group Name Input -->
+    <div class="form-group">
+      <label for="group-name">Group Name</label>
+      <input
+        type="text"
+        name="name"
+        id="group-name"
+        class="input-field"
+        placeholder="Enter group name"
+        required
+      />
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="submit-btn">Create Group</button>
+  </form>
 </div>
 {% endblock %}

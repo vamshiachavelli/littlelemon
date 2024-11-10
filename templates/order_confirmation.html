@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Order
+Confirmation{% endblock %} {% block content %}
+<section class="order-confirmation">
+  <div class="confirmation-header">
+    <h1>Your Order Has Been Placed!</h1>
+    <p class="order-id">Order ID: <strong>{{ order.id }}</strong></p>
+  </div>
+
+  <div class="order-summary">
+    <p><strong>Total Cost:</strong> ${{ order.total }}</p>
+    <p>
+      <strong>Status:</strong> {% if order.status %} Completed {% else %}
+      Pending {% endif %}
+    </p>
+    <p><strong>Order Date:</strong> {{ order.date }}</p>
+  </div>
+
+  <h2>Order Details:</h2>
+  <ul class="order-details">
+    {% for item in order.orderitem_set.all %}
+    <li>
+      <span class="item-title">{{ item.menuitem.title }}</span>
+      <span class="item-quantity">(x </span>
+    </li>
+  </ul>
+</section>

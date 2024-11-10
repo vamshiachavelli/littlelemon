@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Update Order
+Status{% endblock %} {% block content %}
+<section class="order-status-update">
+  <h1>Update Order Status for Order #{{ order.id }}</h1>
+
+  <p><strong>Customer:</strong> {{ order.user.username }}</p>
+  <p><strong>Total:</strong> ${{ order.total }}</p>
+  <p>
+    <strong>Status:</strong>
+    {% if order.status %} Delivered {% else %} Pending {% endif %}
+  </p>
+
+  {% if not order.status %}
+  <form method="POST" class="status-form">
+    {% csrf_token %}
+    <button type="submit" class="update-status-button">
+      Mark as Delivered
+    </button>
+  </form>
+  {% endif %}
+</section>
+{% endblock %}

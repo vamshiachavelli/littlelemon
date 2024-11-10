@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %} {% load custom_filters %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,19 +26,30 @@
             <li><a href="{% url 'cart_detail' %}">Cart</a></li>
           </ul>
 
-          {% load custom_filters %}
-
           <ul class="nav-center">
             {% if user.is_superuser or user|is_in_group:"manager" %}
             <li><a href="{% url 'add_menu_item' %}">New Dish</a></li>
+            <li><a href="{% url 'orders_list' %}">Ordes</a></li>
             <li><a href="{% url 'dish_of_the_day' %}">Dish of Day</a></li>
             <li><a href="{% url 'manage_groups' %}">Groups</a></li>
+            <li>
+              <a href="{% url 'delivery_crew_dashboard' %}"
+                >Delivery Dashboard</a
+              >
+            </li>
+            {% endif %} {% if user|is_in_group:"Delivery Crew" %}
+            <li>
+              <a href="{% url 'delivery_crew_dashboard' %}"
+                >Delivery Dashboard</a
+              >
+            </li>
             {% endif %}
           </ul>
 
           <ul class="nav-right">
             {% if user.is_authenticated %}
             <li>Welcome, {{ user.username }}!</li>
+            <li><a href="{% url 'order_history' %}">Order History</a></li>
             <li><a href="{% url 'Logout' %}">Logout</a></li>
             {% else %}
             <li><a href="{% url 'Login' %}">Login</a></li>
@@ -48,6 +59,7 @@
         </div>
       </nav>
     </header>
+
     <main>
       {% block content %}
       <!-- Default content goes here -->
@@ -55,7 +67,7 @@
     </main>
 
     <footer>
-      <p>Copyright {{ current_year }} Little Lemon</p>
+      <p>Copyright {% now "Y" %} Little Lemon</p>
     </footer>
   </body>
 </html>

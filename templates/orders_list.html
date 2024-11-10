@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Orders
+List{%endblock%} {% block content %}
+<section class="orders-list">
+  <h1>Orders List</h1>
+
+  {% if orders %}
+  <ul class="orders">
+    {% for order in orders %}
+    <li class="order-item">
+      <div class="order-header">
+        <h2>Order #{{ order.id }} - Total: ${{ order.total }}</h2>
+        <p><strong>Customer:</strong> {{ order.user.username }}</p>
+        <p><strong>Order Date:</strong> {{ order.date }}</p>
+        <p>
+          <strong>Status:</strong>
+          {% if order.status %} Delivered {% else %} Pending {% endif %}
+        </p>
+      </div>
+
+      {% if not order.status and not order.delivery_crew %}
+      <div class="assign-crew">
+        <h3>Assign Delivery Crew</h3>
+        <form method="post" action="{% url 'assign_delivery_crew' order.id %}">
+          {% csrf_token %}
+          <label for="delivery_crew">Select Delivery Crew:</label>
+          <select name="delivery_crew" id="delivery_crew" required>
+            {% for crew in delivery_crew %}
+            <option value="{{ crew.id }}">{{ crew.username }}</option>
+            {% endfor %}
+          </select>
+          <button type="submit">Assign</button>
+        </form>
+      </div>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>No orders to display.</p>
+  {% endif %}
+</section>
+{% endblock %}

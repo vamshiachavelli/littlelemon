@@ -1007,6 +1007,825 @@ footer p {
 }
 
 
+/* Create New Group Page */
+.group-detail-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.page-heading {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+.submit-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #45a049;
+}
+
+/* Permissions Section */
+.permissions-checkboxes {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkbox-container {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.checkbox-container:hover {
+  background-color: #f0f8ff;
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+
+.checkbox-container label {
+  font-size: 1rem;
+  color: #333;
+}
+
+.checkbox-container:hover {
+  border-left: 4px solid #3498db;
+}
+
+
+
+/* Group Details Page */
+.group-detail-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.permissions-section, .users-section {
+  margin-bottom: 30px;
+}
+
+.permissions-list, .users-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.permissions-list li, .users-list li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Add smooth transition */
+}
+
+.permissions-list li:hover {
+  background-color: #f0f8ff; /* Light blue background on hover */
+  transform: translateY(-2px); /* Slightly lift the item when hovered */
+}
+
+.remove-link {
+  color: #e74c3c;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.remove-link:hover {
+  text-decoration: underline;
+}
+
+/* Optional: If you want to add a border effect */
+.permissions-list li:hover {
+  border-left: 4px solid #3498db; /* Blue border when hovered */
+}
+
+/* Add these styles to your custom CSS file */
+.assign-crew-form {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.assign-crew-form h1 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.assign-crew-form label {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.assign-crew-form select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.assign-crew-form button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.assign-crew-form button:hover {
+  background-color: #0056b3;
+}
+/* Custom CSS for Delivery Crew Dashboard */
+.dashboard-container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.dashboard-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #4CAF50;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.order-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.order-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: left;
+}
+
+.order-id {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.order-actions {
+  margin-top: 20px;
+}
+
+.update-status-button {
+  background-color: #007bff;
+  color: white;
+  font-size: 1.1rem;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.update-status-button:hover {
+  background-color: #0056b3;
+}
+
+.no-orders {
+  font-size: 1.2rem;
+  color: #888;
+  text-align: center;
+  margin-top: 50px;
+}
+
+
+
+/* Custom CSS for Reservation Success Page */
+.reservation-success {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.reservation-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #4CAF50;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.confirmation-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  text-align: center;
+}
+
+.reservation-message {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.success-image {
+  max-width: 120px;
+  margin-bottom: 20px;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.back-button {
+  background-color: #28a745;
+  color: white;
+  font-size: 1.1rem;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.back-button:hover {
+  background-color: #218838;
+}
+
+
+/* Order Confirmation Page Styles */
+.order-confirmation {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f4f4f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.confirmation-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.confirmation-header h1 {
+  font-size: 2.5rem;
+  color: #28a745;
+  font-weight: bold;
+}
+
+.order-id {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.order-summary {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.order-summary p {
+  font-size: 1.1rem;
+  color: #555;
+  margin: 10px 0;
+}
+
+.order-details {
+  list-style-type: none;
+  padding-left: 0;
+  font-size: 1.1rem;
+}
+
+.order-details li {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+.order-details .item-title {
+  font-weight: bold;
+}
+
+.order-details .item-quantity {
+  color: #888;
+}
+
+.order-details .item-price {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.confirmation-footer {
+  text-align: center;
+}
+
+.back-home {
+  background-color: #28a745;
+  color: white;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.back-home:hover {
+  background-color: #218838;
+}
+
+/* Order Details Page Styles */
+.order-details-section {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.order-details-section h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #28a745;
+  margin-bottom: 20px;
+}
+
+.order-summary {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.order-summary p {
+  font-size: 1.2rem;
+  color: #555;
+  margin: 10px 0;
+}
+
+.assign-crew {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.assign-crew h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.assign-crew form {
+  display: flex;
+  flex-direction: column;
+}
+
+.assign-crew label {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.assign-crew select {
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.assign-crew button {
+  padding: 12px 20px;
+  background-color: #28a745;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.assign-crew button:hover {
+  background-color: #218838;
+}
+
+/* Place Order Page Styles */
+.place-order {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.place-order h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.cart-items {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cart-items ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item .item-name {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.cart-item .item-price {
+  font-size: 1.2rem;
+  color: #28a745;
+}
+
+.total-cost {
+  font-size: 1.5rem;
+  margin-top: 20px;
+  text-align: right;
+  color: #333;
+}
+
+.place-order-form {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.place-order-button {
+  padding: 12px 25px;
+  background-color: #28a745;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.place-order-button:hover {
+  background-color: #218838;
+}
+
+.empty-cart-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #dc3545;
+  margin-top: 20px;
+  font-weight: bold;
+}
+/* Update Order Status Page Styles */
+.order-status-update {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.order-status-update h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #28a745;
+  margin-bottom: 20px;
+}
+
+.order-status-update p {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 10px 0;
+}
+
+.status-form {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.update-status-button {
+  padding: 12px 20px;
+  background-color: #28a745;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.update-status-button:hover {
+  background-color: #218838;
+}
+
+
+
+
+
+
+/* Orders List Page Styles */
+.orders-list {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.orders-list h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #28a745;
+  margin-bottom: 20px;
+}
+
+.orders {
+  list-style-type: none;
+  padding: 0;
+}
+
+.order-item {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.order-header {
+  margin-bottom: 15px;
+}
+
+.order-header h2 {
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.order-header p {
+  font-size: 1rem;
+  color: #555;
+  margin: 5px 0;
+}
+
+.assign-crew {
+  background-color: #f7f7f7;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.assign-crew h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.assign-crew label {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.assign-crew select {
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.assign-button {
+  padding: 12px 20px;
+  background-color: #28a745;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.assign-button:hover {
+  background-color: #218838;
+}
+
+
+
+/* Manage Groups Page */
+.manage-groups-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.manage-content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.groups-section {
+  width: 48%;
+}
+
+.group-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.group-item {
+  background-color: #f9f9f9;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.group-link {
+  text-decoration: none;
+  color: #35c635;
+  font-size: 1.1rem;
+}
+
+.group-link:hover {
+  text-decoration: underline;
+}
+
+.group-item:hover {
+  background-color: #e1f5fe;
+}
+
+.orders-section {
+    padding: 20px;
+}
+
+.orders-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.order-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.order-item h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.order-actions {
+    margin-top: 10px;
+}
+
+.update-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.update-button:hover {
+    background-color: #45a049;
+}
+
+.completed-status {
+    color: green;
+    font-weight: bold;
+}
+
+.status-pending {
+    color: #f44336;
+}
+
+.status-delivered {
+    color: #4CAF50;
+}
+
+.order-details {
+    margin-top: 15px;
+}
+
+.order-details ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.order-details li {
+    margin: 5px 0;
+}
+
+.no-orders {
+    font-size: 1.2em;
+    color: #777;
+}
+
+button, .update-button {
+    cursor: pointer;
+}
+
+button:disabled, .completed-status {
+    background-color: grey;
+    cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .manage-content {
+    flex-direction: column;
+  }
+
+  .groups-section {
+    width: 100%;
+  }
+
+  .add-group-container {
+    width: 90%;
+  }
+}
+
+
 
 @media (max-width: 800px) {
     section {
@@ -1037,3 +1856,146 @@ footer p {
 
 }
 
+@media (max-width: 768px) {
+    .reservation-title {
+      font-size: 2rem;
+    }
+  
+    .confirmation-card {
+      padding: 20px;
+    }
+  
+    .reservation-message {
+      font-size: 1rem;
+    }
+  
+    .back-button {
+      font-size: 1rem;
+      padding: 10px 20px;
+    }
+  }
+
+  
+@media (max-width: 768px) {
+  .dashboard-title {
+    font-size: 2rem;
+  }
+
+  .order-card {
+    padding: 15px;
+  }
+
+  .order-id {
+    font-size: 1.2rem;
+  }
+
+  .update-status-button {
+    font-size: 1rem;
+    padding: 8px 15px;
+  }
+}
+
+
+@media (max-width: 768px) {
+    .order-confirmation {
+      padding: 15px;
+    }
+  
+    .confirmation-header h1 {
+      font-size: 2rem;
+    }
+  
+    .order-details li {
+      font-size: 1rem;
+    }
+  
+    .back-home {
+      font-size: 1rem;
+      padding: 10px 20px;
+    }
+  }
+
+  @media (max-width: 768px) {
+  .order-details-section {
+    padding: 15px;
+  }
+
+  .order-summary p {
+    font-size: 1rem;
+  }
+
+  .assign-crew h2 {
+    font-size: 1.5rem;
+  }
+
+  .assign-crew button {
+    font-size: 1rem;
+    padding: 10px 15px;
+  }
+}
+
+@media (max-width: 768px) {
+    .orders-list {
+      padding: 15px;
+    }
+  
+    .order-header h2 {
+      font-size: 1.6rem;
+    }
+  
+    .order-header p {
+      font-size: 0.9rem;
+    }
+  
+    .assign-crew h3 {
+      font-size: 1.3rem;
+    }
+  
+    .assign-button {
+      font-size: 1rem;
+      padding: 10px 15px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .place-order {
+      padding: 15px;
+    }
+  
+    .cart-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .cart-item .item-price {
+      margin-top: 5px;
+    }
+  
+    .total-cost {
+      font-size: 1.2rem;
+    }
+  
+    .place-order-button {
+      font-size: 1rem;
+      padding: 10px 20px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .order-status-update {
+      padding: 15px;
+    }
+  
+    .order-status-update h1 {
+      font-size: 2rem;
+    }
+  
+    .order-status-update p {
+      font-size: 1rem;
+    }
+  
+    .update-status-button {
+      font-size: 1rem;
+      padding: 10px 15px;
+    }
+  }

@@ -1,13 +1,28 @@
-{% extends 'base.html' %} {% block content %}
-<div class="page-title">
-  <h1>Manage Groups</h1>
-</div>
-<a href="{% url 'add_group' %}" class="link-button">Add New Group</a>
-<div class="list-container">
-  <ul>
-    {% for group in groups %}
-    <li><a href="{% url 'group_detail' group.id %}">{{ group.name }}</a></li>
-    {% endfor %}
-  </ul>
+{% extends 'base.html' %} {% load static %} {% block title %} Manage Groups
+{%endblock%} {% block content %}
+<div class="manage-groups-container">
+  <h1 class="page-heading">Manage Groups</h1>
+
+  <!-- Link to add a new group -->
+  <div class="add-group-container">
+    <a href="{% url 'add_group' %}" class="add-group-btn">+ Add New Group</a>
+  </div>
+
+  <!-- Two Columns: Left for Permissions, Right for Groups -->
+  <div class="manage-content">
+    <!-- Right Column: Groups -->
+    <div class="groups-section">
+      <h2>Groups</h2>
+      <ul class="group-list">
+        {% for group in groups %}
+        <li class="group-item">
+          <a href="{% url 'group_detail' group.id %}" class="group-link"
+            >{{ group.name }}</a
+          >
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
 </div>
 {% endblock %}
