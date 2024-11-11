@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Manager Dashboard - Little Lemon{% endblock %}
+
+{% block content %}
+  <div class="dashboard-container">
+    <h2 class="dashboard-title">Welcome to the Manager Dashboard</h2>
+    <ul class="dashboard-list">
+      <li class="dashboard-item"><a href="{% url 'add_menu_item' %}" class="dashboard-link">New Dish</a></li>
+      <li class="dashboard-item"><a href="{% url 'orders_list' %}" class="dashboard-link">Orders</a></li>
+      <li class="dashboard-item"><a href="{% url 'dish_of_the_day' %}" class="dashboard-link">Dish of the Day</a></li>
+      <li class="dashboard-item"><a href="{% url 'manage_groups' %}" class="dashboard-link">Groups</a></li>
+      <li class="dashboard-item"><a href="{% url 'delivery_crew_list' %}" class="dashboard-link">Delivery Crew</a></li>
+      <li class="dashboard-item"><a href="{% url 'user_list' %}" class="dashboard-link">All Users</a></li>
+    </ul>
+  </div>
+{% endblock %}

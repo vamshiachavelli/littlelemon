@@ -1,21 +1,24 @@
-from rest_framework import generics, viewsets
 from .models import Menu, Booking, DishOfTheDay, Cart, CartItem, Order, OrderItem
 from .serializers import MenuItemSerializer, BookingSerializer, UserSerializer
 from .forms import MenuForm,BookingForm, GroupCreationForm, DeliveryCrewAssignmentForm
+from django.contrib.auth.models import User, Group, Permission
+from rest_framework import generics, viewsets
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.response import Response
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, user_passes_test, permission_required
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User, Group, Permission
+from rest_framework.response import Response
 from django.contrib.auth.forms import UserCreationForm
 from django.conf import settings
 from django.urls import reverse
-from django.http import HttpResponseBadRequest, Http404, HttpResponse
+from django.http import HttpResponseBadRequest, Http404, HttpResponse, HttpResponseForbidden
 from django.contrib import messages
 from decimal import Decimal
 import datetime
 
+
+
+# Check for permissions superuser and group
 
 def is_superuser_or_groups(user, group_names):
     return user.is_superuser or user.groups.filter(name__in=group_names).exists()
@@ -25,7 +28,9 @@ def superuser_or_multiple_groups_required(group_names):
         return user_passes_test(lambda u: is_superuser_or_groups(u, group_names))(view_func)
     return decorator
 
-
+#=======================================================================================================
+# API
+#=======================================================================================================
 class MenuItemsView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
     queryset = Menu.objects.all()
@@ -41,12 +46,94 @@ class BookingViewSet(viewsets.ModelViewSet):
     queryset = Booking.objects.all()  # Fetch all booking objects
     serializer_class = BookingSerializer
 
+class UserListView(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated]
 
-from django.shortcuts import render
-from .models import Cart, CartItem, Menu
+#=======================================================================================================
+# Users and Static pages Login, logout, register.
+#=======================================================================================================
 
-def menu(request):
-    """Display the menu page with cart quantities."""
+def home(request):
+    return render(request, 'home.html')
+
+def about(request):
+    return render(request, 'about.html')
+
+def manager_dashboard(request):
+    # Check if the user is a manager or superuser
+    if not request.user.is_authenticated or not (request.user.is_superuser or request.user.groups.filter(name='manager').exists()):
+        return redirect('home')  # Redirect to home if not a manager
+
+    return render(request, 'manager_dashboard.html')  # Ensure you're passing the template name here
+
+# Login
+def login_view(request):
+    """Handle user login."""
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            next_url = request.POST.get('next') or 'home'  # Fallback URL
+            return redirect(next_url)
+            #return redirect('home')  # Change to your desired redirect page
+        else:
+            return render(request, 'login.html', {'error': 'Invalid credentials'})
+    return render(request, 'login.html')
+
+# Logout
+def logout_view(request):
+    """Handle user logout."""
+    logout(request)
+    return redirect('home')
+
+# Register a New User
+def register(request):
+    """Handle user registration."""
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()  # Save the new user
+            login(request, user)  # Log the user in immediately after registration
+            messages.success(request, f"User {user.username} registered successfully.")
+            return redirect(reverse('home'))  # Redirect to the home page
+        else:
+            # Log or display form errors for debugging
+            print("Form errors:", form.errors)
+            messages.error(request, "There was an error in your registration form.")
+    else:
+        form = UserCreationForm()
+    
+    return render(request, 'register.html', {'form': form})
+
+#Sucessful Registartion
+def registration_success(request, user_id):
+    """Display the registration success page with user details."""
+    user = get_object_or_404(User, id=user_id)  # Retrieve the user by ID
+    return render(request, 'registration_success.html', {
+        'username': user.username,  # Get the username from the user object
+        'user_id': user.id  # Get the user ID
+    })
+
+
+@superuser_or_multiple_groups_required(['manager', 'Admin'])
+def user_list_view(request):
+    """Retrieve all users and render to an HTML template."""
+    if request.user.is_authenticated:  # Ensure the user is logged in
+        users = User.objects.all()  # Retrieve all users
+        return render(request, 'user_list.html', {'users': users})
+    else:
+        return render(request, 'login.html', {'error': 'You must be logged in to view this page.'})
+
+#=======================================================================================================
+# Menu Features
+#=======================================================================================================
+
+# Whole Menu 
+def menu(request): #any one can see whole menu page
     # For authenticated users, retrieve the cart associated with the user
     if request.user.is_authenticated:
         cart = Cart.objects.filter(user=request.user).first()
@@ -72,7 +159,15 @@ def menu(request):
         'cart_item_ids': cart_item_ids,  # Pass the set of item ids that are in the cart
     })
 
-@superuser_or_multiple_groups_required(['manager', 'Admin'])
+# Single Menu Item View
+
+def menu_item_detail(request, pk):
+    # Retrieve the specific menu item by its primary key (pk)
+    menu_item = get_object_or_404(Menu, pk=pk)
+    return render(request, 'menu_item_detail.html', {'menu_item': menu_item})
+
+# Add Menu item
+@superuser_or_multiple_groups_required(['manager', 'Admin']) # Manger, SuperUser, Admin use only
 def add_menu_item(request):
     if request.method == 'POST':
         form = MenuForm(request.POST, request.FILES)  # Include FILES to handle image uploads
@@ -87,6 +182,17 @@ def add_menu_item(request):
 
     return render(request, 'add_menu_item.html', {'form': form})
 
+@superuser_or_multiple_groups_required(['manager', 'Admin']) # Manger, SuperUser, Admin use only
+def delete_menu_item(request, item_id):
+    if request.method == 'POST':
+        menu_item = get_object_or_404(Menu, id=item_id)
+        menu_item.delete()  # Delete the item from the database
+        return redirect('menu')  # Redirect to the menu page with a success message
+
+
+#=======================================================================================================
+#Booking 
+#=======================================================================================================
 def book_table(request):
     if request.method == 'POST':
         form = BookingForm(request.POST)
@@ -98,76 +204,9 @@ def book_table(request):
         form = BookingForm()
     return render(request, 'booking.html', {'form': form})
 
-def menu_item_detail(request, pk):
-    # Retrieve the specific menu item by its primary key (pk)
-    menu_item = get_object_or_404(Menu, pk=pk)
-    return render(request, 'menu_item_detail.html', {'menu_item': menu_item})
-
-def home(request):
-    return render(request, 'home.html')
-
-def about(request):
-    return render(request, 'about.html')
-
-def login_view(request):
-    """Handle user login."""
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            next_url = request.POST.get('next') or 'home'  # Fallback URL
-            return redirect(next_url)
-            #return redirect('home')  # Change to your desired redirect page
-        else:
-            return render(request, 'login.html', {'error': 'Invalid credentials'})
-    return render(request, 'login.html')
-
-def logout_view(request):
-    """Handle user logout."""
-    logout(request)
-    return redirect('home')
-
-def register(request):
-    """Handle user registration."""
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()  # Save the new user
-            login(request, user)  # Log the user in immediately after registration
-            messages.success(request, f"User {user.username} registered successfully.")
-            return redirect(reverse('home'))  # Redirect to the home page
-        else:
-            # Log or display form errors for debugging
-            print("Form errors:", form.errors)
-            messages.error(request, "There was an error in your registration form.")
-    else:
-        form = UserCreationForm()
-    
-    return render(request, 'register.html', {'form': form})
-
-
-def registration_success(request, user_id):
-    """Display the registration success page with user details."""
-    user = get_object_or_404(User, id=user_id)  # Retrieve the user by ID
-    return render(request, 'registration_success.html', {
-        'username': user.username,  # Get the username from the user object
-        'user_id': user.id  # Get the user ID
-    })
-class UserListView(generics.ListAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-    permission_classes = [IsAuthenticated]
-
-@superuser_or_multiple_groups_required(['manager', 'Admin'])
-def user_list_view(request):
-    """Retrieve all users and render to an HTML template."""
-    if request.user.is_authenticated:  # Ensure the user is logged in
-        users = User.objects.all()  # Retrieve all users
-        return render(request, 'user_list.html', {'users': users})
-    else:
-        return render(request, 'login.html', {'error': 'You must be logged in to view this page.'})
+#=======================================================================================================
+#Dish Of The Day
+#=======================================================================================================
 
 @superuser_or_multiple_groups_required(['manager', 'Admin'])
 def dish_of_the_day(request):
@@ -198,6 +237,10 @@ def toggle_dish_of_the_day(request, item_id):
         menu_item.dish_of_the_day = not menu_item.dish_of_the_day  # Toggle the status
         menu_item.save()
     return redirect('menu')  # Redirect to your menu page
+
+#=======================================================================================================
+# Cart 
+#=======================================================================================================
 
 def add_to_cart(request, item_id):
     """Add the specified item to the cart with the given quantity."""
@@ -298,44 +341,10 @@ def update_cart_quantity(request, item_id):
 
     return redirect('cart_detail')  # Redirect to the cart detail page
 
-def delete_menu_item(request, item_id):
-    if request.method == 'POST':
-        menu_item = get_object_or_404(Menu, id=item_id)
-        menu_item.delete()  # Delete the item from the database
-        return redirect('menu')  # Redirect to the menu page with a success message
-    
-#Group creation
-@login_required
-@superuser_or_multiple_groups_required(['manager', 'Admin'])
-def create_group(request):
-    if request.method == 'POST':
-        form = GroupCreationForm(request.POST)
-        if form.is_valid():
-            group = form.save(commit=False)
-            group.save()  # Save the group first
-            form.cleaned_data['permissions'].update(group.permissions.all())
-            return redirect('group_list')  # Redirect to a group list or dashboard
-    else:
-        form = GroupCreationForm()
-    return render(request, 'create_group.html', {'form': form})
 
-@superuser_or_multiple_groups_required(['manager', 'Admin'])
-def remove_user_from_group(request, group_id, user_id):
-    group = Group.objects.get(id=group_id)
-    user = User.objects.get(id=user_id)
-    group.user_set.remove(user)
-    return redirect('group_detail', group_id=group.id)
-
-@superuser_or_multiple_groups_required(['manager', 'Admin'])
-def remove_permission_from_group(request, group_id, perm_id):
-    group = Group.objects.get(id=group_id)
-    permission = Permission.objects.get(id=perm_id)
-    group.permissions.remove(permission)
-    return redirect('group_detail', group_id=group.id)
-
-
+#=======================================================================================================
 # Groups
-# --------------
+#=======================================================================================================
 
 # Check if user is admin
 @superuser_or_multiple_groups_required(['manager', 'Admin'])
@@ -390,16 +399,39 @@ def group_detail(request, group_id):
         'permissions': permissions,
     })
 
+@superuser_or_multiple_groups_required(['manager', 'Admin'])
+def remove_user_from_group(request, group_id, user_id):
+    group = Group.objects.get(id=group_id)
+    user = User.objects.get(id=user_id)
+    group.user_set.remove(user)
+    return redirect('group_detail', group_id=group.id)
 
-#Deliver Crew Features
+@superuser_or_multiple_groups_required(['manager', 'Admin'])
+def remove_permission_from_group(request, group_id, perm_id):
+    group = Group.objects.get(id=group_id)
+    permission = Permission.objects.get(id=perm_id)
+    group.permissions.remove(permission)
+    return redirect('group_detail', group_id=group.id)
+
+#=======================================================================================================
+# Delivery Crew
+#=======================================================================================================
+
 @login_required
 @superuser_or_multiple_groups_required(['manager', 'Admin', 'Delivery Crew'])
 def delivery_crew_dashboard(request):
-    # Show orders assigned to the logged-in delivery crew member
-    orders = Order.objects.filter(delivery_crew=request.user, status=False)
+    if request.user.groups.filter(name="manager").exists():  # If user is a manager
+        # Manager can see all unassigned orders (status=False, no delivery crew)
+        orders = Order.objects.filter(delivery_crew__isnull=True, status=False)
+    else:  # If the user is delivery crew
+        # Delivery crew can only see orders assigned to them
+        orders = Order.objects.filter(delivery_crew=request.user, status=False)
+    
     return render(request, 'delivery_dashboard.html', {'orders': orders})
 
+
 @login_required
+@superuser_or_multiple_groups_required(['manager', 'Admin', 'Delivery Crew'])
 def update_order_status(request, order_id):
     # Get the order based on the provided order_id
     order = get_object_or_404(Order, id=order_id, delivery_crew=request.user)
@@ -415,6 +447,76 @@ def update_order_status(request, order_id):
         return redirect('delivery_crew_dashboard')  # Redirect to dashboard after updating status
 
     return render(request, 'update_order_status.html', {'order': order})
+
+@login_required
+@superuser_or_multiple_groups_required(['manager', 'Admin', 'Delivery Crew'])
+def assign_delivery_crew(request, order_id):
+    # Get the order
+    order = get_object_or_404(Order, id=order_id)
+
+    # Check if the order is still pending and no crew assigned
+    if order.status or order.delivery_crew:
+        return HttpResponse("Order already completed or delivery crew assigned", status=400)
+
+    # Handle POST request
+    if request.method == 'POST':
+        delivery_crew_id = request.POST.get('delivery_crew')
+        if delivery_crew_id:
+            delivery_crew = get_object_or_404(User, id=delivery_crew_id)
+
+            # Assign the delivery crew to the order
+            order.delivery_crew = delivery_crew
+            order.save()
+
+            # Redirect to the orders list or confirmation page
+            return redirect('orders_list')
+
+    # For GET requests, show the form
+    delivery_crew = User.objects.filter(groups__name='Delivery Crew')
+    return render(request, 'assign_delivery_crew.html', {'order': order, 'delivery_crew': delivery_crew})
+
+@login_required
+@superuser_or_multiple_groups_required(['manager', 'Admin'])
+def delivery_crew_list(request):
+    # Fetch all users in the Delivery Crew group
+    delivery_crew_members = User.objects.filter(groups__name='Delivery Crew')
+
+    crew_data = []
+
+    for crew in delivery_crew_members:
+        # Count orders assigned to this crew member
+        assigned_orders = Order.objects.filter(delivery_crew=crew).count()
+        completed_orders = Order.objects.filter(delivery_crew=crew, status=True).count()
+        pending_orders = assigned_orders - completed_orders
+        is_available = True  # Example: this could be dynamic based on some logic
+
+        crew_data.append({
+            'name': crew.username,
+            'assigned_orders': assigned_orders,
+            'completed_orders': completed_orders,
+            'pending_orders': pending_orders,
+            'is_available': is_available,
+            'crew_id': crew.id
+        })
+
+    return render(request, 'delivery_crew_list.html', {'crew_data': crew_data})
+
+@login_required
+@superuser_or_multiple_groups_required(['manager', 'Admin'])
+def remove_delivery_crew(request, user_id):
+    delivery_crew_member = get_object_or_404(User, id=user_id)
+
+    # Ensure the user is in the 'Delivery Crew' group
+    if delivery_crew_member.groups.filter(name='Delivery Crew').exists():
+        # Remove the user from the 'Delivery Crew' group
+        delivery_crew_member.groups.remove(delivery_crew_member.groups.get(name='Delivery Crew'))
+        return redirect('delivery_crew_list')  # Redirect to the crew list after removal
+    else:
+        return HttpResponseForbidden("This user is not a member of the Delivery Crew group.")
+
+#=======================================================================================================
+# Orders
+#=======================================================================================================
 
 @login_required
 def place_order(request):
@@ -460,43 +562,47 @@ def order_history(request):
 
     return render(request, 'order_history.html', {'orders': orders})
 
-
-@login_required
-@login_required
-def assign_delivery_crew(request, order_id):
-    # Get the order
-    order = get_object_or_404(Order, id=order_id)
-
-    # Check if the order is still pending and no crew assigned
-    if order.status or order.delivery_crew:
-        return HttpResponse("Order already completed or delivery crew assigned", status=400)
-
-    # Handle POST request
-    if request.method == 'POST':
-        delivery_crew_id = request.POST.get('delivery_crew')
-        if delivery_crew_id:
-            delivery_crew = get_object_or_404(User, id=delivery_crew_id)
-
-            # Assign the delivery crew to the order
-            order.delivery_crew = delivery_crew
-            order.save()
-
-            # Redirect to the orders list or confirmation page
-            return redirect('orders_list')
-
-    # For GET requests, show the form
-    delivery_crew = User.objects.filter(groups__name='Delivery Crew')
-    return render(request, 'assign_delivery_crew.html', {'order': order, 'delivery_crew': delivery_crew})
-
-
-
+@superuser_or_multiple_groups_required(['manager', 'Admin', 'Delivery Crew'])
 def order_detail(request, order_id):
     order = get_object_or_404(Order, id=order_id)
     # Get all delivery crew members (users with 'delivery crew' group)
     delivery_crew = User.objects.filter(groups__name='delivery crew')
     return render(request, 'order_detail.html', {'order': order, 'delivery_crew': delivery_crew})
 
+@superuser_or_multiple_groups_required(['manager', 'Admin'])
 def orders_list(request):
     orders = Order.objects.all()
     delivery_crew = User.objects.filter(groups__name='Delivery Crew')  # Get delivery crew members
     return render(request, 'orders_list.html', {'orders': orders, 'delivery_crew': delivery_crew})
+
+
+#=======================================================================================================
+# Manager Dash Board
+#=======================================================================================================
+def manager_dashboard(request):
+    if not request.user.is_authenticated or not (request.user.is_superuser or request.user.groups.filter(name='manager').exists()):
+        return redirect('home')  # Redirect to home if not a manager
+
+    # Set a session variable to indicate that the manager is viewing the manager dashboard
+    request.session['manager_view'] = True
+
+    # Pass the manager dashboard context
+    context = {
+        'is_manager': True
+    }
+    return render(request, 'manager_dashboard.html', context)
+
+def regular_view(request):
+    # If the user is no longer in the manager view, reset the session flag
+    if 'manager_view' in request.session:
+        del request.session['manager_view']
+
+    return redirect('home')  # Redirect to regular view (or wherever you want to go)
+
+def home_clear_manager(request):
+    # Clear the manager view session flag when accessing home from the manager view
+    if 'manager_view' in request.session:
+        del request.session['manager_view']
+    
+    # Redirect to the regular home page or any other page as needed
+    return redirect('home')

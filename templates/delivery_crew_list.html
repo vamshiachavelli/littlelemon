@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}Delivery Crew List{% endblock %}
+{% load static %}
+{% block content %}
+<div class="dashboard-container">
+  <h1 class="dashboard-title">Delivery Crew List</h1>
+
+  {% if crew_data %}
+  <div class="crew-list">
+    <div class="crew-header">
+      <div class="crew-header-item">Name</div>
+      <div class="crew-header-item">Assigned Orders</div>
+      <div class="crew-header-item">Completed Orders</div>
+      <div class="crew-header-item">Pending Orders</div>
+      <div class="crew-header-item">Availability</div>
+      <div class="crew-header-item">Actions</div>
+    </div>
+
+    {% for crew in crew_data %}
+    <div class="crew-card">
+      <div class="crew-item">{{ crew.name }}</div>
+      <div class="crew-item">{{ crew.assigned_orders }}</div>
+      <div class="crew-item">{{ crew.completed_orders }}</div>
+      <div class="crew-item">{{ crew.pending_orders }}</div>
+      <div class="crew-item">
+        {% if crew.is_available %}
+          Available
+        {% else %}
+          Not Available
+        {% endif %}
+      </div>
+      <div class="crew-item">
+        <form method="post" action="{% url 'remove_delivery_crew' crew.crew_id %}" style="display:inline;">
+          {% csrf_token %}
+          <button type="submit" class="remove-button">Remove</button>
+        </form>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="no-crew">No delivery crew members found.</p>
+  {% endif %}
+</div>
+{% endblock %}

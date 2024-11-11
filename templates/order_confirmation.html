@@ -1,5 +1,9 @@
-{% extends 'base.html' %} {% load static %} {% block title %}Order
-Confirmation{% endblock %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Order Confirmation{% endblock %}
+
+{% block content %}
 <section class="order-confirmation">
   <div class="confirmation-header">
     <h1>Your Order Has Been Placed!</h1>
@@ -20,7 +24,9 @@ Confirmation{% endblock %} {% block content %}
     {% for item in order.orderitem_set.all %}
     <li>
       <span class="item-title">{{ item.menuitem.title }}</span>
-      <span class="item-quantity">(x </span>
+      <span class="item-quantity">x {{ item.quantity }}</span>
     </li>
+    {% endfor %}
   </ul>
 </section>
+{% endblock %}
