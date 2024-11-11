@@ -3,11 +3,6 @@
 <div class="manage-groups-container">
   <h1 class="page-heading">Manage Groups</h1>
 
-  <!-- Link to add a new group -->
-  <div class="add-group-container">
-    <a href="{% url 'add_group' %}" class="add-group-btn">+ Add New Group</a>
-  </div>
-
   <!-- Two Columns: Left for Permissions, Right for Groups -->
   <div class="manage-content">
     <!-- Right Column: Groups -->
@@ -22,6 +17,12 @@
         </li>
         {% endfor %}
       </ul>
+      <!-- Link to add a new group -->
+      <div class="add-group-container">
+        <a href="{% url 'add_group' %}" class="add-group-btn"
+          >+ Add New Group</a
+        >
+      </div>
     </div>
   </div>
 </div>

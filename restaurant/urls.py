@@ -52,6 +52,9 @@ urlpatterns = [
     path('home-clear-manager/', views.home_clear_manager, name='home_clear_manager'),
     path('delivery-crew-list/', views.delivery_crew_list, name='delivery_crew_list'),
     path('remove-delivery-crew/<int:user_id>/', views.remove_delivery_crew, name='remove_delivery_crew'),
+    path('delete_user/<int:user_id>/', views.delete_user_view, name='delete_user'),
+    path('edit_user/<int:user_id>/', views.edit_user_view, name='edit_user'),
+
     
     path('', include(router.urls)),
 
