@@ -564,6 +564,7 @@ footer p {
 .menu-item .delete-button .remove-button{
     display: flex;
 }
+
 .remove-delete {
     display: flex; /* Enables Flexbox layout */
     justify-content: space-between;
@@ -691,18 +692,6 @@ footer p {
 
 .cta-button:hover {
     background-color: #495E57; /* Darken button on hover */
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    .about-section {
-        flex-direction: column; /* Stack content vertically on small screens */
-    }
-    
-    .about-content {
-        margin-right: 0; /* Remove right margin */
-        margin-bottom: 2rem; /* Space below content */
-    }
 }
 
 /* booking */
@@ -872,6 +861,7 @@ footer p {
     cursor: pointer;
     transition: background-color 0.3s;
 }
+
 .cart-controls {
     display: flex;
     align-items: center;
@@ -972,115 +962,34 @@ footer p {
 }
 
 .form-container {
-    display: flex; /* Enables flexbox layout */
-    flex-direction: column; /* Stack elements vertically */
-    gap: 30px; /* Increased space between the heading and sections */
-    max-width: 1200px; /* Set a maximum width for the container */
-    margin: auto; /* Center the container on the page */
-    padding: 20px; /* Add padding around the container */
+  display: flex; /* Enables flexbox layout */
+  flex-direction: column; /* Stack elements vertically */
+  gap: 30px; /* Increased space between the heading and sections */
+  max-width: 1200px; /* Set a maximum width for the container */
+  margin: auto; /* Center the container on the page */
+  padding: 20px; /* Add padding around the container */
 }
 
 .form-and-confirmation {
-    display: flex; /* Enables flexbox layout */
-    gap: 30px; /* Increased space between the form and confirmation sections */
+  display: flex; /* Enables flexbox layout */
+  gap: 30px; /* Increased space between the form and confirmation sections */
 }
 
 .form-section,
 .confirmation-section {
-    flex: 1; /* Allow both sections to grow equally */
-    border: 1px solid #EDEFEE; /* Light border for separation */
-    border-radius: 10px; /* Rounded corners */
-    padding: 30px; /* Increased inner spacing */
-    background-color: #fdfdfd; /* Light background for contrast */
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  flex: 1; /* Allow both sections to grow equally */
+  border: 1px solid #EDEFEE; /* Light border for separation */
+  border-radius: 10px; /* Rounded corners */
+  padding: 30px; /* Increased inner spacing */
+  background-color: #fdfdfd; /* Light background for contrast */
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 .confirmation-section {
-    display: flex; /* Enables flexbox layout for confirmation details */
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center align items horizontally */
+  display: flex; /* Enables flexbox layout for confirmation details */
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center align items horizontally */
 }
-
-.menu-image {
-    max-width: 80%; /* Ensure the image is responsive and use more space */
-    height: auto; /* Maintain aspect ratio */
-}
-
-
-/* Create New Group Page */
-.group-detail-container {
-  max-width: 600px;
-  margin: 0 auto;
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.page-heading {
-  font-size: 2rem;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-.input-field {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  transition: background-color 0.3s ease, border 0.3s ease;
-}
-
-.submit-btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-
-.submit-btn:hover {
-  background-color: #45a049;
-}
-
-/* Permissions Section */
-.permissions-checkboxes {
-  display: flex;
-  flex-direction: column;
-}
-
-.checkbox-container {
-  margin: 10px 0;
-  padding: 10px;
-  background-color: #f9f9f9;
-  border-radius: 4px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.checkbox-container:hover {
-  background-color: #f0f8ff;
-  transform: translateY(-2px);
-  cursor: pointer;
-}
-
-.checkbox-container label {
-  font-size: 1rem;
-  color: #333;
-}
-
-.checkbox-container:hover {
-  border-left: 4px solid #3498db;
-}
-
-
 
 /* Group Details Page */
 .group-detail-container {
@@ -1176,6 +1085,7 @@ footer p {
 .assign-crew-form button:hover {
   background-color: #0056b3;
 }
+
 /* Custom CSS for Delivery Crew Dashboard */
 .dashboard-container {
   max-width: 1200px;
@@ -1237,9 +1147,6 @@ footer p {
   text-align: center;
   margin-top: 50px;
 }
-
-
-
 /* Custom CSS for Reservation Success Page */
 .reservation-success {
   max-width: 900px;
@@ -1295,7 +1202,6 @@ footer p {
 .back-button:hover {
   background-color: #218838;
 }
-
 
 /* Order Confirmation Page Styles */
 .order-confirmation {
@@ -1493,13 +1399,6 @@ footer p {
   padding: 0;
 }
 
-.cart-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
-  border-bottom: 1px solid #eee;
-}
-
 .cart-item .item-name {
   font-size: 1.2rem;
   color: #333;
@@ -1544,6 +1443,7 @@ footer p {
   margin-top: 20px;
   font-weight: bold;
 }
+
 /* Update Order Status Page Styles */
 .order-status-update {
   max-width: 800px;
@@ -1587,11 +1487,6 @@ footer p {
 .update-status-button:hover {
   background-color: #218838;
 }
-
-
-
-
-
 
 /* Orders List Page Styles */
 .orders-list {
@@ -1683,8 +1578,6 @@ footer p {
   background-color: #218838;
 }
 
-
-
 /* Manage Groups Page */
 .manage-groups-container {
   max-width: 900px;
@@ -1732,30 +1625,276 @@ footer p {
 }
 
 .orders-section {
-    padding: 20px;
+  padding: 20px;
 }
 
 .orders-list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .order-item {
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin-bottom: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
 }
 
 .order-item h3 {
-    margin-top: 0;
-    color: #333;
+  margin-top: 0;
+  color: #333;
 }
 
 .order-actions {
-    margin-top: 10px;
+  margin-top: 10px;
+}
+
+.update-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.update-button:hover {
+  background-color: #45a049;
+}
+
+.completed-status {
+  color: green;
+  font-weight: bold;
+}
+
+.status-pending {
+  color: #f44336;
+}
+
+.status-delivered {
+  color: #4CAF50;
+}
+
+.order-details {
+  margin-top: 15px;
+}
+
+.order-details ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.order-details li {
+  margin: 5px 0;
+}
+
+.no-orders {
+  font-size: 1.2em;
+  color: #777;
+}
+
+button, .update-button {
+  cursor: pointer;
+}
+
+button:disabled, .completed-status {
+  background-color: grey;
+  cursor: not-allowed;
+}
+
+/* Container for the manager dashboard */
+.dashboard-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title style for the Manager Dashboard */
+.dashboard-title {
+  text-align: center;
+  color: #1f7f4e;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Style for the list of dashboard options */
+.dashboard-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Style for each dashboard item (menu link) */
+.dashboard-item {
+  background-color: #f4f4f4;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.dashboard-item:hover {
+  background-color: #1f7f4e;
+  transform: translateY(-2px);
+}
+
+.dashboard-link {
+  color: #333;
+  text-decoration: none;
+  font-size: 1.1rem;
+  display: block;
+}
+
+.dashboard-item:hover .dashboard-link {
+  color: #fff;
+}
+
+/* Delivery Crew List Styles */
+.dashboard-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.dashboard-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Crew List Styles */
+.crew-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.crew-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  background-color: #f4f4f4;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.crew-header-item {
+  text-align: center;
+  padding: 8px;
+}
+
+.crew-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.crew-item {
+  text-align: center;
+  padding: 8px;
+}
+
+/* Manage Groups Page */
+.manage-groups-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.manage-content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.groups-section {
+  width: 48%;
+}
+
+.group-list {
+  list-style-type: none;
+  padding: 0;
+}
+.group-item {
+  background-color: #f9f9f9;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.group-link {
+  text-decoration: none;
+  color: #35c635;
+  font-size: 1.1rem;
+}
+
+.group-link:hover {
+  text-decoration: underline;
+}
+
+.group-item:hover {
+  background-color: #e1f5fe;
+}
+
+.orders-section {
+  padding: 20px;
+}
+
+.order-item {
+background-color: #f9f9f9;
+margin-bottom: 20px;
+padding: 15px;
+border-radius: 5px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-header {
+font-size: 16px;
+}
+
+.order-header h2 {
+font-size: 18px;
+color: #333;
+}
+
+.order-header p {
+margin: 5px 0;
+}
+
+.assign-crew {
+  margin-top: 15px;
+  background-color: #e1f5fe;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.assign-crew form {
+  display: flex;
+  flex-direction: column;
+}
+
+.assign-crew label {
+  margin-bottom: 5px;
+}
+
+.assign-crew select, .assign-crew button {
+  margin-bottom: 10px;
+  padding: 8px;
+  font-size: 14px;
 }
 
 .update-button {
@@ -1782,34 +1921,73 @@ footer p {
 .status-delivered {
     color: #4CAF50;
 }
-
-.order-details {
-    margin-top: 15px;
-}
-
 .order-details ul {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 .order-details li {
-    margin: 5px 0;
+  margin: 5px 0;
 }
 
 .no-orders {
-    font-size: 1.2em;
-    color: #777;
+  font-size: 1.2em;
+  color: #777;
+}
+.orders-container {
+display: flex;
+justify-content: space-between;
+gap: 30px; /* Adjusts the gap between left and right */
+margin-top: 20px;
 }
 
-button, .update-button {
-    cursor: pointer;
+.assigned-orders, .unassigned-orders {
+  width: 48%; /* Adjust the width to control how much space each side takes */
 }
 
-button:disabled, .completed-status {
-    background-color: grey;
-    cursor: not-allowed;
+.orders {
+  list-style-type: none;
+  padding: 0;
 }
 
+.order-item {
+  background-color: #f9f9f9;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-header h3 {
+  font-size: 18px;
+  color: #333;
+}
+
+.order-header p {
+  margin: 5px 0;
+}
+
+.assign-crew {
+  margin-top: 15px;
+  background-color: #e1f5fe;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.assign-crew form {
+  display: flex;
+  flex-direction: column;
+}
+
+.assign-crew label {
+  margin-bottom: 5px;
+}
+
+.assign-crew select, .assign-crew button {
+  margin-bottom: 10px;
+  padding: 8px;
+  font-size: 14px;
+}
 /* Responsive Design */
 @media (max-width: 768px) {
   .manage-content {
@@ -1999,3 +2177,15 @@ button:disabled, .completed-status {
       padding: 10px 15px;
     }
   }
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .crew-header {
+      grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .crew-card {
+      grid-template-columns: 1fr 1fr 1fr;
+  }
+}

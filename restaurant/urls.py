@@ -21,12 +21,12 @@ urlpatterns = [
     path('login/', views.login_view, name='Login'),
     path('logout/', views.logout_view, name='Logout'),
     path('register/', views.register, name='register'),
-    path('users/', views.UserListView.as_view(), name='user-list'),  # Ensure this matches
+    path('users/', views.UserListView.as_view(), name='user-list-api'),  # Ensure this matches
     path('api/menu/', views.MenuItemsView.as_view(), name='menu-items'),  # Example for API endpoint
     path('api/menu/<int:pk>/', views.SingleMenuItemView.as_view(), name='single-menu-item'),  # URL for single menu item
     path('api/SingleMenuItemView/', views.SingleMenuItemView.as_view(), name='SingleMenuItemView'),
     path('api-token-auth/', obtain_auth_token),
-    path('use/', views.user_list_view, name='user_list'),  # Add this line
+    path('all-users/', views.user_list_view, name='user_list'),  # Add this line
     path('registration_success/<int:user_id>/', views.registration_success, name='registration_success'),  # Updated URL
     path('dish-of-the-day/', views.dish_of_the_day, name='dish_of_the_day'),
     path('toggle-dish-of-the-day/<int:item_id>/', views.toggle_dish_of_the_day, name='toggle_dish_of_the_day'),
@@ -48,7 +48,11 @@ urlpatterns = [
     path('assign-delivery-crew/<int:order_id>/', views.assign_delivery_crew, name='assign_delivery_crew'),
     path('order-detail/<int:order_id>/', views.order_detail, name='order_detail'),
     path('orders/', views.orders_list, name='orders_list'),
-
+    path('manager-dashboard/', views.manager_dashboard, name='manager_dashboard'),
+    path('home-clear-manager/', views.home_clear_manager, name='home_clear_manager'),
+    path('delivery-crew-list/', views.delivery_crew_list, name='delivery_crew_list'),
+    path('remove-delivery-crew/<int:user_id>/', views.remove_delivery_crew, name='remove_delivery_crew'),
+    
     path('', include(router.urls)),
 
     # Add more patterns as needed

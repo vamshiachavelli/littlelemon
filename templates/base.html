@@ -1,4 +1,5 @@
-{% load static %} {% load custom_filters %}
+{% load static %} 
+{% load custom_filters %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,41 +20,47 @@
       <nav>
         <div class="nav-container">
           <ul class="nav-left">
+            {% if not request.session.manager_view %}
+            <!-- Regular User Navigation -->
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'about' %}">About</a></li>
             <li><a href="{% url 'menu' %}">Menu</a></li>
             <li><a href="{% url 'book_table' %}">Booking</a></li>
             <li><a href="{% url 'cart_detail' %}">Cart</a></li>
+            {% else %}
+            <!-- Manager-Specific Navigation -->
+            <li><a href="{% url 'add_menu_item' %}">New Dish</a></li>
+            <li><a href="{% url 'orders_list' %}">Orders</a></li>
+            <li><a href="{% url 'dish_of_the_day' %}">Dish for Day</a></li>
+            <li><a href="{% url 'manage_groups' %}">Groups</a></li>
+            <li><a href="{% url 'delivery_crew_list' %}">Delivery Crew</a></li>
+            <li><a href="{% url 'user_list' %}">All Users</a></li>
+            <li><a href="{% url 'home_clear_manager' %}">Home</a></li>
+            {% endif %}
           </ul>
 
           <ul class="nav-center">
-            {% if user.is_superuser or user|is_in_group:"manager" %}
-            <li><a href="{% url 'add_menu_item' %}">New Dish</a></li>
-            <li><a href="{% url 'orders_list' %}">Ordes</a></li>
-            <li><a href="{% url 'dish_of_the_day' %}">Dish of Day</a></li>
-            <li><a href="{% url 'manage_groups' %}">Groups</a></li>
-            <li>
-              <a href="{% url 'delivery_crew_dashboard' %}"
-                >Delivery Dashboard</a
-              >
-            </li>
-            {% endif %} {% if user|is_in_group:"Delivery Crew" %}
-            <li>
-              <a href="{% url 'delivery_crew_dashboard' %}"
-                >Delivery Dashboard</a
-              >
-            </li>
+            {% if user.is_authenticated %}
+              {% if user.is_superuser or user|is_in_group:"manager" %}
+                {% if not request.session.manager_view %}
+                  <li><a href="{% url 'manager_dashboard' %}" class="manager-link">Manager</a></li>
+                {% endif %}
+              {% endif %}
+            {% endif %}
+
+            {% if user|is_in_group:"Delivery Crew" %}
+              <li><a href="{% url 'delivery_crew_dashboard' %}" class="delivery-dashboard-link">Delivery Dashboard</a></li>
             {% endif %}
           </ul>
 
           <ul class="nav-right">
             {% if user.is_authenticated %}
-            <li>Welcome, {{ user.username }}!</li>
-            <li><a href="{% url 'order_history' %}">Order History</a></li>
-            <li><a href="{% url 'Logout' %}">Logout</a></li>
+              <li>Welcome, {{ user.username }}!</li>
+              <li><a href="{% url 'order_history' %}">Order History</a></li>
+              <li><a href="{% url 'Logout' %}">Logout</a></li>
             {% else %}
-            <li><a href="{% url 'Login' %}">Login</a></li>
-            <li><a href="{% url 'register' %}">Register</a></li>
+              <li><a href="{% url 'Login' %}">Login</a></li>
+              <li><a href="{% url 'register' %}">Register</a></li>
             {% endif %}
           </ul>
         </div>
