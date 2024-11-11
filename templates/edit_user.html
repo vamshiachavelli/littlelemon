@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% block title %}Edit User - Little Lemon{% endblock%}
+{% block content %}
+<section class="edit-section">
+  <div class="edit-content">
+    <h1 class="edit-heading">Edit User</h1>
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          value="{{ user.username }}"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          value="{{ user.email }}"
+          required
+        />
+      </div>
+      <button type="submit" class="save-button">Save Changes</button>
+      <a href="{% url 'user_list' %}" class="cta-button">Cancel</a>
+    </form>
+  </div>
+</section>
+{% endblock %}

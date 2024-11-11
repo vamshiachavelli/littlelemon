@@ -9,6 +9,7 @@ Lemon{% endblock %} {% block content %}
           <th>ID</th>
           <th>Username</th>
           <th>Email</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -17,6 +18,17 @@ Lemon{% endblock %} {% block content %}
           <td>{{ user.id }}</td>
           <td>{{ user.username }}</td>
           <td>{{ user.email }}</td>
+          <td>
+            <a href="{% url 'edit_user' user.id %}" class="edit-button">Edit</a>
+            <form
+              action="{% url 'delete_user' user.id %}"
+              method="post"
+              style="display: inline"
+            >
+              {% csrf_token %}
+              <button type="submit" class="delete-button">Delete</button>
+            </form>
+          </td>
         </tr>
         {% endfor %}
       </tbody>

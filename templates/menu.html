@@ -64,7 +64,7 @@ Lemon{% endblock %} {% block content %}
           <button type="submit" class="add-to-cart-button">Add to Cart</button>
         </form>
 
-        {% if request.user.is_superuser %}
+        {% if is_manager_or_superuser %}
         <div class="remove-delete">
           <form
             method="POST"

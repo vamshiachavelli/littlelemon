@@ -127,6 +127,30 @@ def user_list_view(request):
         return render(request, 'user_list.html', {'users': users})
     else:
         return render(request, 'login.html', {'error': 'You must be logged in to view this page.'})
+    
+@login_required
+@superuser_or_multiple_groups_required(['manager', 'Admin'])
+def delete_user_view(request, user_id):
+    """Delete a user if the current user has the required permissions."""
+    user = get_object_or_404(User, id=user_id)
+    user.delete()
+    return redirect('user_list')
+
+@login_required
+@superuser_or_multiple_groups_required(['manager', 'Admin'])
+def edit_user_view(request, user_id):
+    """Edit a user's details if the current user has the required permissions."""
+    user = get_object_or_404(User, id=user_id)
+
+    if request.method == 'POST':
+        # Update user details from form data
+        user.username = request.POST.get('username')
+        user.email = request.POST.get('email')
+        user.save()
+        return redirect('user_list')  # Redirect to user list after saving
+
+    # Render the edit user form with current user data pre-filled
+    return render(request, 'edit_user.html', {'user': user})
 
 #=======================================================================================================
 # Menu Features
@@ -149,6 +173,7 @@ def menu(request): #any one can see whole menu page
         else:
             cart_items = CartItem.objects.none()  # Empty QuerySet if no cart_id in session
             cart_item_ids = set()
+    is_manager_or_superuser = request.user.is_superuser or request.user.groups.filter(name__in=['manager']).exists()
 
     categories = Menu.objects.values('category').distinct()  # Get distinct categories
     menu_items = Menu.objects.all()  # Get all menu items
@@ -157,6 +182,8 @@ def menu(request): #any one can see whole menu page
         'categories': categories,
         'cart_items': cart_items,  # Pass the cart items to the template
         'cart_item_ids': cart_item_ids,  # Pass the set of item ids that are in the cart
+        'is_manager_or_superuser': is_manager_or_superuser,
+
     })
 
 # Single Menu Item View

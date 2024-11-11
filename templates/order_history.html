@@ -10,8 +10,8 @@ Little Lemon{%endblock%} {% block content %}
       <h3>Order ID: {{ order.id }}</h3>
       <p><strong>Date:</strong> {{ order.date }}</p>
       <p>
-        <strong>Status:</strong> {% if order.status %}Completed{% else
-        %}Pending{% endif %}
+        <strong>Status:</strong> {% if order.status %} Completed
+        {%else%}Pending{% endif %}
       </p>
       <p><strong>Total Cost:</strong> ${{ order.total }}</p>
 

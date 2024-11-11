@@ -992,14 +992,129 @@ footer p {
 }
 
 /* Group Details Page */
+/* Main Container Styling */
 .group-detail-container {
-  max-width: 900px;
+  padding: 40px;
+  max-width: 600px;
   margin: 0 auto;
-  background-color: white;
-  padding: 20px;
+  background-color: #f9fafc;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
+/* Page Heading */
+.page-heading {
+  font-size: 28px;
+  color: #333;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Form Group Styling */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* Input Field Styling */
+.input-field {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+.input-field:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+/* Permissions Checkboxes - Card Style */
+.permissions-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.checkbox-container {
+  background-color: #f1f5f8;
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.checkbox-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.checkbox-container input[type="checkbox"] {
+  margin-right: 12px;
+  width: 18px;
+  height: 18px;
+  accent-color: #4CAF50;
+  cursor: pointer;
+}
+
+.checkbox-container label {
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .permissions-checkboxes {
+      grid-template-columns: 1fr;
+  }
+}
+
+
+/* Submit Button Styling */
+.submit-btn {
+  width: 100%;
+  padding: 14px 0;
+  font-size: 16px;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #45a049;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .group-detail-container {
+      padding: 20px;
+  }
+
+  .permissions-checkboxes {
+      grid-template-columns: 1fr;
+  }
+}
+
 
 .permissions-section, .users-section {
   margin-bottom: 30px;
@@ -1578,51 +1693,81 @@ footer p {
   background-color: #218838;
 }
 
-/* Manage Groups Page */
-.manage-groups-container {
-  max-width: 900px;
-  margin: 0 auto;
-  background-color: white;
+
+/* Add Group Button Styling */
+.add-group-container {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.add-group-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+}
+
+.add-group-btn:hover {
+  background-color: #45a049;
+}
+
+/* Manage Content Section */
+.manage-content {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Groups Section Styling */
+.groups-section {
+  background-color: #ffffff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  max-width: 400px;
 }
 
-.manage-content {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+.groups-section h2 {
+  font-size: 20px;
+  color: #333333;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-align: center;
 }
 
-.groups-section {
-  width: 48%;
-}
-
+/* Group List Styling */
 .group-list {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .group-item {
-  background-color: #f9f9f9;
-  margin: 5px 0;
-  padding: 10px;
-  border-radius: 4px;
+  margin-bottom: 10px;
 }
 
 .group-link {
+  display: block;
+  padding: 10px 15px;
+  background-color: #e9ecef;
+  color: #333333;
+  border-radius: 4px;
+  font-size: 16px;
   text-decoration: none;
-  color: #35c635;
-  font-size: 1.1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .group-link:hover {
-  text-decoration: underline;
+  background-color: #d4d7dc;
+  color: #4CAF50;
 }
 
-.group-item:hover {
-  background-color: #e1f5fe;
-}
 
 .orders-section {
   padding: 20px;
@@ -1805,51 +1950,6 @@ button:disabled, .completed-status {
   padding: 8px;
 }
 
-/* Manage Groups Page */
-.manage-groups-container {
-  max-width: 900px;
-  margin: 0 auto;
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.manage-content {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.groups-section {
-  width: 48%;
-}
-
-.group-list {
-  list-style-type: none;
-  padding: 0;
-}
-.group-item {
-  background-color: #f9f9f9;
-  margin: 5px 0;
-  padding: 10px;
-  border-radius: 4px;
-}
-
-.group-link {
-  text-decoration: none;
-  color: #35c635;
-  font-size: 1.1rem;
-}
-
-.group-link:hover {
-  text-decoration: underline;
-}
-
-.group-item:hover {
-  background-color: #e1f5fe;
-}
-
 .orders-section {
   padding: 20px;
 }
@@ -1988,6 +2088,183 @@ margin-top: 20px;
   padding: 8px;
   font-size: 14px;
 }
+
+/* General Section Styling */
+.user-section {
+  padding: 40px;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-content {
+  max-width: 800px;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+/* Heading Styling */
+.user-heading {
+  text-align: center;
+  color: #333333;
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Table Styling */
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.user-table thead {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.user-table th,
+.user-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #dddddd;
+}
+
+.user-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Button Styling */
+.delete-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #cc0000;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #45a049;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  .user-content {
+      padding: 15px;
+  }
+
+  .user-table th,
+  .user-table td {
+      padding: 10px;
+  }
+
+  .user-heading {
+      font-size: 20px;
+  }
+
+  .cta-button, .delete-button {
+      font-size: 12px;
+      padding: 8px 10px;
+  }
+}
+.edit-section {
+  padding: 40px;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-content {
+  max-width: 600px;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.edit-heading {
+  text-align: center;
+  color: #333333;
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 500;
+  color: #333333;
+  margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+}
+
+.save-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.save-button:hover {
+  background-color: #45a049;
+}
+/* Edit Button Styling */
+.edit-button {
+  background-color: #4CAF50; /* Green color for edit */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  text-decoration: none; /* Remove underline if it's a link */
+}
+
+.edit-button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .manage-content {
