@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Delete Booking -
+Little Lemon{% endblock %} {% block content %}
+<section class="delete-booking-section container">
+  <h1 class="delete-booking-title">Delete Booking</h1>
+  <p class="confirm-delete-message">
+    Are you sure you want to delete this booking?
+  </p>
+  <form method="POST" class="delete-booking-form">
+    {% csrf_token %}
+    <button type="submit" class="btn-delete">Delete</button>
+  </form>
+</section>
+{% endblock %}

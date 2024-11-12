@@ -1,5 +1,7 @@
-{% extends 'base.html' %} {% load static %} {% block title %}Order
-Details{%endblock%} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Order Details{% endblock %}
+{% block content %}
 <section class="order-details-section">
   <h1>Order Details for Order #{{ order.id }}</h1>
 
@@ -11,21 +13,5 @@ Details{%endblock%} {% block content %}
       Pending {% endif %}
     </p>
   </div>
-
-  {% if not order.status %}
-  <div class="assign-crew">
-    <h2>Assign Delivery Crew</h2>
-    <form method="POST">
-      {% csrf_token %}
-      <label for="delivery_crew">Select Delivery Crew:</label>
-      <select name="delivery_crew" id="delivery_crew" required>
-        {% for crew in delivery_crew %}
-        <option value="{{ crew.id }}">{{ crew.username }}</option>
-        {% endfor %}
-      </select>
-      <button type="submit">Assign</button>
-    </form>
-  </div>
-  {% endif %}
 </section>
 {% endblock %}
