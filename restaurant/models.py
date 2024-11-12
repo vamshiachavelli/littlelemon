@@ -22,12 +22,18 @@ class Menu(models.Model):
         return f'{self.title} : {self.inventory}'
 
 class Booking(models.Model):
+    STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('done', 'Done'),
+        ('cancelled', 'Cancelled'),
+    ]
     name = models.CharField(max_length=100)
     email = models.EmailField(default='placeholder@example.com')  # Placeholder email
     date = models.DateField(default=timezone.now)  # Default to current date
     time = models.TimeField(default=timezone.now)  # Default to current time
     guests = models.PositiveIntegerField(default=2)
-    
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
+
     def __str__(self):
         return f"{self.name} - {self.date} {self.time}"
 

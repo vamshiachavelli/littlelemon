@@ -1,508 +1,1269 @@
 body {
-    font-family: 'Karla', sans-serif;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-    margin-left: 5%;
-    margin-right: 5%;
+  font-family: 'Karla', sans-serif;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
-
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Markazi Text', serif;
-    letter-spacing: 2px;;
+  font-family: 'Markazi Text', serif;
+  letter-spacing: 2px;
 }
 
 h1 {
-    font-size: 4rem;
-    margin-top: 1.5rem;
-    margin-bottom: 0;
+  font-size: 4rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0;
 }
 
 h2 {
-    font-size: 2.5rem;
-    color: #333333;
-    margin:1rem 0;
+  font-size: 2.5rem;
+  color: #333333;
+  margin: 1rem 0;
 }
 
-p, ul{
-    font-size: 1.25rem;;
+p, ul {
+  font-size: 1.25rem;
 }
 
 a {
-    color: #EE9972;
-    text-decoration: none;
+  color: #EE9972;
+  text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 header img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 100%;
-    height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  height: auto;
 }
 
-
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #495E57; /* Change to your preferred color */
-    padding: 10px 20px;
-    margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #495E57;
+  padding: 10px 20px;
+  margin-top: 1rem;
 }
 
 .nav-container {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav-left, .nav-center, .nav-right {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-left li, .nav-center li, .nav-right li {
-    margin: 0 15px; /* Adjust spacing as needed */
+  margin: 0 15px;
 }
 
 .nav-left a, .nav-center a, .nav-right a {
-    color: white; /* Change to your preferred text color */
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 
 .nav-left a:hover, .nav-center a:hover, .nav-right a:hover {
-    text-decoration: underline; /* Add hover effect */
+  text-decoration: underline;
 }
 
 section {
-    display: flex;
-    gap: 2rem 1rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    flex-direction: row;
+  display: flex;
+  gap: 2rem 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  flex-direction: row;
 }
 
 article {
-    flex:1;
+  flex: 1;
 }
 
 article img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 article ul {
-    list-style: none;
+  list-style: none;
 }
 
 main article {
-    border: 1px solid #EDEFEE;
-    padding-left: 1rem;
-    padding-right: 1rem;
+  border: 1px solid #EDEFEE;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 figure {
-    margin: 0;
+  margin: 0;
 }
 
 label {
-    font-weight: bold;
-    display: block;
-  }
+  font-weight: bold;
+  display: block;
+}
 
-input{
-    width: 80%;
-    display: block;
-    padding: .5rem 1rem;
-    line-height: 1.5rem;
-    box-sizing: border-box;
+input {
+  width: 80%;
+  display: block;
+  padding: .5rem 1rem;
+  line-height: 1.5rem;
+  box-sizing: border-box;
 }
 
 #button {
-    padding: .5rem 1rem;
-    border: 1px solid #495E57;
-    background-color:#495E57;;
-    border-radius: 5px;
-    width: 80%;
-    font-size: 1.25rem;
-    display: block;
-    color: #fff;
-    line-height: 25px;
-  }
+  padding: .5rem 1rem;
+  border: 1px solid #495E57;
+  background-color: #495E57;
+  border-radius: 5px;
+  width: 80%;
+  font-size: 1.25rem;
+  display: block;
+  color: #fff;
+  line-height: 25px;
+}
 
 #hero {
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url('../img/restaurant_inside.jpg');
-    background-size: cover;
-    background-position: 75%;
-    color: white;
-    min-height: 200px;
-    text-align: center;;
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url('../img/restaurant_inside.jpg');
+  background-size: cover;
+  background-position: 75%;
+  color: white;
+  min-height: 200px;
+  text-align: center;
 }
 
 #hero p {
-    font-size: 2rem;
-    margin:0;
-    text-shadow: 2px 2px 4px #333333;
+  font-size: 2rem;
+  margin: 0;
+  text-shadow: 2px 2px 4px #333333;
 }
 
-.cta { 
-    display: inline-block; 
-    color: rgba(255, 255, 255, 0.9);
-    width: 200px; 
-    font-weight: bold; 
-    font-size: 1.5rem;
-    padding: 8px; 
-    border: 3px solid #fff; 
-    text-align: center; 
-    outline: none; 
-    text-decoration: none; 
-    margin: 1rem;
-} 
+.cta {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.9);
+  width: 200px;
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding: 8px;
+  border: 3px solid #fff;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+  margin: 1rem;
+}
 
 .cta:hover {
-    color:#fff;
-    background:#495E57;
-    border: 3px solid #495E57; 
-  }
+  color: #fff;
+  background: #495E57;
+  border: 3px solid #495E57;
+}
 
-  .heading-shadow {
-    text-shadow: 1px 1px 4px #333333;
-  }
+.heading-shadow {
+  text-shadow: 1px 1px 4px #333333;
+}
 
 footer {
-    background-color: #EDEFEE;
-    padding: 1rem;
-    display: flex;
-    gap: 2rem 1rem;
+  background-color: #EDEFEE;
+  padding: 1rem;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
-footer img {
-    max-width: 50%;
+.footer-left, .footer-center, .footer-right {
+  flex: 1;
+  min-width: 250px;
+  max-width: 350px;
+  padding: 10px;
 }
 
-footer p {
-    border-top: #333333;
-    border-style: solid;
-    border-width: 0.1rem;
-    border-bottom: none;
-    border-left: none;
-    border-right: none;
-    text-align: right;
-    padding-top: 1rem;;
+.footer-left img, .footer-center img, .footer-right img {
+  max-width: 100%;
 }
 
-.row {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    padding-bottom: 1rem;
+.footer-left p, .footer-center p, .footer-right p {
+  font-size: 14px;
 }
 
-.column {
-    flex-basis: 50%;
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
+.footer-left ul, .footer-center .social-media {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.column figure {
-    padding: 0px 12px;
-
+.footer-left ul li, .footer-center .social-media li {
+  margin-bottom: 10px;
 }
 
-
-.videowrap {
-	position: relative;
-	padding-bottom: 56.25%; /* 16:9 */
-	padding-top: 1rem;
-	height: 0;
-}
-.videowrap iframe {
-	position: absolute;
-    margin-top: 2rem;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+.footer-left ul li a, .footer-center .social-media li a {
+  color: #333;
+  text-decoration: none;
 }
 
-.group-management-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
-    margin-top: 50px;
-    padding: 20px;
-    flex-wrap: wrap;
+.footer-left ul li a:hover, .footer-center .social-media li a:hover {
+  color: #4A90E2;
 }
 
-.left-side,
-.right-side {
-    width: 48%; /* Split into two halves */
-    padding: 20px;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.footer-center form {
+  display: flex;
+  gap: 10px;
 }
 
-.left-side {
-    border-right: 2px solid #ddd; /* Divider between left and right side */
+.footer-center input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
 }
 
-.form-heading {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #333;
-    text-align: center;
+.footer-center button {
+  background-color: #4A90E2;
+  color: #fff;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.menu-form label {
-    font-weight: bold;
-    margin-top: 10px;
-    display: block;
+.footer-center button:hover {
+  background-color: #357ABD;
 }
 
-.menu-form input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 12px;
+  color: #777;
 }
 
-.submit-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1.2em;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.footer-bottom a {
+  color: #4A90E2;
+  text-decoration: none;
 }
 
-.submit-btn:hover {
-    background-color: #45a049;
+.footer-bottom a:hover {
+  text-decoration: underline;
 }
 
-/* Right Side Styling */
-.existing-groups {
-    display: flex;
+@media (max-width: 768px) {
+  footer {
     flex-direction: column;
-    gap: 20px;
-}
-
-.group-card {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.group-card h2 {
-    font-size: 1.5em;
-    color: #333;
-}
-
-.group-card h3 {
-    font-size: 1.2em;
-    color: #444;
-    margin-top: 20px;
-}
-
-.group-card ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.group-card ul li {
-    font-size: 1em;
-    padding: 8px 0;
-}
-
-.remove-link {
-    color: red;
-    margin-left: 10px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.remove-link:hover {
-    color: #e74c3c;
-}
-
-.permissions-grid {
-    margin-top: 1rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 0.5rem;
-}
-
-.permissions-grid .permission-item {
-    background: #f7f7f7;
-    padding: 0.5rem;
-    border-radius: 4px;
-    display: flex;
     align-items: center;
+    gap: 30px;
+  }
+
+  .footer-left, .footer-center, .footer-right {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .footer-center form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-center input {
+    margin-bottom: 10px;
+  }
 }
 
-.remove-link {
-    color: red;
-    margin-left: 10px;
-    text-decoration: none;
+@media (max-width: 800px) {
+  input {
+    width: 100%;
+  }
 }
+
+/* ========================================*/
+/* Foorter */
+/* ========================================*/
+
+/* Footer Styling */
+footer {
+  background-color: #EDEFEE;
+  padding: 40px 20px;
+  color: #333;
+  font-size: 14px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.footer-left, .footer-center, .footer-right {
+  flex: 1;
+  min-width: 250px;
+  max-width: 350px;
+}
+
+.footer-left img {
+  max-width: 150px;
+  margin-bottom: 15px;
+}
+
+.footer-left p {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.footer-left ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-left ul li {
+  margin-bottom: 10px;
+}
+
+.footer-left ul li a {
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.footer-left ul li a:hover {
+  color: #4A90E2;
+}
+
+.footer-center {
+  text-align: center;
+}
+
+.footer-center h4 {
+  font-size: 18px;
+  color: #4A90E2;
+  margin-bottom: 15px;
+}
+
+.footer-center .social-media {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.footer-center .social-media li {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.footer-center .social-media li a {
+  color: #333;
+  font-size: 16px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-center .social-media li a:hover {
+  color: #4A90E2;
+}
+
+.footer-center form {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.footer-center input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+}
+
+.footer-center input::placeholder {
+  color: #999;
+}
+
+.footer-center button {
+  background-color: #4A90E2;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.footer-center button:hover {
+  background-color: #357ABD;
+}
+
+.footer-right {
+  text-align: right;
+}
+
+.footer-right h4 {
+  font-size: 18px;
+  color: #4A90E2;
+  margin-bottom: 15px;
+}
+
+.footer-right p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 12px;
+  color: #777;
+  margin-top: 40px;
+}
+
+.footer-bottom a {
+  color: #4A90E2;
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-left, .footer-center, .footer-right {
+    max-width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .footer-center form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-center input {
+    margin-bottom: 10px;
+  }
+
+  .footer-right p {
+    text-align: center;
+  }
+}
+
+/* ========================================*/
+/* About */
+/* ========================================*/
+/* about */
+.about-section {
+  display: flex; /* Flexbox for layout */
+  justify-content: space-between; /* Space between content and image */
+  padding: 2rem; /* Padding around the section */
+  border: 2px solid #EDEFEE; /* Border around the entire section */
+  border-radius: 10px; /* Rounded corners */
+  background-color: #ffffff; /* Background color */
+}
+
+.about-content {
+  flex: 0 0 35%; /* Fixed width for content */
+  margin-right: 2rem; /* Space between content and image */
+}
+
+.about-heading {
+  font-size: 3rem; /* Large heading size */
+  margin-bottom: 0rem; /* Space below heading */
+  margin-top: 0rem;
+}
+
+.about-tagline {
+  font-size: 1.5rem; /* Tagline size */
+  margin: 0; /* Space above and below the tagline */
+  padding-left: 5rem; /* Space from the border */
+  font-style: italic; /* Italicize the tagline */
+  display: inline-block; /* Make it inline to attach to heading */
+
+}
+
+.about-team,
+.about-testimonials {
+  margin-top: .5rem; /* Space above team and testimonials */
+}
+
+.about-team h3,
+.about-testimonials h3 {
+  font-size: 1.5rem; /* Size for section headings */
+  margin-bottom: 0rem; /* Space below section heading */
+}
+
+.about-testimonials blockquote {
+  font-style: italic; /* Italicize the testimonial */
+  margin: 1rem 0; /* Space around the testimonial */
+  border-left: 3px solid #EE9972; /* Stylish left border */
+  padding-left: 1rem; /* Space from the border */
+}
+
+.about-image {
+  flex: 1; /* Take the remaining space for image */
+}
+
+.about-img {
+  max-width: 100%; /* Responsive image */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 10px; /* Rounded corners */
+}
+
+.cta-button {
+  display: inline-block; /* Make button a block */
+  margin-top: 1.5rem; /* Space above button */
+  padding: 0.5rem 1rem; /* Padding inside button */
+  background-color: #EE9972; /* Button color */
+  color: #fff; /* Text color */
+  text-decoration: none; /* Remove underline */
+  border-radius: 5px; /* Rounded corners for button */
+  font-size: 1.25rem; /* Button text size */
+}
+
+.cta-button:hover {
+  background-color: #495E57; /* Darken button on hover */
+}
+
+/* ========================================*/
+/* Menu */
+/* ========================================*/
+/* Ensure each menu item takes up the same space in a grid layout */
 
 
 .menu-section {
-    min-width: 300px; /* Set a minimum width for responsive design */
-    margin: 1rem 0; /* Spacing between sections */
-    padding: 1rem; /* Add padding around the section */
-    border: 1px solid #EDEFEE; /* Border around the section */
-    border-radius: 10px; /* Rounded corners for section */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Optional shadow for effect */
-    background-color: #FFFFFF; /* Optional: background color for sections */
+  min-width: 300px; /* Set a minimum width for responsive design */
+  margin: 1rem 0; /* Spacing between sections */
+  padding: 1rem; /* Add padding around the section */
+  border: 1px solid #EDEFEE; /* Border around the section */
+  border-radius: 10px; /* Rounded corners for section */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Optional shadow for effect */
+  background-color: #FFFFFF; /* Optional: background color for sections */
 }
 
 .menu-heading {
-    font-size: 4.5rem; /* Font size for the heading */
-    color: #495E57; /* Heading color */
-    margin: 2rem 0; /* Space above and below the heading */
-    text-align: center; /* Center the heading */
+  font-size: 4.5rem; /* Font size for the heading */
+  color: #495E57; /* Heading color */
+  margin: 2rem 0; /* Space above and below the heading */
+  text-align: center; /* Center the heading */
 }
 
 .menu-item {
-    margin-bottom: 2rem; /* Space between different categories */
-    position: relative;
+  margin-bottom: 2rem; /* Space between different categories */
+  position: relative;
 }
 
 .menu-content {
-    display: flex; /* Set display to flex */
-    flex-direction: column; /* Arrange items in a column */
-    align-items: center; /* Center align the items */
-    border-radius: 10px; /* Rounded corners */
-    padding: 1rem; /* Padding around each menu content block */
-    justify-content: space-between; /* Space items evenly within the container */
-    margin-bottom: 1.5rem; /* Add gap between each dish */
-    height: 250px;
-    transition: transform 0.3s, background-color 0.3s; /* Optional: smooth scale on hover */
+  display: flex; /* Set display to flex */
+  flex-direction: column; /* Arrange items in a column */
+  align-items: center; /* Center align the items */
+  border-radius: 10px; /* Rounded corners */
+  padding: 1rem; /* Padding around each menu content block */
+  justify-content: space-between; /* Space items evenly within the container */
+  margin-bottom: 1.5rem; /* Add gap between each dish */
+  height: 250px;
+  transition: transform 0.3s, background-color 0.3s; /* Optional: smooth scale on hover */
 }
 
 .menu-content:hover {
-    transform: scale(1.02); /* Slightly scale up on hover */
-    border-color: #a8dadc; /* Change border color on hover (optional) */
+  transform: scale(1.02); /* Slightly scale up on hover */
+  border-color: #a8dadc; /* Change border color on hover (optional) */
 }
 
 .menu-image {
-    max-width: 100%; /* Ensure responsive images */
-    max-height: 250px; /* Increase max height for images */
-    object-fit: cover;
-    border-radius: 10px; /* Rounded corners */
-}
-
-.menu-title {
-    margin-top: 1rem; /* Space above the dish title */
-    font-size: 1.75rem; /* Size for dish name */
-    text-align: center;
-}
-.menu-title-price {
-    display: flex; /* Flexbox to align title and price */
-    justify-content: space-between; /* Space between title and price */
-    width: 100%; /* Full width for alignment */
+  max-width: 100%; /* Ensure responsive images */
+  max-height: 250px; /* Increase max height for images */
+  object-fit: cover;
+  border-radius: 10px; /* Rounded corners */
 }
 
 .menu-under {
-    color: #495E57; /* Set text color */
-    margin-left: 2rem;
+  color: #495E57; /* Set text color */
+  margin-left: 2rem;
 }
 
 .menu-description {
-    font-size: 1.2rem; /* Font size for the paragraph */
-    color: #495E57; /* Text color */
-    margin: 1rem 0; /* Vertical margin for space above and below */
-    text-align: center; /* Center the paragraph */
-    line-height: 1.5; /* Increase line height for readability */
-    flex-grow: 1; /* Allow description to take up available space */
-}
-
-.menu-price {
-    display: block;
-    font-size: 1rem;
+  font-size: 1.2rem; /* Font size for the paragraph */
+  color: #495E57; /* Text color */
+  margin: 1rem 0; /* Vertical margin for space above and below */
+  text-align: center; /* Center the paragraph */
+  line-height: 1.5; /* Increase line height for readability */
+  flex-grow: 1; /* Allow description to take up available space */
 }
 
 /* Additional spacing to ensure consistent gaps */
 .menu-content img {
-    margin-bottom: 0.5rem; /* Small gap between image and title */
-    max-width: 100%;
-    max-height: 100%;
+  margin-bottom: 0.5rem; /* Small gap between image and title */
+  max-width: 100%;
+  max-height: 100%;
 }
 
 /* Assuming this is in your styles.css or relevant CSS file */
 .menu-item a {
-    text-decoration: none;  /* Removes the underline */
-    color: inherit;        /* Keeps the text color the same as surrounding text */
+  text-decoration: none;  /* Removes the underline */
+  color: inherit;        /* Keeps the text color the same as surrounding text */
 }
 
 .menu-item a:hover {
-    text-decoration: none;  /* Optional: Add underline on hover for better user experience */
+  text-decoration: none;  /* Optional: Add underline on hover for better user experience */
 }
 
 .cart-quantity {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    background: green; /* Set background to green */
-    color: white; /* Set text color to white */
-    padding: 5px 10px; /* Adjust padding if necessary */
-    border-radius: 50%; /* Make it a circle */
-    font-weight: bold;
-    width: 15px; /* Fixed width */
-    height: 20px; /* Fixed height */
-    text-align: center; /* Center text horizontally */
-    line-height: 25px; /* Vertically center the text */
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: green; /* Set background to green */
+  color: white; /* Set text color to white */
+  padding: 5px 10px; /* Adjust padding if necessary */
+  border-radius: 50%; /* Make it a circle */
+  font-weight: bold;
+  width: 15px; /* Fixed width */
+  height: 20px; /* Fixed height */
+  text-align: center; /* Center text horizontally */
+  line-height: 25px; /* Vertically center the text */
 }
-  
+
 
 .dish-of-the-day {
-    background-color: #ffeb3b; /* Bright yellow background for visibility */
-    border: 1px solid #fbc02d; /* A slightly darker border */
-    position: relative; /* Position relative for the label */
-    padding: .6rem; /* Padding for inner spacing */
-    margin: 1rem 0; /* Vertical spacing around the dish */
-    transition: transform 0.3s; /* Smooth scale effect on hover */
+  background-color: #ffeb3b; /* Bright yellow background for visibility */
+  border: 1px solid #fbc02d; /* A slightly darker border */
+  position: relative; /* Position relative for the label */
+  padding: .6rem; /* Padding for inner spacing */
+  margin: 1rem 0; /* Vertical spacing around the dish */
+  transition: transform 0.3s; /* Smooth scale effect on hover */
 }
 
 .dish-of-the-day:hover {
-    transform: scale(1.02); /* Slightly enlarge on hover */
+  transform: scale(1.02); /* Slightly enlarge on hover */
 }
 
 .dish-of-the-day::before {
-    content: "Dish of the Day"; /* Label for the dish of the day */
-    position: absolute; /* Position absolutely */
-    top: -10px; /* Adjust position above the dish */
-    left: 10px; /* Align to the left */
-    background-color: #f44336; /* Red background for the label */
-    color: white; /* White text color */
-    padding: 5px; /* Padding around the label */
-    font-weight: bold; /* Bold label text */
-    border-radius: 5px; /* Rounded corners for the label */
-    font-size: 1.2rem; /* Increase font size for visibility */
+  content: "Dish of the Day"; /* Label for the dish of the day */
+  position: absolute; /* Position absolutely */
+  top: -10px; /* Adjust position above the dish */
+  left: 10px; /* Align to the left */
+  background-color: #f44336; /* Red background for the label */
+  color: white; /* White text color */
+  padding: 5px; /* Padding around the label */
+  font-weight: bold; /* Bold label text */
+  border-radius: 5px; /* Rounded corners for the label */
+  font-size: 1.2rem; /* Increase font size for visibility */
 }
 
-.dish-controls {
-    display: flex;
-    align-items: center;
-    margin: 10px 0;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9; /* Light background for the cart controls */
+.remove-delete {
+  display: flex; /* Enables Flexbox layout */
+  justify-content: space-between;
+  align-items: center; /* Vertically center aligns the buttons */
+  padding: 10px;
+}
+
+.remove-button {
+  background-color: #dc3545; /* Bootstrap danger color */
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.delete-button{
+  background-color: #dc3545; /* Bootstrap danger color */
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+background-color: #c0392b;
+}
+.remove-button:hover {
+background-color: #c0392b;
+}
+
+.remove {
+  background-color: #e74c3c; /* Red for Remove */
+}
+
+.set {
+  background-color: #27ae60; /* Green for Set */
+}
+.remove:hover {
+  background-color: #c0392b; /* Darker red */
+}
+
+.set:hover {
+  background-color: #219653; /* Darker green */
+}
+
+.cart-controls {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9; /* Light background for the cart controls */
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  margin-right: 10px; /* Space between quantity and button */
+}
+
+.add-to-cart-button {
+  padding: 10px 10px; /* Padding for button */
+  background-color: #28a745; /* Green background */
+  color: white; /* White text */
+  border: none; /* No border */
+  border-radius: 3px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth background change on hover */
+}
+
+.add-to-cart-button:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+/* Container for the entire menu item detail section */
+.menu-item-detail {
+  max-width: 700px; /* Slightly narrower for a cleaner look */
+  margin: 2rem auto; /* Center the section with some space around it */
+  padding: 1.5rem;
+  background-color: #ffffff; /* White background */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align content */
+  text-align: center; /* Center text */
+  font-family: 'Verdana', sans-serif;
+}
+
+/* Item title */
+.menu-item-detail h1 {
+  font-size: 2.8rem; /* Adjusted for a balanced appearance */
+  color: #495E57; /* Muted green color */
+  margin-bottom: 1rem; /* Reduced margin for compactness */
+  font-weight: bold;
+}
+
+/* Image styling */
+.menu-item-detail img {
+  width: 100%;
+  max-width: 500px; /* Limiting image width */
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 1.5rem; /* Reduced space between image and text */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  transition: transform 0.3s ease; /* Smooth zoom effect on hover */
+}
+
+.menu-item-detail img:hover {
+  transform: scale(1.05); /* Slight zoom-in on hover */
+}
+
+/* Paragraph styling for the item description */
+.menu-item-detail p {
+  font-size: 1.2rem; /* Moderate font size */
+  color: #495E57; /* Text color */
+  line-height: 1.5; /* Adjusted line height for readability */
+  margin-bottom: 1rem; /* Reduced space */
+}
+
+.menu-item-detail p strong {
+  font-weight: bold; /* Bold labels */
+  color: #333; /* Dark color for emphasis */
+}
+
+.price, .inventory {
+  font-size: 1.4rem; /* Larger font for price and quantity */
+  color: #28a745; /* Green color for price */
+  font-weight: 600;
+  margin-bottom: 1rem; /* Space below the price and quantity */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .menu-item-detail {
+    padding: 1rem; /* Less padding on small screens */
+  }
+
+  .menu-item-detail h1 {
+    font-size: 2.4rem; /* Smaller title */
+  }
+
+  .menu-item-detail p {
+    font-size: 1rem; /* Adjust text size */
+  }
+}
+
+/* booking-wrapper */
+.booking-wrapper {
+  display: flex; /* Use flexbox for layout */
+  height: 100vh; /* Full viewport height */
+}
+
+/* Attract Section */
+.attract {
+  flex: 0 0 35%; /* Fixed height of 35% */
+  padding: 1rem; /* Padding for breathing room */
+  background-color: #f9f9f9; /* Light background for contrast */
+  text-align: center; /* Center text */
+  border-right: 1px solid #EDEFEE; /* Border for separation */
+}
+
+.attract h2 {
+  font-size: 2rem; /* Heading size for attract section */
+  margin-bottom: 1rem; /* Space below heading */
+  color: #495E57; /* Main color for heading */
+}
+
+.attract p {
+  font-size: 1.2rem; /* Font size for attract section */
+  color: #495E57; /* Consistent text color */
+}
+
+/* Booking Section */
+.booking-section {
+  flex: 1; /* Remaining height */
+  max-width: 800px; /* Limit max width for better readability */
+  margin: 0; /* No margin */
+  padding: 2rem; /* Padding for breathing room */
+  border: 1px solid #EDEFEE; /* Light border for separation */
+  border-radius: 10px; /* Rounded corners */
+  background-color: #fdfdfd; /* Light background for contrast */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Stack children vertically */
+}
+
+/* Booking Section Headings and Form Styles */
+.booking-section h1 {
+  font-size: 2.5rem; /* Larger heading size */
+  margin-bottom: 1rem; /* Space below the heading */
+  text-align: center; /* Centered heading */
+  color: #495E57; /* Main color for heading */
+}
+
+.booking-section .booking-intro,
+.booking-section .booking-reason {
+  font-size: 1.2rem; /* Readable text size */
+  text-align: center; /* Centered paragraph */
+  margin-bottom: 1rem; /* Space below paragraphs */
+}
+
+.booking-form {
+  display: flex; /* Flexbox for alignment */
+  flex-direction: column; /* Vertical layout */
+  gap: 1rem; /* Space between inputs */
+}
+
+/* Input Styles */
+.booking-form label {
+  font-weight: bold; /* Bold labels for emphasis */
+  color: #495E57; /* Consistent color */
+}
+
+.booking-form input {
+  padding: 0.75rem; /* Padding for inputs */
+  border: 1px solid #EDEFEE; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 1rem; /* Font size for inputs */
+  transition: border-color 0.3s; /* Transition for focus effect */
+}
+
+.booking-form input:focus {
+  border-color: #EE9972; /* Change border color on focus */
+  outline: none; /* Remove default outline */
+}
+
+/* Button Styles */
+.booking-form button {
+  padding: 0.75rem; /* Button padding */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  background-color: #EE9972; /* Button color */
+  color: #fff; /* Button text color */
+  font-size: 1.2rem; /* Button text size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Transition for hover effect */
+}
+
+.booking-form button:hover {
+  background-color: #495E57; /* Darker shade on hover */
+}
+
+/* Testimonials, Special Offers, and Footer Styles */
+.testimonials, .special-offers {
+  margin-top: 2rem; /* Space above sections */
+  text-align: center; /* Center text */
+}
+
+.testimonials blockquote {
+  font-style: italic; /* Italics for emphasis */
+  margin: 1rem 0; /* Margin for space */
+  padding: 1rem; /* Padding for blockquote */
+  border-left: 4px solid #EE9972; /* Left border for style */
+  background-color: #f9f9f9; /* Light background */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.special-offers {
+  font-size: 1rem; /* Font size */
+  color: #495E57; /* Consistent text color */
+}
+
+/* Custom CSS for Reservation Success Page */
+.reservation-success {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.reservation-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #4CAF50;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.confirmation-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  text-align: center;
+}
+
+.reservation-message {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.success-image {
+  max-width: 120px;
+  margin-bottom: 20px;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.back-button {
+  background-color: #28a745;
+  color: white;
+  font-size: 1.1rem;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.back-button:hover {
+  background-color: #218838;
+}
+
+
+.cart-section {
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Adjusts layout */
+  padding: 20px;
+}
+
+.cart-content {
+  flex: 1; /* Takes available space */
+}
+
+.cart-heading {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.cart-tagline {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.cart-items-list {
+  list-style: none; /* Removes default list styles */
+  padding: 0; /* Removes padding */
+  margin: 0; /* Removes margin */
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap */
+  gap: 20px; /* Adjust the value for the desired space */
+}
+
+.cart-item {
+  border: 1px solid #ddd; /* Border around items */
+  border-radius: 5px; /* Rounded corners */
+  background-color: #f9f9f9; /* Light background for items */
+  padding: 15px; /* Inner spacing */
+  display: flex; /* Flex for item content */
+  flex-direction: column; /* Stack elements vertically */
+  max-width: 250px; /* Limit width of items */
+}
+
+.cart-item-details {
+  flex-grow: 1; /* Allow details to grow */
+}
+
+.cart-total {
+  margin-top: 20px; /* Space above total cost */
+  font-weight: bold; /* Highlight the total */
+}
+
+.empty-cart-message {
+  text-align: center; /* Center text for empty cart message */
+}
+
+/* Order History Page Styles */
+.order-history-page {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-history-page h1 {
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.order-history-cards {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.order-history-card {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.order-history-card h3 {
+  font-size: 1.25rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.order-history-card p {
+  font-size: 1rem;
+  color: #666;
+  margin: 0.25rem 0;
+}
+
+.order-history-card ul {
+  list-style: none;
+  padding-left: 1rem;
+  margin-top: 0.5rem;
+}
+
+.order-history-card ul li {
+  font-size: 0.95rem;
+  color: #444;
+  margin: 0.3rem 0;
+}
+
+.order-details-button {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #28a745;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.order-details-button:hover {
+  background-color: #218838;
+}
+
+.order-history-card p strong {
+  color: #333;
+}
+
+.order-history-card h4 {
+  font-size: 1.1rem;
+  color: #333;
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.25rem;
+}
+
+/* No Orders Message */
+.no-orders {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* Container for the manager dashboard */
+.dashboard-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 30px auto; /* Add margin around the container */
+  padding: 40px; /* Add padding inside the container */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title style for the Manager Dashboard */
+.dashboard-title {
+  text-align: center;
+  color: #1f7f4e;
+  font-size: 2rem;
+  margin-bottom: 30px; /* Increased margin for better spacing */
+}
+
+/* Style for the list of dashboard options */
+.dashboard-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Style for each dashboard item (menu link) */
+.dashboard-item {
+  background-color: #f4f4f4;
+  margin: 15px 0; /* Adjusted margin between items */
+  padding: 20px; /* Increased padding for better spacing */
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.dashboard-item:hover {
+  background-color: #1f7f4e;
+  transform: translateY(-2px);
+}
+
+/* Style for the dashboard item links */
+.dashboard-link {
+  color: #333;
+  text-decoration: none;
+  font-size: 1.1rem;
+  display: block;
+}
+
+.dashboard-item:hover .dashboard-link {
+  color: #fff;
+}
+
+/* Delivery Crew List Styles */
+.dashboard-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 30px auto; /* Added margin for spacing */
+  padding: 40px; /* Padding inside the container */
+}
+
+.dashboard-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 30px; /* Increased margin for spacing */
+}
+
+/* Container for the form */
+.form-container {
+  max-width: 1100px;
+  margin: 50px auto;  /* Center the form with margin */
+  padding: 20px;      /* Padding inside the container */
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;      /* Enables flexbox layout */
+  flex-direction: column;  /* Stack elements vertically */
+  gap: 30px;          /* Increased space between form sections */
+}
+
+/* Heading inside the form */
+.form-heading {
+  font-size: 2em;
+  margin-bottom: 20px;  /* Space below the heading */
+  color: #333;
+  text-align: center;
+}
+
+/* Style for the submit button */
+.submit-btn {
+  width: 100%;              /* Full width of the container */
+  padding: 10px;            /* Padding inside the button */
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #45a049;  /* Darker green on hover */
+}
+
+/* Layout for the form and confirmation sections */
+.form-and-confirmation {
+  display: flex;              /* Enables flexbox layout */
+  gap: 30px;                  /* Space between form and confirmation sections */
+  margin-bottom: 20px;        /* Space below the flex container */
+}
+
+/* Style for form section and confirmation section */
+.form-section,
+.confirmation-section {
+  flex: 1;                    /* Allow sections to grow equally */
+  border: 1px solid #EDEFEE;  /* Light border for separation */
+  border-radius: 10px;        /* Rounded corners */
+  padding: 30px;              /* Padding inside the sections */
+  background-color: #fdfdfd;  /* Light background for contrast */
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Style for the confirmation section */
+.confirmation-section {
+  display: flex;              /* Flexbox for layout */
+  flex-direction: column;     /* Stack elements vertically */
+  align-items: center;        /* Center align the items */
 }
 
 .dish-of-day-section {
@@ -560,25 +1321,6 @@ footer p {
     height: auto; /* Maintains aspect ratio */
 }
 
-
-.menu-item .delete-button .remove-button{
-    display: flex;
-}
-
-.remove-delete {
-    display: flex; /* Enables Flexbox layout */
-    justify-content: space-between;
-    align-items: center; /* Vertically center aligns the buttons */
-    padding: 10px;
-}
-
-.button-container {
-    display: flex; /* Enables Flexbox layout */
-    justify-content: space-between; /* Aligns buttons to the edges */
-    align-items: center; /* Vertically center aligns the buttons */
-    margin-top: 10px; /* Optional: Add some spacing above */
-}
-
 .remove-button {
     background-color: #dc3545; /* Bootstrap danger color */
     color: white;
@@ -587,1031 +1329,21 @@ footer p {
     border-radius: 3px;
     cursor: pointer;
 }
-
-.delete-button{
-    background-color: #dc3545; /* Bootstrap danger color */
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-.delete-button:hover {
-  background-color: #c0392b;
-}
 .remove-button:hover {
   background-color: #c0392b;
 }
 
-.remove {
-    background-color: #e74c3c; /* Red for Remove */
-}
-  
-.set {
-    background-color: #27ae60; /* Green for Set */
-}
-.remove:hover {
-    background-color: #c0392b; /* Darker red */
-}
-  
-.set:hover {
-    background-color: #219653; /* Darker green */
-}
-
-
-/* about */
-.about-section {
-    display: flex; /* Flexbox for layout */
-    justify-content: space-between; /* Space between content and image */
-    padding: 2rem; /* Padding around the section */
-    border: 2px solid #EDEFEE; /* Border around the entire section */
-    border-radius: 10px; /* Rounded corners */
-    background-color: #ffffff; /* Background color */
-}
-
-.about-content {
-    flex: 0 0 35%; /* Fixed width for content */
-    margin-right: 2rem; /* Space between content and image */
-}
-
-.about-heading {
-    font-size: 3rem; /* Large heading size */
-    margin-bottom: 0rem; /* Space below heading */
-    margin-top: 0rem;
-}
-
-.about-tagline {
-    font-size: 1.5rem; /* Tagline size */
-    margin: 0; /* Space above and below the tagline */
-    padding-left: 5rem; /* Space from the border */
-    font-style: italic; /* Italicize the tagline */
-    display: inline-block; /* Make it inline to attach to heading */
-
-}
-
-
-.about-team,
-.about-testimonials {
-    margin-top: .5rem; /* Space above team and testimonials */
-}
-
-.about-team h3,
-.about-testimonials h3 {
-    font-size: 1.5rem; /* Size for section headings */
-    margin-bottom: 0rem; /* Space below section heading */
-}
-
-.about-testimonials blockquote {
-    font-style: italic; /* Italicize the testimonial */
-    margin: 1rem 0; /* Space around the testimonial */
-    border-left: 3px solid #EE9972; /* Stylish left border */
-    padding-left: 1rem; /* Space from the border */
-}
-
-.about-image {
-    flex: 1; /* Take the remaining space for image */
-}
-
-.about-img {
-    max-width: 100%; /* Responsive image */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 10px; /* Rounded corners */
-}
-
-.cta-button {
-    display: inline-block; /* Make button a block */
-    margin-top: 1.5rem; /* Space above button */
-    padding: 0.5rem 1rem; /* Padding inside button */
-    background-color: #EE9972; /* Button color */
-    color: #fff; /* Text color */
-    text-decoration: none; /* Remove underline */
-    border-radius: 5px; /* Rounded corners for button */
-    font-size: 1.25rem; /* Button text size */
-}
-
-.cta-button:hover {
-    background-color: #495E57; /* Darken button on hover */
-}
-
-/* booking */
-
-/* booking-wrapper */
-.booking-wrapper {
-    display: flex; /* Use flexbox for layout */
-    height: 100vh; /* Full viewport height */
-}
-
-/* Attract Section */
-.attract {
-    flex: 0 0 35%; /* Fixed height of 35% */
-    padding: 2rem; /* Padding for breathing room */
-    background-color: #f9f9f9; /* Light background for contrast */
-    text-align: center; /* Center text */
-    border-right: 1px solid #EDEFEE; /* Border for separation */
-}
-
-.attract h2 {
-    font-size: 2rem; /* Heading size for attract section */
-    margin-bottom: 1rem; /* Space below heading */
-    color: #495E57; /* Main color for heading */
-}
-
-.attract p {
-    font-size: 1.2rem; /* Font size for attract section */
-    color: #495E57; /* Consistent text color */
-}
-
-/* Booking Section */
-.booking-section {
-    flex: 1; /* Remaining height */
-    max-width: 800px; /* Limit max width for better readability */
-    margin: 0; /* No margin */
-    padding: 2rem; /* Padding for breathing room */
-    border: 1px solid #EDEFEE; /* Light border for separation */
-    border-radius: 10px; /* Rounded corners */
-    background-color: #fdfdfd; /* Light background for contrast */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    display: flex; /* Use flexbox */
-    flex-direction: column; /* Stack children vertically */
-}
-
-/* Booking Section Headings and Form Styles */
-.booking-section h1 {
-    font-size: 2.5rem; /* Larger heading size */
-    margin-bottom: 1rem; /* Space below the heading */
-    text-align: center; /* Centered heading */
-    color: #495E57; /* Main color for heading */
-}
-
-.booking-section .booking-intro,
-.booking-section .booking-reason {
-    font-size: 1.2rem; /* Readable text size */
-    text-align: center; /* Centered paragraph */
-    margin-bottom: 1rem; /* Space below paragraphs */
-}
-
-.booking-form {
-    display: flex; /* Flexbox for alignment */
-    flex-direction: column; /* Vertical layout */
-    gap: 1rem; /* Space between inputs */
-}
-
-/* Input Styles */
-.booking-form label {
-    font-weight: bold; /* Bold labels for emphasis */
-    color: #495E57; /* Consistent color */
-}
-
-.booking-form input {
-    padding: 0.75rem; /* Padding for inputs */
-    border: 1px solid #EDEFEE; /* Light border */
-    border-radius: 5px; /* Rounded corners */
-    font-size: 1rem; /* Font size for inputs */
-    transition: border-color 0.3s; /* Transition for focus effect */
-}
-
-.booking-form input:focus {
-    border-color: #EE9972; /* Change border color on focus */
-    outline: none; /* Remove default outline */
-}
-
-/* Button Styles */
-.booking-form button {
-    padding: 0.75rem; /* Button padding */
-    border: none; /* Remove border */
-    border-radius: 5px; /* Rounded corners */
-    background-color: #EE9972; /* Button color */
-    color: #fff; /* Button text color */
-    font-size: 1.2rem; /* Button text size */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s; /* Transition for hover effect */
-}
-
-.booking-form button:hover {
-    background-color: #495E57; /* Darker shade on hover */
-}
-
-/* Testimonials, Special Offers, and Footer Styles */
-.testimonials, .special-offers, .footer-info {
-    margin-top: 2rem; /* Space above sections */
-    text-align: center; /* Center text */
-}
-
-.testimonials blockquote {
-    font-style: italic; /* Italics for emphasis */
-    margin: 1rem 0; /* Margin for space */
-    padding: 1rem; /* Padding for blockquote */
-    border-left: 4px solid #EE9972; /* Left border for style */
-    background-color: #f9f9f9; /* Light background */
-    border-radius: 5px; /* Rounded corners */
-}
-
-.special-offers, .footer-info {
-    font-size: 1rem; /* Font size */
-    color: #495E57; /* Consistent text color */
-}
-
-.footer-info a {
-    color: #EE9972; /* Link color */
-    text-decoration: none; /* No underline */
-}
-
-.form-container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.form-heading {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #333;
-    text-align: center;
-}
-
-.menu-form label {
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.menu-form input[type="text"],
-.menu-form input[type="number"],
-.menu-form input[type="file"],
-.menu-form input[type="decimal"] {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.submit-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1.2em;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.cart-controls {
-    display: flex;
-    align-items: center;
-    margin: 10px 0;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9; /* Light background for the cart controls */
-}
-
-.cart-section {
-    display: flex; /* Use flexbox for layout */
-    justify-content: space-between; /* Adjusts layout */
-    padding: 20px;
-}
-
-.cart-content {
-    flex: 1; /* Takes available space */
-}
-
-.cart-heading {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.cart-tagline {
-    font-size: 18px;
-    margin-bottom: 20px;
-}
-
-.cart-items-list {
-    list-style: none; /* Removes default list styles */
-    padding: 0; /* Removes padding */
-    margin: 0; /* Removes margin */
-    display: flex;
-    flex-wrap: wrap; /* Allow items to wrap */
-    gap: 20px; /* Adjust the value for the desired space */
-}
-
-.cart-item {
-    border: 1px solid #ddd; /* Border around items */
-    border-radius: 5px; /* Rounded corners */
-    background-color: #f9f9f9; /* Light background for items */
-    padding: 15px; /* Inner spacing */
-    display: flex; /* Flex for item content */
-    flex-direction: column; /* Stack elements vertically */
-    max-width: 250px; /* Limit width of items */
-}
-
-.cart-item-details {
-    flex-grow: 1; /* Allow details to grow */
-}
-
-.cart-total {
-    margin-top: 20px; /* Space above total cost */
-    font-weight: bold; /* Highlight the total */
-}
-
-.empty-cart-message {
-    text-align: center; /* Center text for empty cart message */
-}
-
-.quantity-controls {
-    display: flex;
-    align-items: center;
-    margin-right: 10px; /* Space between quantity and button */
-}
-
-.quantity-label {
-    margin-right: 5px; /* Space between label and input */
-    font-weight: bold;
-}
-
-.quantity-input {
-    width: 5px; /* Fixed width for the input */
-    padding: 5px; /* Padding for input */
-    border: 1px solid #ccc; /* Light border */
-    border-radius: 3px; /* Rounded corners */
-}
-  
-.add-to-cart-button {
-    padding: 10px 15px; /* Padding for button */
-    background-color: #28a745; /* Green background */
-    color: white; /* White text */
-    border: none; /* No border */
-    border-radius: 3px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s; /* Smooth background change on hover */
-}
-
-.add-to-cart-button:hover {
-    background-color: #218838; /* Darker green on hover */
-}
-
-
-.submit-btn:hover {
-    background-color: #45a049;
-}
-
-.form-container {
-  display: flex; /* Enables flexbox layout */
-  flex-direction: column; /* Stack elements vertically */
-  gap: 30px; /* Increased space between the heading and sections */
-  max-width: 1200px; /* Set a maximum width for the container */
-  margin: auto; /* Center the container on the page */
-  padding: 20px; /* Add padding around the container */
-}
-
-.form-and-confirmation {
-  display: flex; /* Enables flexbox layout */
-  gap: 30px; /* Increased space between the form and confirmation sections */
-}
-
-.form-section,
-.confirmation-section {
-  flex: 1; /* Allow both sections to grow equally */
-  border: 1px solid #EDEFEE; /* Light border for separation */
-  border-radius: 10px; /* Rounded corners */
-  padding: 30px; /* Increased inner spacing */
-  background-color: #fdfdfd; /* Light background for contrast */
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-}
-
-.confirmation-section {
-  display: flex; /* Enables flexbox layout for confirmation details */
-  flex-direction: column; /* Stack elements vertically */
-  align-items: center; /* Center align items horizontally */
-}
-
-/* Group Details Page */
-/* Main Container Styling */
-.group-detail-container {
-  padding: 40px;
-  max-width: 600px;
-  margin: 0 auto;
-  background-color: #f9fafc;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* Page Heading */
-.page-heading {
-  font-size: 28px;
-  color: #333;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-/* Form Group Styling */
-.form-group {
-  margin-bottom: 20px;
-}
-
-.form-group label {
-  font-size: 16px;
-  font-weight: 500;
-  color: #444;
-  margin-bottom: 10px;
-  display: block;
-}
-
-/* Input Field Styling */
-.input-field {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  transition: border-color 0.3s ease;
-}
-
-.input-field:focus {
-  border-color: #4CAF50;
-  outline: none;
-}
-
-/* Permissions Checkboxes - Card Style */
-.permissions-checkboxes {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.checkbox-container {
-  background-color: #f1f5f8;
-  padding: 15px;
-  border-radius: 6px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.checkbox-container:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.checkbox-container input[type="checkbox"] {
-  margin-right: 12px;
-  width: 18px;
-  height: 18px;
-  accent-color: #4CAF50;
-  cursor: pointer;
-}
-
-.checkbox-container label {
-  font-size: 16px;
-  color: #333;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .permissions-checkboxes {
-      grid-template-columns: 1fr;
-  }
-}
-
-
-/* Submit Button Styling */
-.submit-btn {
-  width: 100%;
-  padding: 14px 0;
-  font-size: 16px;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 4px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.submit-btn:hover {
-  background-color: #45a049;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .group-detail-container {
-      padding: 20px;
-  }
-
-  .permissions-checkboxes {
-      grid-template-columns: 1fr;
-  }
-}
-
-
-.permissions-section, .users-section {
-  margin-bottom: 30px;
-}
-
-.permissions-list, .users-list {
-  list-style-type: none;
-  padding: 0;
-}
-
-.permissions-list li, .users-list li {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Add smooth transition */
-}
-
-.permissions-list li:hover {
-  background-color: #f0f8ff; /* Light blue background on hover */
-  transform: translateY(-2px); /* Slightly lift the item when hovered */
-}
-
-.remove-link {
-  color: #e74c3c;
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-
-.remove-link:hover {
-  text-decoration: underline;
-}
-
-/* Optional: If you want to add a border effect */
-.permissions-list li:hover {
-  border-left: 4px solid #3498db; /* Blue border when hovered */
-}
-
-/* Add these styles to your custom CSS file */
-.assign-crew-form {
-  max-width: 600px;
-  margin: 50px auto;
-  padding: 30px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-}
-
-.assign-crew-form h1 {
-  text-align: center;
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.assign-crew-form label {
-  display: block;
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.assign-crew-form select {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-  margin-bottom: 20px;
-}
-
-.assign-crew-form button {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  background-color: #007bff;
-  color: white;
-  font-size: 18px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.assign-crew-form button:hover {
-  background-color: #0056b3;
-}
-
-/* Custom CSS for Delivery Crew Dashboard */
-.dashboard-container {
-  max-width: 1200px;
-  margin: 50px auto;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-}
-
-.dashboard-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #4CAF50;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.order-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.order-card {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  text-align: left;
-}
-
-.order-id {
-  font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 15px;
-}
-
-.order-actions {
-  margin-top: 20px;
-}
-
-.update-status-button {
-  background-color: #007bff;
-  color: white;
-  font-size: 1.1rem;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-}
-
-.update-status-button:hover {
-  background-color: #0056b3;
-}
-
-.no-orders {
-  font-size: 1.2rem;
-  color: #888;
-  text-align: center;
-  margin-top: 50px;
-}
-/* Custom CSS for Reservation Success Page */
-.reservation-success {
-  max-width: 900px;
-  margin: 50px auto;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-}
-
-.reservation-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #4CAF50;
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.confirmation-card {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  text-align: center;
-}
-
-.reservation-message {
-  font-size: 1.2rem;
-  color: #333;
-  margin-bottom: 30px;
-}
-
-.success-image {
-  max-width: 120px;
-  margin-bottom: 20px;
-}
-
-.action-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.back-button {
-  background-color: #28a745;
-  color: white;
-  font-size: 1.1rem;
-  padding: 12px 24px;
-  text-decoration: none;
-  border-radius: 5px;
-  margin-top: 20px;
-}
-
-.back-button:hover {
-  background-color: #218838;
-}
-
-/* Order Confirmation Page Styles */
-.order-confirmation {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
-  background-color: #f4f4f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
-}
-
-.confirmation-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.confirmation-header h1 {
-  font-size: 2.5rem;
-  color: #28a745;
-  font-weight: bold;
-}
-
-.order-id {
-  font-size: 1.1rem;
-  color: #333;
-}
-
-.order-summary {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 30px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.order-summary p {
-  font-size: 1.1rem;
-  color: #555;
-  margin: 10px 0;
-}
-
-.order-details {
-  list-style-type: none;
-  padding-left: 0;
-  font-size: 1.1rem;
-}
-
-.order-details li {
-  background-color: #fff;
-  padding: 15px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
-}
-
-.order-details .item-title {
-  font-weight: bold;
-}
-
-.order-details .item-quantity {
-  color: #888;
-}
-
-.order-details .item-price {
-  color: #28a745;
-  font-weight: bold;
-}
-
-.confirmation-footer {
-  text-align: center;
-}
-
-.back-home {
-  background-color: #28a745;
-  color: white;
-  padding: 12px 24px;
-  font-size: 1.1rem;
-  text-decoration: none;
-  border-radius: 5px;
-  margin-top: 20px;
-  display: inline-block;
-}
-
-.back-home:hover {
-  background-color: #218838;
-}
-
-/* Order Details Page Styles */
-.order-details-section {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
-}
-
-.order-details-section h1 {
-  text-align: center;
-  font-size: 2.5rem;
-  color: #28a745;
-  margin-bottom: 20px;
-}
-
-.order-summary {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
-}
-
-.order-summary p {
-  font-size: 1.2rem;
-  color: #555;
-  margin: 10px 0;
-}
-
-.assign-crew {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.assign-crew h2 {
-  font-size: 1.8rem;
-  color: #333;
-  margin-bottom: 15px;
-}
-
-.assign-crew form {
-  display: flex;
-  flex-direction: column;
-}
-
-.assign-crew label {
-  font-size: 1.1rem;
-  margin-bottom: 8px;
-  color: #333;
-}
-
-.assign-crew select {
-  padding: 10px;
-  margin-bottom: 15px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 100%;
-}
-
-.assign-crew button {
-  padding: 12px 20px;
-  background-color: #28a745;
-  color: white;
-  font-size: 1.2rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.assign-crew button:hover {
-  background-color: #218838;
-}
-
-/* Place Order Page Styles */
-.place-order {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 30px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
-}
-
-.place-order h1 {
-  text-align: center;
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-.cart-items {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.cart-items ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.cart-item .item-name {
-  font-size: 1.2rem;
-  color: #333;
-}
-
-.cart-item .item-price {
-  font-size: 1.2rem;
-  color: #28a745;
-}
-
-.total-cost {
-  font-size: 1.5rem;
-  margin-top: 20px;
-  text-align: right;
-  color: #333;
-}
-
-.place-order-form {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.place-order-button {
-  padding: 12px 25px;
-  background-color: #28a745;
-  color: white;
-  font-size: 1.2rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.place-order-button:hover {
-  background-color: #218838;
-}
-
-.empty-cart-message {
-  text-align: center;
-  font-size: 1.2rem;
-  color: #dc3545;
-  margin-top: 20px;
-  font-weight: bold;
-}
-
-/* Update Order Status Page Styles */
-.order-status-update {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
-}
-
-.order-status-update h1 {
-  text-align: center;
-  font-size: 2.5rem;
-  color: #28a745;
-  margin-bottom: 20px;
-}
-
-.order-status-update p {
-  font-size: 1.2rem;
-  color: #333;
-  margin: 10px 0;
-}
-
-.status-form {
-  text-align: center;
-  margin-top: 30px;
-}
-
-.update-status-button {
-  padding: 12px 20px;
-  background-color: #28a745;
-  color: white;
-  font-size: 1.2rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.update-status-button:hover {
-  background-color: #218838;
-}
 
 /* Orders List Page Styles */
 .orders-list {
-  max-width: 1000px;
-  margin: 40px auto;
-  padding: 20px;
-  background-color: #f8f8f8;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
+  margin: 40px auto;  /* Center the container with margin at the top and bottom */
+  padding: 30px;  /* Added more padding to give breathing room inside the container */
+  background-color: #f8f8f8;  /* Light gray background */
+  border-radius: 8px;  /* Rounded corners for the container */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  /* Light shadow for depth */
+  font-family: Arial, sans-serif;  /* Font family for readability */
+  border: 1px solid #ddd;  /* Subtle light gray border */
+  width: 80%;  /* Adjust width to prevent taking up the full width of the page */
 }
 
 .orders-list h1 {
@@ -1621,6 +1353,7 @@ footer p {
   margin-bottom: 20px;
 }
 
+/* Orders List */
 .orders {
   list-style-type: none;
   padding: 0;
@@ -1632,15 +1365,13 @@ footer p {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
+  border: 1px solid #ddd;  /* Border for each order item */
 }
 
 .order-header {
   margin-bottom: 15px;
-}
-
-.order-header h2 {
-  font-size: 1.8rem;
-  color: #333;
+  border-bottom: 1px solid #ddd;  /* Border at the bottom of the order header */
+  padding-bottom: 10px;
 }
 
 .order-header p {
@@ -1649,11 +1380,13 @@ footer p {
   margin: 5px 0;
 }
 
+/* Assign Crew Section */
 .assign-crew {
   background-color: #f7f7f7;
   padding: 15px;
   border-radius: 8px;
   margin-top: 20px;
+  border: 1px solid #ddd;  /* Border for the assign crew section */
 }
 
 .assign-crew h3 {
@@ -1677,20 +1410,131 @@ footer p {
   border-radius: 5px;
   width: 100%;
 }
+/* Crew List Styles */
 
-.assign-button {
-  padding: 12px 20px;
-  background-color: #28a745;
-  color: white;
-  font-size: 1.2rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.order-item {
+background-color: #f9f9f9;
+margin-bottom: 20px;
+padding: 15px;
+border-radius: 5px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.assign-button:hover {
-  background-color: #218838;
+.order-header {
+font-size: 16px;
+}
+
+.order-header p {
+margin: 5px 0;
+}
+
+.assign-crew {
+  margin-top: 15px;
+  background-color: #e1f5fe;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.assign-crew form {
+  display: flex;
+  flex-direction: column;
+}
+
+.assign-crew label {
+  margin-bottom: 5px;
+}
+
+.assign-crew select, .assign-crew button {
+  margin-bottom: 10px;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.orders-container {
+display: flex;
+justify-content: space-between;
+gap: 30px; /* Adjusts the gap between left and right */
+margin-top: 20px;
+}
+
+.assigned-orders, .unassigned-orders {
+  width: 48%; /* Adjust the width to control how much space each side takes */
+}
+
+.order-item {
+  background-color: #f9f9f9;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-header h3 {
+  font-size: 18px;
+  color: #333;
+}
+
+.order-header p {
+  margin: 5px 0;
+}
+
+.assign-crew {
+  margin-top: 15px;
+  background-color: #e1f5fe;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.assign-crew form {
+  display: flex;
+  flex-direction: column;
+}
+
+.assign-crew label {
+  margin-bottom: 5px;
+}
+
+.assign-crew select, .assign-crew button {
+  margin-bottom: 10px;
+  padding: 8px;
+  font-size: 14px;
+}
+
+/* Group Details Page */
+/* Main Container Styling */
+.group-detail-container {
+  padding: 40px;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #f9fafc;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Page Heading */
+.page-heading {
+  font-size: 28px;
+  color: #333;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Form Group Styling */
+
+/* Input Field Styling */
+.input-field {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+.input-field:focus {
+  border-color: #4CAF50;
+  outline: none;
 }
 
 
@@ -1768,84 +1612,79 @@ footer p {
   color: #4CAF50;
 }
 
-
-.orders-section {
-  padding: 20px;
-}
-
-.orders-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.order-item {
-  border: 1px solid #ddd;
-  padding: 15px;
-  margin-bottom: 20px;
-  background-color: #f9f9f9;
+/* Group Details Page */
+/* Main Container Styling */
+.group-detail-container {
+  padding: 40px;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #f9fafc;
   border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.order-item h3 {
-  margin-top: 0;
+/* Page Heading */
+.page-heading {
+  font-size: 28px;
   color: #333;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-.order-actions {
-  margin-top: 10px;
+/* Form Group Styling */
+
+/* Input Field Styling */
+.input-field {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
 }
 
-.update-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 15px;
-  text-decoration: none;
-  border-radius: 5px;
+.input-field:focus {
+  border-color: #4CAF50;
+  outline: none;
 }
 
-.update-button:hover {
-  background-color: #45a049;
+.permissions-section, .users-section {
+  margin-bottom: 30px;
 }
 
-.completed-status {
-  color: green;
-  font-weight: bold;
-}
-
-.status-pending {
-  color: #f44336;
-}
-
-.status-delivered {
-  color: #4CAF50;
-}
-
-.order-details {
-  margin-top: 15px;
-}
-
-.order-details ul {
+.permissions-list, .users-list {
   list-style-type: none;
   padding: 0;
 }
 
-.order-details li {
-  margin: 5px 0;
+.permissions-list li, .users-list li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Add smooth transition */
 }
 
-.no-orders {
-  font-size: 1.2em;
-  color: #777;
+.permissions-list li:hover {
+  background-color: #f0f8ff; /* Light blue background on hover */
+  transform: translateY(-2px); /* Slightly lift the item when hovered */
 }
 
-button, .update-button {
-  cursor: pointer;
+.remove-link {
+  color: #e74c3c;
+  text-decoration: none;
+  font-size: 0.9rem;
 }
 
-button:disabled, .completed-status {
-  background-color: grey;
-  cursor: not-allowed;
+.remove-link:hover {
+  text-decoration: underline;
+}
+
+/* Optional: If you want to add a border effect */
+.permissions-list li:hover {
+  border-left: 4px solid #3498db; /* Blue border when hovered */
 }
 
 /* Container for the manager dashboard */
@@ -1867,37 +1706,8 @@ button:disabled, .completed-status {
 }
 
 /* Style for the list of dashboard options */
-.dashboard-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
 
 /* Style for each dashboard item (menu link) */
-.dashboard-item {
-  background-color: #f4f4f4;
-  margin: 10px 0;
-  padding: 15px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-.dashboard-item:hover {
-  background-color: #1f7f4e;
-  transform: translateY(-2px);
-}
-
-.dashboard-link {
-  color: #333;
-  text-decoration: none;
-  font-size: 1.1rem;
-  display: block;
-}
-
-.dashboard-item:hover .dashboard-link {
-  color: #fff;
-}
 
 /* Delivery Crew List Styles */
 .dashboard-container {
@@ -1950,145 +1760,6 @@ button:disabled, .completed-status {
   padding: 8px;
 }
 
-.orders-section {
-  padding: 20px;
-}
-
-.order-item {
-background-color: #f9f9f9;
-margin-bottom: 20px;
-padding: 15px;
-border-radius: 5px;
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.order-header {
-font-size: 16px;
-}
-
-.order-header h2 {
-font-size: 18px;
-color: #333;
-}
-
-.order-header p {
-margin: 5px 0;
-}
-
-.assign-crew {
-  margin-top: 15px;
-  background-color: #e1f5fe;
-  padding: 15px;
-  border-radius: 5px;
-}
-
-.assign-crew form {
-  display: flex;
-  flex-direction: column;
-}
-
-.assign-crew label {
-  margin-bottom: 5px;
-}
-
-.assign-crew select, .assign-crew button {
-  margin-bottom: 10px;
-  padding: 8px;
-  font-size: 14px;
-}
-
-.update-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.update-button:hover {
-    background-color: #45a049;
-}
-
-.completed-status {
-    color: green;
-    font-weight: bold;
-}
-
-.status-pending {
-    color: #f44336;
-}
-
-.status-delivered {
-    color: #4CAF50;
-}
-.order-details ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.order-details li {
-  margin: 5px 0;
-}
-
-.no-orders {
-  font-size: 1.2em;
-  color: #777;
-}
-.orders-container {
-display: flex;
-justify-content: space-between;
-gap: 30px; /* Adjusts the gap between left and right */
-margin-top: 20px;
-}
-
-.assigned-orders, .unassigned-orders {
-  width: 48%; /* Adjust the width to control how much space each side takes */
-}
-
-.orders {
-  list-style-type: none;
-  padding: 0;
-}
-
-.order-item {
-  background-color: #f9f9f9;
-  margin-bottom: 20px;
-  padding: 15px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.order-header h3 {
-  font-size: 18px;
-  color: #333;
-}
-
-.order-header p {
-  margin: 5px 0;
-}
-
-.assign-crew {
-  margin-top: 15px;
-  background-color: #e1f5fe;
-  padding: 15px;
-  border-radius: 5px;
-}
-
-.assign-crew form {
-  display: flex;
-  flex-direction: column;
-}
-
-.assign-crew label {
-  margin-bottom: 5px;
-}
-
-.assign-crew select, .assign-crew button {
-  margin-bottom: 10px;
-  padding: 8px;
-  font-size: 14px;
-}
-
 /* General Section Styling */
 .user-section {
   padding: 40px;
@@ -2132,10 +1803,6 @@ margin-top: 20px;
   padding: 12px;
   text-align: left;
   border-bottom: 1px solid #dddddd;
-}
-
-.user-table tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
 }
 
 /* Button Styling */
@@ -2190,64 +1857,6 @@ margin-top: 20px;
       padding: 8px 10px;
   }
 }
-.edit-section {
-  padding: 40px;
-  background-color: #f9f9f9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.edit-content {
-  max-width: 600px;
-  width: 100%;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-}
-
-.edit-heading {
-  text-align: center;
-  color: #333333;
-  font-size: 24px;
-  margin-bottom: 20px;
-  font-weight: 600;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-.form-group label {
-  display: block;
-  font-weight: 500;
-  color: #333333;
-  margin-bottom: 5px;
-}
-
-.form-group input[type="text"],
-.form-group input[type="email"] {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #dddddd;
-  border-radius: 4px;
-}
-
-.save-button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-.save-button:hover {
-  background-color: #45a049;
-}
 /* Edit Button Styling */
 .edit-button {
   background-color: #4CAF50; /* Green color for edit */
@@ -2265,204 +1874,646 @@ margin-top: 20px;
   background-color: #45a049; /* Darker green on hover */
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .manage-content {
-    flex-direction: column;
-  }
+/* Booking Management Section */
+.manage-bookings-section {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
 
-  .groups-section {
-    width: 100%;
-  }
+.manage-bookings-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
 
-  .add-group-container {
-    width: 90%;
-  }
+.booking-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.booking-table-header {
+  background-color: #f2f2f2;
+}
+
+.booking-table-header-item {
+  padding: 12px;
+  text-align: left;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.booking-table-row {
+  border-bottom: 1px solid #ddd;
+}
+
+.booking-table-data {
+  padding: 12px;
+  color: #666;
+  font-size: 1rem;
+}
+
+.booking-table-actions {
+  padding: 12px;
+  text-align: center;
+}
+
+.btn-edit,
+.btn-delete,
+.btn-done {
+  padding: 6px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+  margin: 5px;
+}
+
+.btn-edit {
+  background-color: #4CAF50;
+}
+
+.btn-delete {
+  background-color: #f44336;
+}
+
+.btn-done {
+  background-color: #008CBA;
+}
+
+.no-bookings-message {
+  font-size: 1.2rem;
+  color: #777;
+}
+
+/* Order Confirmation Page Styles */
+.order-confirmation {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f4f4f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.confirmation-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.confirmation-header h1 {
+  font-size: 2.5rem;
+  color: #28a745;
+  font-weight: bold;
+}
+
+.order-id {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.order-summary {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.order-summary p {
+  font-size: 1.1rem;
+  color: #555;
+  margin: 10px 0;
+}
+
+.order-details {
+  list-style-type: none;
+  padding-left: 0;
+  font-size: 1.1rem;
+}
+
+.order-details li {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+.order-details .item-title {
+  font-weight: bold;
+}
+
+.order-details .item-quantity {
+  color: #888;
+}
+
+/* Order Details Page Styles */
+
+.order-summary {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.order-summary p {
+  font-size: 1.2rem;
+  color: #555;
+  margin: 10px 0;
+}
+
+/* Order Confirmation Page Styles */
+
+.order-summary {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.order-summary p {
+  font-size: 1.1rem;
+  color: #555;
+  margin: 10px 0;
+}
+
+/* Order Details Page Styles */
+.order-details-section {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.order-details-section h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #28a745;
+  margin-bottom: 20px;
+}
+
+.order-summary {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.order-summary p {
+  font-size: 1.2rem;
+  color: #555;
+  margin: 10px 0;
 }
 
 
-
-@media (max-width: 800px) {
-    section {
-        flex-direction: column;   
-    }
-
-    .row {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    input {
-        width: 100%;
-    }
-
-    #button {
-        width: 100%;
-    }
-
-    .menu-content {
-        flex-direction: column; /* Stack image and description vertically on small screens */
-        align-items: flex-start; /* Align items to the start */
-    }
-
-    .menu-image {
-        margin-bottom: 1rem; /* Add spacing below the image */
-    }
-
+/* Add these styles to your custom CSS file */
+.assign-crew-form {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
 }
 
-@media (max-width: 768px) {
-    .reservation-title {
-      font-size: 2rem;
-    }
-  
-    .confirmation-card {
-      padding: 20px;
-    }
-  
-    .reservation-message {
-      font-size: 1rem;
-    }
-  
-    .back-button {
-      font-size: 1rem;
-      padding: 10px 20px;
-    }
+.assign-crew-form h1 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.assign-crew-form label {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.assign-crew-form select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.assign-crew-form button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.assign-crew-form button:hover {
+  background-color: #0056b3;
+}
+/* General Section Styling */
+.delete-booking-section {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  text-align: center;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Title Styling */
+.delete-booking-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #d9534f;
+  margin-bottom: 15px;
+}
+
+/* Confirmation Message Styling */
+.confirm-delete-message {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+/* Delete Button Styling */
+.btn-delete {
+  background-color: #d9534f;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-delete:hover {
+  background-color: #c9302c;
+}
+
+/* General section styling */
+.edit-booking-section {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title styling */
+.edit-booking-title {
+  font-size: 2rem;
+  color: #343a40;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Form styling */
+.edit-booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Label styling */
+.input-label {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #495057;
+}
+
+/* Select dropdown styling */
+.input-select {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #495057;
+  appearance: none;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Button styling */
+.btn-save {
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-save:hover {
+  background-color: #0056b3;
+}
+
+/* Main layout styling */
+.edit-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background-color: #f8f9fa;
+  padding: 2rem;
+}
+
+.edit-content {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Heading styling */
+.edit-heading {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #343a40;
+  margin-bottom: 1.5rem;
+}
+
+/* Form styling */
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: #495057;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #80bdff;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Button styling */
+.save-button,
+.cta-button {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.save-button {
+  background-color: #28a745;
+  color: #ffffff;
+  margin-top: 1rem;
+}
+
+.save-button:hover {
+  background-color: #218838;
+}
+
+
+* Update Order Status Page Styles */
+.order-status-update {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.order-status-update h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #28a745;
+  margin-bottom: 20px;
+}
+
+.order-status-update p {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 10px 0;
+}
+
+.status-form {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.update-status-button {
+  padding: 12px 20px;
+  background-color: #28a745;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.update-status-button:hover {
+  background-color: #218838;
+}
+
+
+/* Container styling */
+.dashboard-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f8f9fa;
+}
+
+.dashboard-title {
+  font-size: 2rem;
+  color: #343a40;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Order list styling */
+.order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Order card styling */
+.order-card {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-left: 6px solid #007bff;
+}
+
+.order-id {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 0.5rem;
+}
+
+.order-card p {
+  color: #495057;
+  margin: 0.5rem 0;
+}
+
+/* Status and action button styling */
+.order-actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.update-status-button {
+  background-color: #28a745;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.update-status-button:hover {
+  background-color: #218838;
+}
+
+/* No orders message */
+.no-orders {
+  text-align: center;
+  color: #6c757d;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+
+/* Responsive styling */
+@media (max-width: 576px) {
+  .dashboard-container {
+    padding: 1.5rem;
   }
 
-  
-@media (max-width: 768px) {
   .dashboard-title {
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
 
   .order-card {
-    padding: 15px;
+    padding: 1rem;
   }
 
   .order-id {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+  }
+
+  .update-status-button {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+/* Main section styling */
+.order-status-update {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.order-status-update h1 {
+  font-size: 1.8rem;
+  color: #343a40;
+  margin-bottom: 1.5rem;
+}
+
+/* Order details styling */
+.order-status-update p {
+  font-size: 1.1rem;
+  color: #495057;
+  margin: 0.5rem 0;
+}
+
+.order-status-update p strong {
+  font-weight: 500;
+}
+
+/* Form and button styling */
+.status-form {
+  margin-top: 1.5rem;
+}
+
+.update-status-button {
+  background-color: #28a745;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.update-status-button:hover {
+  background-color: #218838;
+}
+
+/* Responsive styling */
+@media (max-width: 576px) {
+  .order-status-update {
+    padding: 1.5rem;
+  }
+
+  .order-status-update h1 {
+    font-size: 1.5rem;
   }
 
   .update-status-button {
     font-size: 1rem;
-    padding: 8px 15px;
-  }
-}
-
-
-@media (max-width: 768px) {
-    .order-confirmation {
-      padding: 15px;
-    }
-  
-    .confirmation-header h1 {
-      font-size: 2rem;
-    }
-  
-    .order-details li {
-      font-size: 1rem;
-    }
-  
-    .back-home {
-      font-size: 1rem;
-      padding: 10px 20px;
-    }
-  }
-
-  @media (max-width: 768px) {
-  .order-details-section {
-    padding: 15px;
-  }
-
-  .order-summary p {
-    font-size: 1rem;
-  }
-
-  .assign-crew h2 {
-    font-size: 1.5rem;
-  }
-
-  .assign-crew button {
-    font-size: 1rem;
-    padding: 10px 15px;
-  }
-}
-
-@media (max-width: 768px) {
-    .orders-list {
-      padding: 15px;
-    }
-  
-    .order-header h2 {
-      font-size: 1.6rem;
-    }
-  
-    .order-header p {
-      font-size: 0.9rem;
-    }
-  
-    .assign-crew h3 {
-      font-size: 1.3rem;
-    }
-  
-    .assign-button {
-      font-size: 1rem;
-      padding: 10px 15px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .place-order {
-      padding: 15px;
-    }
-  
-    .cart-item {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .cart-item .item-price {
-      margin-top: 5px;
-    }
-  
-    .total-cost {
-      font-size: 1.2rem;
-    }
-  
-    .place-order-button {
-      font-size: 1rem;
-      padding: 10px 20px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .order-status-update {
-      padding: 15px;
-    }
-  
-    .order-status-update h1 {
-      font-size: 2rem;
-    }
-  
-    .order-status-update p {
-      font-size: 1rem;
-    }
-  
-    .update-status-button {
-      font-size: 1rem;
-      padding: 10px 15px;
-    }
-  }
-
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .crew-header {
-      grid-template-columns: 1fr 1fr 1fr;
-  }
-
-  .crew-card {
-      grid-template-columns: 1fr 1fr 1fr;
+    padding: 0.6rem 1.2rem;
   }
 }

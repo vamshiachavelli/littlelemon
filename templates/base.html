@@ -1,4 +1,4 @@
-{% load static %} 
+{% load static %}
 {% load custom_filters %}
 
 <!DOCTYPE html>
@@ -21,21 +21,22 @@
         <div class="nav-container">
           <ul class="nav-left">
             {% if not request.session.manager_view %}
-            <!-- Regular User Navigation -->
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'about' %}">About</a></li>
-            <li><a href="{% url 'menu' %}">Menu</a></li>
-            <li><a href="{% url 'book_table' %}">Booking</a></li>
-            <li><a href="{% url 'cart_detail' %}">Cart</a></li>
+              <!-- Regular User Navigation -->
+              <li><a href="{% url 'home' %}">Home</a></li>
+              <li><a href="{% url 'about' %}">About</a></li>
+              <li><a href="{% url 'menu' %}">Menu</a></li>
+              <li><a href="{% url 'book_table' %}">Booking</a></li>
+              <li><a href="{% url 'cart_detail' %}">Cart</a></li>
             {% else %}
-            <!-- Manager-Specific Navigation -->
-            <li><a href="{% url 'add_menu_item' %}">New Dish</a></li>
-            <li><a href="{% url 'orders_list' %}">Orders</a></li>
-            <li><a href="{% url 'dish_of_the_day' %}">Dish for Day</a></li>
-            <li><a href="{% url 'manage_groups' %}">Groups</a></li>
-            <li><a href="{% url 'delivery_crew_list' %}">Delivery Crew</a></li>
-            <li><a href="{% url 'user_list' %}">All Users</a></li>
-            <li><a href="{% url 'home_clear_manager' %}">Home</a></li>
+              <!-- Manager-Specific Navigation -->
+              <li><a href="{% url 'add_menu_item' %}">New Dish</a></li>
+              <li><a href="{% url 'orders_list' %}">Orders</a></li>
+              <li><a href="{% url 'dish_of_the_day' %}">Dish Day</a></li>
+              <li><a href="{% url 'manage_groups' %}">Groups</a></li>
+              <li><a href="{% url 'delivery_crew_list' %}">Delivery</a></li>
+              <li><a href="{% url 'user_list' %}">Users</a></li>
+              <li><a href="{% url 'manage_bookings' %}">Bookings</a></li>
+              <li><a href="{% url 'home_clear_manager' %}">Home</a></li>
             {% endif %}
           </ul>
 
@@ -43,20 +44,24 @@
             {% if user.is_authenticated %}
               {% if user.is_superuser or user|is_in_group:"manager" %}
                 {% if not request.session.manager_view %}
-                  <li><a href="{% url 'manager_dashboard' %}" class="manager-link">Manager</a></li>
+                  <li>
+                    <a href="{% url 'manager_dashboard' %}" class="manager-link">Manager</a>
+                  </li>
                 {% endif %}
               {% endif %}
             {% endif %}
 
             {% if user|is_in_group:"Delivery Crew" %}
-              <li><a href="{% url 'delivery_crew_dashboard' %}" class="delivery-dashboard-link">Delivery Dashboard</a></li>
+              <li>
+                <a href="{% url 'delivery_crew_dashboard' %}" class="delivery-dashboard-link">Delivery Dashboard</a>
+              </li>
             {% endif %}
           </ul>
 
           <ul class="nav-right">
             {% if user.is_authenticated %}
               <li>Welcome, {{ user.username }}!</li>
-              <li><a href="{% url 'order_history' %}">Order History</a></li>
+              <li><a href="{% url 'order_history' %}">Your Orders</a></li>
               <li><a href="{% url 'Logout' %}">Logout</a></li>
             {% else %}
               <li><a href="{% url 'Login' %}">Login</a></li>
@@ -74,7 +79,41 @@
     </main>
 
     <footer>
-      <p>Copyright {% now "Y" %} Little Lemon</p>
+      <div class="footer-container">
+        <div class="footer-left">
+          <img src="{% static 'img/logo.png' %}" alt="Company Logo">
+          <p>&copy; 2024 LittleLemon. All Rights Reserved.</p>
+          <ul>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/">Contact</a></li>
+            <li><a href="/menu/">Privacy Policy</a></li>
+            <li><a href="/register">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="footer-center">
+          <h4>Follow Us</h4>
+          <ul class="social-media">
+            <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
+            <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
+            <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
+          </ul>
+          <h4>Subscribe</h4>
+          <form>
+            <input type="email" placeholder="Enter your email" />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+        <div class="footer-right">
+          <h4>Contact Us</h4>
+          <p>123 Business St, City, Country</p>
+          <p>Email: littlelemon@Lemon.com</p>
+          <p>Phone: +123 456 7890</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Site Designed by <a href="https://designagency.com" target="_blank">Vamshi Achavelli</a></p>
+      </div>
     </footer>
+    
   </body>
 </html>

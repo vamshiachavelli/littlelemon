@@ -231,6 +231,47 @@ def book_table(request):
         form = BookingForm()
     return render(request, 'booking.html', {'form': form})
 
+@login_required
+@superuser_or_multiple_groups_required(['manager'])
+def manage_bookings(request):
+    bookings = Booking.objects.all()  # Fetch all bookings
+    return render(request, 'manage_bookings.html', {'bookings': bookings})
+
+@login_required
+@superuser_or_multiple_groups_required(['manager'])
+def edit_booking(request, booking_id):
+    booking = get_object_or_404(Booking, id=booking_id)
+    
+    if request.method == 'POST':
+        # Update status or other details
+        booking.status = request.POST.get('status', booking.status)
+        booking.save()
+        messages.success(request, f"Booking {booking.id} updated successfully.")
+        return redirect('manage_bookings')
+    
+    return render(request, 'edit_booking.html', {'booking': booking})
+
+@login_required
+@superuser_or_multiple_groups_required(['manager'])
+def delete_booking(request, booking_id):
+    booking = get_object_or_404(Booking, id=booking_id)
+    booking.delete()
+    messages.success(request, f"Booking {booking.id} deleted successfully.")
+    return redirect('manage_bookings')
+
+@login_required
+@superuser_or_multiple_groups_required(['manager'])
+def mark_booking_done(request, booking_id):
+    booking = get_object_or_404(Booking, id=booking_id)
+    
+    if booking.status != 'done':  # Only change if the status is not already 'done'
+        booking.status = 'done'
+        booking.save()
+        messages.success(request, f"Booking {booking.id} marked as done.")
+    else:
+        messages.info(request, f"Booking {booking.id} is already marked as done.")
+    
+    return redirect('manage_bookings')
 #=======================================================================================================
 #Dish Of The Day
 #=======================================================================================================
@@ -257,13 +298,12 @@ def dish_of_the_day(request):
 
     return render(request, 'dish_of_the_day.html', {'dishes_of_the_day': dishes_of_the_day})
 
-
+@superuser_or_multiple_groups_required(['manager', 'Admin'])
 def toggle_dish_of_the_day(request, item_id):
-    if request.user.is_superuser:
-        menu_item = Menu.objects.get(id=item_id)
-        menu_item.dish_of_the_day = not menu_item.dish_of_the_day  # Toggle the status
-        menu_item.save()
-    return redirect('menu')  # Redirect to your menu page
+    menu_item = Menu.objects.get(id=item_id)
+    menu_item.dish_of_the_day = not menu_item.dish_of_the_day  # Toggle the status
+    menu_item.save()
+    return redirect('menu') 
 
 #=======================================================================================================
 # Cart 
@@ -633,3 +673,7 @@ def home_clear_manager(request):
     
     # Redirect to the regular home page or any other page as needed
     return redirect('home')
+
+#=======================================================================================================
+# Booking
+#=======================================================================================================

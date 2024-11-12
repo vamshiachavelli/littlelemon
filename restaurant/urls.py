@@ -54,7 +54,10 @@ urlpatterns = [
     path('remove-delivery-crew/<int:user_id>/', views.remove_delivery_crew, name='remove_delivery_crew'),
     path('delete_user/<int:user_id>/', views.delete_user_view, name='delete_user'),
     path('edit_user/<int:user_id>/', views.edit_user_view, name='edit_user'),
-
+    path('manage_bookings/', views.manage_bookings, name='manage_bookings'),
+    path('edit_booking/<int:booking_id>/', views.edit_booking, name='edit_booking'),
+    path('delete_booking/<int:booking_id>/', views.delete_booking, name='delete_booking'),
+    path('mark_booking_done/<int:booking_id>/', views.mark_booking_done, name='mark_booking_done'),
     
     path('', include(router.urls)),
 
