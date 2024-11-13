@@ -1,7 +1,7 @@
 # Restaurant Booking System (Little Lemon)
 
 A Django-based restaurant management system that allows users to browse the menu, place orders, make bookings, and manage their profile. It includes an admin interface for managing menu items, a 'Dish of the Day' feature, and the ability to assign roles (Manager, Delivery Crew). This project also integrates user authentication using Djoser for registration, login, and role-based access.
-
+![Uploading Home.png…]()
 ## Features
 
 - **User Authentication:**
