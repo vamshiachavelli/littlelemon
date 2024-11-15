@@ -19,7 +19,8 @@ A Django-based restaurant management system that allows users to browse the menu
   - Users with 'manager' roles or superusers can access Manager Dashboard.
   - Redirect unauthorized users to the home page.
   - Displays the manager dashboard template (`manager_dashboard.html`) for authorized users.
-![Manager_DB](https://github.com/user-attachments/assets/0e732d3d-6d74-4fcb-909e-146ccf68ed47)
+![Screen Shot 2024-11-14 at 7 20 35 PM](https://github.com/user-attachments/assets/fcb9cb49-9725-41b2-9822-5bcf21c85c1f)
+
 
 - **User Registration:**
   - User registration through Django's `UserCreationForm`.
@@ -75,9 +76,8 @@ A Django-based restaurant management system that allows users to browse the menu
   - Accessible only to managers, admins, and superusers (via `@superuser_or_multiple_groups_required`).
   - Allows managers to delete a menu item from the menu.
   - Redirects to the menu page after deletion.
- ![manger-menu](https://github.com/user-attachments/assets/c228c59d-cbf0-4860-8e05-98b86f7b6f55)
+![Screen Shot 2024-11-14 at 7 07 05 PM](https://github.com/user-attachments/assets/822f982d-0dac-41ee-bd5a-f8b3877dea99)
 
-    
 ## Booking Features
 
 - **Book Table:**
@@ -150,7 +150,7 @@ A Django-based restaurant management system that allows users to browse the menu
 - **Manage Groups:**
   - Allows managers or admins to view all groups in the system.
   - Accessible only to users with `manager` or `admin` roles.
-![group](https://github.com/user-attachments/assets/2ec59cbf-f849-44fd-a289-df2e98465b98)
+![Screen Shot 2024-11-14 at 7 21 17 PM](https://github.com/user-attachments/assets/ca71b6cf-e74b-40e9-be1b-0aa41eb26a50)
 
 - **Add Group:**
   - Allows managers or admins to create new user groups.
@@ -162,7 +162,7 @@ A Django-based restaurant management system that allows users to browse the menu
   - Displays details of a specific group, including the users not in the group and all available permissions.
   - Managers or admins can add or remove users from groups, as well as assign or remove permissions for a group.
   - Accessible only to users with `manager` or `admin` roles.
-![group-manager](https://github.com/user-attachments/assets/31cb720c-ec54-4c83-9f3a-34789c24109c)
+![Screen Shot 2024-11-14 at 7 21 17 PM](https://github.com/user-attachments/assets/480f5ed2-5702-4715-8995-003d0c8fd6dc)
 
 - **Remove User from Group:**
   - Allows managers or admins to remove a user from a specific group.
@@ -180,20 +180,20 @@ A Django-based restaurant management system that allows users to browse the menu
   - Managers can see all unassigned orders (orders without a delivery crew assigned and status is `False`).
   - Delivery crew members can only see orders assigned to them.
   - Accessible to users with `manager`, `admin`, or `delivery crew` roles.
-![Deliver DB](https://github.com/user-attachments/assets/829f1604-9687-4d5d-80b5-7fca7ad4ce77)
+![Screen Shot 2024-11-14 at 7 36 19 PM](https://github.com/user-attachments/assets/8348edc2-bd61-49d2-9b69-346ede4cd53b)
 
 - **Update Order Status:**
   - Delivery crew members can update the status of orders assigned to them.
   - Once the order is marked as delivered, its status is updated to `True`.
   - Prevents updates if the order has already been delivered.
   - Accessible to users with `manager`, `admin`, or `delivery crew` roles.
-![Update ordr](https://github.com/user-attachments/assets/3af413ec-1c16-4386-888d-6e545212862e)
+![Screen Shot 2024-11-14 at 7 37 15 PM](https://github.com/user-attachments/assets/bafba1ac-1608-4e7b-a9f6-bd8eecec7bd8)
 
 - **Assign Delivery Crew:**
   - Allows managers to assign a delivery crew member to a pending order.
   - Ensures that the order is not already completed or assigned to another crew member.
   - Accessible to users with `manager` or `admin` roles.
-![orders-mang](https://github.com/user-attachments/assets/d02cd3a6-0f31-404b-bb44-6678adc90335)
+![Screen Shot 2024-11-14 at 7 24 34 PM](https://github.com/user-attachments/assets/5e41f063-b931-4f1e-8496-7f228e58e772)
 
 - **Delivery Crew List:**
   - Displays a list of all members of the `Delivery Crew` group.
@@ -227,19 +227,18 @@ A Django-based restaurant management system that allows users to browse the menu
 - **Order History:**
   - Displays all past orders for the logged-in user, ordered by the most recent.
   - Accessible only by authenticated users.
-![orders history](https://github.com/user-attachments/assets/54e086b1-2e4e-45ac-8f71-42f7f1109f17)
+![Screen Shot 2024-11-14 at 7 21 45 PM](https://github.com/user-attachments/assets/86c58cf7-0b17-4205-b04e-29ef47f849d0)
 
 - **Order Detail:**
-  - Allows managers, admins, and delivery crew to view the details of an order.
+  - Allows managers, admins to view the details of an order.
   - Displays order details and allows for delivery crew assignment if the order has not been delivered yet.
-  - Accessible to users with `manager`, `admin`, or `delivery crew` roles.
-![detail order](https://github.com/user-attachments/assets/6ef2671c-2fb2-44f2-a01d-076b3bad6bf9)
+  - Accessible to users with `manager`, `admin` roles.
 
 - **Orders List:**
   - Displays a list of all orders in the system.
   - Shows all orders regardless of their status, along with the delivery crew assignment.
   - Accessible to users with `manager` or `admin` roles.
-![orders history](https://github.com/user-attachments/assets/4dadf99e-cd37-498b-8ecc-159f8c564113)
+![Screen Shot 2024-11-14 at 7 24 50 PM](https://github.com/user-attachments/assets/2d0cae14-c140-4e8b-bbfa-e519a0cf8e7f)
 
 
 ## Manager Dashboard
