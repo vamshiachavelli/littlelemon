@@ -634,7 +634,20 @@ def order_detail(request, order_id):
     order = get_object_or_404(Order, id=order_id)
     # Get all delivery crew members (users with 'delivery crew' group)
     delivery_crew = User.objects.filter(groups__name='delivery crew')
-    return render(request, 'order_detail.html', {'order': order, 'delivery_crew': delivery_crew})
+    order_items = [
+        {
+            'menuitem': item.menuitem,
+            'quantity': item.quantity,
+            'price': item.price,
+            'subtotal': item.quantity * item.price
+        } for item in order.order_items.all()
+    ]
+    
+    return render(request, 'order_detail.html', {
+        'order': order,
+        'order_items': order_items,
+        'delivery_crew': delivery_crew
+    })
 
 @superuser_or_multiple_groups_required(['manager', 'Admin'])
 def orders_list(request):
@@ -673,7 +686,3 @@ def home_clear_manager(request):
     
     # Redirect to the regular home page or any other page as needed
     return redirect('home')
-
-#=======================================================================================================
-# Booking
-#=======================================================================================================

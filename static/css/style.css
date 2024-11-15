@@ -413,7 +413,7 @@ footer {
   text-align: right;
 }
 
-.footer-right h4 {
+.footer-right h4, a{
   font-size: 18px;
   color: #4A90E2;
   margin-bottom: 15px;
@@ -517,9 +517,13 @@ footer {
   border-left: 3px solid #EE9972; /* Stylish left border */
   padding-left: 1rem; /* Space from the border */
 }
-
+/* Style for the image area */
 .about-image {
-  flex: 1; /* Take the remaining space for image */
+  flex: 1;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .about-img {
@@ -698,21 +702,6 @@ background-color: #c0392b;
 }
 .remove-button:hover {
 background-color: #c0392b;
-}
-
-.remove {
-  background-color: #e74c3c; /* Red for Remove */
-}
-
-.set {
-  background-color: #27ae60; /* Green for Set */
-}
-.remove:hover {
-  background-color: #c0392b; /* Darker red */
-}
-
-.set:hover {
-  background-color: #219653; /* Darker green */
 }
 
 .cart-controls {
@@ -1045,12 +1034,16 @@ background-color: #c0392b;
 
 /* Order History Page Styles */
 .order-history-page {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 1rem;
-  background-color: #f9f9f9;
+  max-width: 900px;
+  width: 100%;
+  background-color: #ffffff;
   border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 40px; /* Increased padding for better spacing */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin: 30px 200px; /* Adding margin-top to push content away from top */
 }
 
 .order-history-page h1 {
@@ -1061,18 +1054,17 @@ background-color: #c0392b;
 }
 
 .order-history-cards {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  display: flex;
 }
 
 .order-history-card {
+  margin: 5px;
   padding: 1rem;
-  margin-bottom: 1.5rem;
   background-color: #ffffff;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+
 }
 
 .order-history-card h3 {
@@ -1139,7 +1131,7 @@ background-color: #c0392b;
 .dashboard-container {
   width: 90%;
   max-width: 1200px;
-  margin: 30px auto; /* Add margin around the container */
+  margin: 50px auto; /* Add margin around the container */
   padding: 40px; /* Add padding inside the container */
   background-color: #fff;
   border-radius: 8px;
@@ -1192,7 +1184,7 @@ background-color: #c0392b;
 .dashboard-container {
   width: 90%;
   max-width: 1200px;
-  margin: 30px auto; /* Added margin for spacing */
+  margin: 50px auto; /* Added margin for spacing */
   padding: 40px; /* Padding inside the container */
 }
 
@@ -1336,27 +1328,31 @@ background-color: #c0392b;
 
 /* Orders List Page Styles */
 .orders-list {
-  margin: 40px auto;  /* Center the container with margin at the top and bottom */
-  padding: 30px;  /* Added more padding to give breathing room inside the container */
-  background-color: #f8f8f8;  /* Light gray background */
-  border-radius: 8px;  /* Rounded corners for the container */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  /* Light shadow for depth */
-  font-family: Arial, sans-serif;  /* Font family for readability */
-  border: 1px solid #ddd;  /* Subtle light gray border */
-  width: 80%;  /* Adjust width to prevent taking up the full width of the page */
+  max-width: 900px;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 40px; /* Increased padding for better spacing */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centering content horizontally */
+  margin: 30px 200px; /* Adding margin-top to push content away from top */
+
 }
 
-.orders-list h1 {
+.orders-heading {
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
   text-align: center;
-  font-size: 2.5rem;
-  color: #28a745;
-  margin-bottom: 20px;
+  margin-bottom: 40px; /* Add space below the heading */
 }
-
 /* Orders List */
 .orders {
   list-style-type: none;
-  padding: 0;
+  padding: 40px;
 }
 
 .order-item {
@@ -1559,6 +1555,40 @@ margin-top: 20px;
 .add-group-btn:hover {
   background-color: #45a049;
 }
+/* Manager Dashboard Container */
+.manage-groups-container {
+  width: 100%;
+  max-width: 1000px;  /* Maximum width to prevent it from stretching too wide */
+  margin: 50px auto;  /* Center the container with some margin on top and bottom */
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+/* Heading for Manager Dashboard */
+.manager-group-heading {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+  border-bottom: 3px solid #007bff;  /* Underline with color */
+  padding-bottom: 10px;  /* Space between heading and underline */
+}
+
+/* Responsive Design for Small Screens */
+@media (max-width: 768px) {
+  .manage-groups-container {
+    padding: 20px;
+  }
+
+  .manager-group-heading {
+    font-size: 24px;
+  }
+}
+
 
 /* Manage Content Section */
 .manage-content {
@@ -1617,7 +1647,7 @@ margin-top: 20px;
 .group-detail-container {
   padding: 40px;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 50px auto;  /* Center the container with some margin on top and bottom */
   background-color: #f9fafc;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -1690,7 +1720,7 @@ margin-top: 20px;
 /* Container for the manager dashboard */
 .dashboard-container {
   max-width: 900px;
-  margin: 0 auto;
+  margin: 50 auto;
   padding: 30px;
   background-color: #fff;
   border-radius: 8px;
@@ -1712,8 +1742,8 @@ margin-top: 20px;
 /* Delivery Crew List Styles */
 .dashboard-container {
   width: 90%;
+  margin: 50px auto;  /* Center the container with some margin on top and bottom */
   max-width: 1200px;
-  margin: 0 auto;
   padding: 20px;
 }
 
@@ -1729,6 +1759,7 @@ margin-top: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin: 50px auto;  /* Center the container with some margin on top and bottom */
 }
 
 .crew-header {
@@ -1767,6 +1798,7 @@ margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .user-content {
@@ -2043,36 +2075,155 @@ margin-top: 20px;
   margin: 10px 0;
 }
 
-/* Order Details Page Styles */
-.order-details-section {
+
+
+/* Order Details Wrapper */
+.order-details-wrapper {
   max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
-  background-color: #f9f9f9;
+  width: 100%;
+  background-color: #ffffff;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 30px; /* Increased padding for better spacing */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centering content horizontally */
+  margin: 30px auto; /* Adding margin-top to push content away from top */
 }
 
-.order-details-section h1 {
+/* Title */
+.order-details-wrapper h1 {
+  font-size: 28px;
+  color: #333;
   text-align: center;
-  font-size: 2.5rem;
-  color: #28a745;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  display: flex;
 }
 
-.order-summary {
-  background-color: #fff;
+/* Flex Container for Delivery Crew and Order Status Section */
+.order-details-wrapper .info-sections {
+  display: flex; /* Flexbox layout */
+  justify-content: space-between; /* Space between the sections */
+  width: 100%; /* Full width for the parent container */
+  gap: 20px; /* Add space between the sections */
+  margin-top: 30px;
+}
+
+/* Delivery Crew Section and Order Status Section */
+.delivery-crew-section,
+.order-status-section {
+  background-color: #f8f8f8;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
+  width: 100%; /* Set each section to take 48% of the width */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
-.order-summary p {
-  font-size: 1.2rem;
+/* Section Titles */
+.delivery-crew-section h2,
+.order-status-section h2 {
+  font-size: 22px;
+  color: #007bff;
+  margin-bottom: 15px;
+}
+
+.delivery-crew-section p,
+.order-status-section p {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.delivery-crew-section strong,
+.order-status-section strong {
   color: #555;
-  margin: 10px 0;
+  font-size: 16px;
+}
+
+/* Items Table Section */
+.order-items-table-wrapper {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.order-items-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.order-items-table th,
+.order-items-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.order-items-table th {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+.order-items-table td {
+  font-size: 14px;
+  color: #333;
+}
+
+.order-items-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Subtotal and other columns centered */
+.order-items-table td:nth-child(3), .order-items-table td:nth-child(4) {
+  text-align: center;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* Total Payment Section */
+.total-payment-section {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+.total-payment-section p {
+  font-size: 16px;
+  color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .order-details-wrapper {
+    padding: 15px;
+  }
+
+  /* Stack sections vertically in smaller screens */
+  .order-details-wrapper .info-sections {
+    flex-direction: column;
+  }
+
+  .delivery-crew-section,
+  .order-status-section {
+    width: 100%; /* Make sections full width on small screens */
+  }
+
+  .order-items-table th,
+  .order-items-table td {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  .delivery-crew-section p,
+  .order-status-section p {
+    font-size: 14px;
+  }
 }
 
 
@@ -2359,7 +2510,7 @@ margin-top: 20px;
 /* Container styling */
 .dashboard-container {
   max-width: 900px;
-  margin: 0 auto;
+  margin: 50 auto;
   padding: 2rem;
   background-color: #f8f9fa;
 }
@@ -2374,12 +2525,11 @@ margin-top: 20px;
 /* Order list styling */
 .order-list {
   display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
 }
 
 /* Order card styling */
 .order-card {
+  margin: 20px;
   background-color: #ffffff;
   padding: 1.5rem;
   border-radius: 8px;
@@ -2502,6 +2652,66 @@ margin-top: 20px;
   background-color: #218838;
 }
 
+/* Style for the order status update section */
+.order-status-update {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.order-status-update h1 {
+  text-align: center;
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.order-status-update p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.order-status-update p strong {
+  color: #333;
+}
+
+.order-status-update .status-form {
+  text-align: center;
+}
+
+.order-status-update .status-form button {
+  background-color: #f4b400;
+  color: white;
+  font-size: 1.2rem;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 2rem;
+}
+
+.order-status-update .status-form button:hover {
+  background-color: #e0a400;
+}
+
+.order-status-update .status-form button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.order-status-update p strong:last-child {
+  color: #e74c3c; /* Red color for 'Pending' status */
+}
+
+.order-status-update p strong:first-child {
+  color: #2ecc71; /* Green color for 'Delivered' status */
+}
+
 /* Responsive styling */
 @media (max-width: 576px) {
   .order-status-update {
@@ -2516,4 +2726,19 @@ margin-top: 20px;
     font-size: 1rem;
     padding: 0.6rem 1.2rem;
   }
+}
+
+.remove {
+  background-color: #e74c3c; /* Red for Remove */
+}
+
+.set {
+  background-color: #27ae60; /* Green for Set */
+}
+.remove:hover {
+  background-color: #c0392b; /* Darker red */
+}
+
+.set:hover {
+  background-color: #219653; /* Darker green */
 }
